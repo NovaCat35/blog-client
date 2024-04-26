@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import defaultImg from "../assets/default.jpeg";
 import formatDate from "../functions/DateFormatter";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 function BlogPage() {
 	const { blogs } = useContext(BlogContext);
@@ -38,6 +39,7 @@ function BlogPage() {
 					))}
 				</main>
 			</div>
+      <Footer />
 		</>
 	);
 }

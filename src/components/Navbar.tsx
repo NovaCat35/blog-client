@@ -6,7 +6,9 @@ function Navbar() {
 	return (
 		<nav className="flex justify-between px-10 py-5">
 			<div className="w-[70px] h-[70px] flex items-center justify-center overflow-hidden rounded-full">
-				<img className="w-[250px] object-cover mt-4" src={logo} alt="site logo" />
+				<Link to="/">
+					<img className="w-[250px] object-cover mt-4" src={logo} alt="site logo" />
+				</Link>
 			</div>
 
 			<div className="right-side flex gap-8 items-center">
