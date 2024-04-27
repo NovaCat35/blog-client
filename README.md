@@ -40,6 +40,7 @@ One of the primary objectives of this project was to develop a client-side blog 
    npx tailwindcss init -p
    npm install -D sass
    npm install react-paginate
+   npm install react-markdown
 ```
 
 > Don't forget to modify tailwind.config & create a tailwind.css file

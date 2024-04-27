@@ -1,3 +1,4 @@
+/* Box sizing and user selection */
 * {
 	box-sizing: border-box;
 	-webkit-touch-callout: none; /* iOS Safari */
@@ -8,15 +9,21 @@
 	user-select: none; /* Non-prefixed version, currently */
 }
 
+/* Reset margins for headings and paragraphs */
 h1,
-h2 {
-	margin: 0;
-}
-
+h2,
 p {
 	margin: 0;
 }
 
+/* Remove max-width from images */
 img {
 	max-width: none;
+}
+
+/* Reset padding and list styles for lists */
+ul,
+ol {
+	padding: 0;
+	list-style: none;
 }

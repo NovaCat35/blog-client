@@ -11,12 +11,15 @@ function Footer() {
 					<div className="pt-5 pb-8 px-4 w-full">
 						<h1 className="text-2xl border-b-2 border-[#8cbadb] pb-2 mb-4">Wayfarer's Frontier</h1>
 						<p>
-							Heya, you reach the end of this page! I hope you enjoyed your time here. <br /> If you find my contents interesting, consider bookmarking this site or follow me on social media. <br /> <br />
-							~Thank you very much, dear viewers!
+							Woah, you reach the end of this page! Remember life is a journey, unlike this footer we can't always know where it will end. Pace yourself and keep improving! Looking forward to see where this journey will take you
+							<br /> <br />
+							If you find my contents interesting, consider bookmarking this site.
+							<br />
+							~Thank you very much, dear viewers.
 						</p>
 					</div>
 					{/* Social Media */}
-					<div className="bg-[#b1b63a] pt-5 pb-8 px-4">
+					<div className="bg-[#C2C74F] pt-5 pb-8 px-4">
 						<img className="w-[250px]" src={lighthouse} alt="lighthouse" />
 						{/* <div className="max-w-7xl mx-auto mt-8 flex flex-col items-center text-center">
 							<a href="https://github.com/NovaCat35/shopping-cart" className="w-80 flex items-center justify-center space-x-2 rounded-md bg-gray-200 p-2">
