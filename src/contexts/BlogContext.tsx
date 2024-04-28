@@ -21,6 +21,7 @@ export type Blog = {
 	author: User;
 	comments: string;
 	published: boolean;
+	likes: number;
 };
 
 // Specify the type for the context value explicitly

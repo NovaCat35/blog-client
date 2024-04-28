@@ -1,17 +1,23 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { BlogContext } from "../contexts/BlogContext";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import Markdown from 'react-markdown'
+import Markdown from "react-markdown";
 import formatDate from "../functions/DateFormatter";
+import { getFavoriteBlogs } from "../functions/FilteringPosts";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import "../styles/Home.scss";
 import defaultImg from "../assets/default.jpeg";
 
-
 function Home() {
 	const { blogs } = useContext(BlogContext);
+	const [favoriteBlogs, setFavoriteBlogs] = useState(blogs);
+
+	useEffect(() => {
+		const favorites = getFavoriteBlogs(blogs);
+		setFavoriteBlogs(favorites);
+	}, [blogs]);
 
 	return (
 		<div className="flex flex-col min-h-screen">
@@ -26,7 +32,7 @@ function Home() {
 				<div className="latest-posts-showcase mt-20">
 					<h1 className="text-4xl mb-5">Favorite Blogs</h1>
 					<div className="posts-cards-container flex justify-between">
-						{blogs.map((blog) => (
+						{favoriteBlogs.map((blog) => (
 							<div key={blog._id} className="card flex flex-col items-center">
 								<h1 className="text-xl font-bold">{blog.title}</h1>
 								<p className="text-gray-500">{formatDate(blog.date_posted)}</p>
@@ -46,15 +52,17 @@ function Home() {
 									</div>
 									<div className="texts-container ml-4">
 										<h1 className="text-xl font-bold">{blog.title}</h1>
-										<p className="text-gray-500">{formatDate(blog.date_posted)}</p>
-										<p className="text-gray-800"><Markdown>{blog.texts}</Markdown></p>
-										<ul className="flex gap-5 mt-2">
-											{blog.tags.map((tag) => (
-												<li key={uuidv4()} className="bg-gray-200 px-2 py-1 rounded text-gray-700">
-													{tag}
-												</li>
-											))}
-										</ul>
+										<p className="date-posted text-gray-500">{formatDate(blog.date_posted)}</p>
+										<div className="descriptions text-gray-800 max-w-[75vw]">
+											<Markdown className="text-ellipsis line-clamp-3">{`${blog.texts}`}</Markdown>
+										</div>
+                    <ul className="tags-container flex gap-5 mt-2">
+										{blog.tags.map((tag) => (
+											<li key={uuidv4()} className="bg-gray-200 px-2 py-1 rounded text-gray-700 flex justify-center items-center text-center">
+												{tag}
+											</li>
+										))}
+									</ul>
 									</div>
 								</Link>
 							</div>
