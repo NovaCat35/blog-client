@@ -15,6 +15,9 @@ function Navbar() {
 				<Link to="/blogs">Blogs</Link>
 				{/* <Link to="/projects">Projects</Link> */}
 				<Link to="/about">About</Link>
+				<Link to="/login" className="border border-white px-5 py-1.5 rounded-md bg-[#1ca1ba] text-white hover:bg-[#718fba]">
+					Login
+				</Link>
 			</div>
 		</nav>
 	);

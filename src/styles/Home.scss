@@ -10,10 +10,10 @@
 
 .posts-cards-container {
 	display: grid;
-	grid-template: minmax(80px, auto) 500px / repeat(auto-fit, minmax(350px, 1fr));
-	gap: 20px;
+	grid-template: 1fr / repeat(auto-fit, minmax(350px, 1fr));
+	gap: 35px;
 	@media screen and (min-width: 1000px) {
-		grid-template: minmax(80px, auto) 500px / 1fr minmax(100px, 1fr) 1fr;
+		grid-template: minmax(200px, auto) / 1fr minmax(100px, 1fr) 1fr;
 	}
 }
 

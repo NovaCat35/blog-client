@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import { BlogContext } from "../contexts/BlogContext";
+import { BlogContext } from "../../contexts/BlogContext";
 import { v4 as uuidv4 } from "uuid";
 import Markdown from "react-markdown";
 import { Link } from "react-router-dom";
-import defaultImg from "../assets/default.jpeg";
-import formatDate from "../functions/DateFormatter";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import defaultImg from "../../assets/default.jpeg";
+import formatDate from "../../functions/DateFormatter";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
 
 function BlogPage() {
 	const { blogs } = useContext(BlogContext);
@@ -15,7 +15,7 @@ function BlogPage() {
 		<>
 			<Navbar />
 			<div className="px-20 py-10">
-				<h1 className="text-3xl font-bold mb-6">BlogPage</h1>
+				<h1 className="text-3xl font-bold mb-6">All Blogs</h1>
 				<main>
 					{blogs.map((blog) => (
 						<div className="blog-container flex items-center justify-between border-b border-gray-300 py-4" key={uuidv4()}>

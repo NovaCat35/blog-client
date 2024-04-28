@@ -1,15 +1,15 @@
 import { useContext, useState, useEffect } from "react";
-import { BlogContext } from "../contexts/BlogContext";
+import { BlogContext } from "../../contexts/BlogContext";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import Markdown from "react-markdown";
-import formatDate from "../functions/DateFormatter";
-import { getFavoriteBlogs, getLatestBlogs } from "../functions/FilteringPosts";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import "../styles/Home.scss";
-import defaultImg from "../assets/default.jpeg";
-import arrowSvg from "../assets/right-arrow.svg";
+import formatDate from "../../functions/DateFormatter";
+import { getFavoriteBlogs, getLatestBlogs } from "../../functions/FilteringPosts";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
+import "../../styles/Home.scss";
+import defaultImg from "../../assets/default.jpeg";
+import arrowSvg from "../../assets/right-arrow.svg";
 
 function Home() {
 	const { blogs } = useContext(BlogContext);
@@ -35,7 +35,7 @@ function Home() {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<Navbar />
-			<main className="flex-grow px-10 mt-10">
+			<main className="flex-grow px-20 mt-10">
 				<div className="title-card-container">
 					<h1 className="title font-bold">Tales from a wayfarer.</h1>
 					<p className="intro-texts mt-2">

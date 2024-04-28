@@ -1,9 +1,7 @@
 # Wayfarer's Frontier
 
-Life is a beautiful mix of distractions, occasional depressions, and joyful moments. For all its worth, I like to sort out my thoughts, post some projects I'm working on, and collect insights from all walks of lives while I try to make sense of my own. 🧳
+Life is a beautiful mix of ups and downs. For all its worth, I like to sort out my thoughts, post some projects I'm working on, and collect insights from all walks of lives while I try to make sense of my own. 🧳
 
-This project is a current work in progress  ⚠️ <br>
-This project is a current work in progress  ⚠️ <br>
 This project is a current work in progress  ⚠️ <br>
 
 ## Content Links 🚀
