@@ -46,8 +46,6 @@ function BlogProvider({ children }: { children: React.ReactNode }) {
 					throw new Error("Failed to fetch data");
 				}
 				const blogs = await response.json();
-
-				console.log(blogs.posts);
 				setBlogs(blogs.posts);
 			} catch (error) {
 				console.error("Error fetching data:", error);

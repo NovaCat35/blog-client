@@ -29,7 +29,7 @@ function BlogPage() {
 									<div className="descriptions text-gray-800 max-w-[75vw]">
 										<Markdown className="text-ellipsis line-clamp-3">{`${blog.texts}`}</Markdown>
 									</div>{" "}
-									<ul className="tags-container flex gap-5 mt-2">
+									<ul className="tags-container flex flex-wrap gap-x-5 gap-y-4 mt-4">
 										{blog.tags.map((tag) => (
 											<li key={uuidv4()} className="bg-gray-200 px-2 py-1 rounded text-gray-700 flex justify-center items-center text-center">
 												{tag}

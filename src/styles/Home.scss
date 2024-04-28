@@ -7,3 +7,29 @@
 	font-family: "Open Sans", sans-serif;
 	font-size: 4.5rem;
 }
+
+.posts-cards-container {
+	display: grid;
+	grid-template: minmax(80px, auto) 500px / repeat(auto-fit, minmax(350px, 1fr));
+	gap: 20px;
+	@media screen and (min-width: 1000px) {
+		grid-template: minmax(80px, auto) 500px / 1fr minmax(100px, 1fr) 1fr;
+	}
+}
+
+.card.large {
+	@media screen and (min-width: 1000px) {
+		grid-column: 2 / 3; /* starting from column 2 to 3 */
+		grid-row: 1 / span 2; /* Spanning 2 rows starting from row 1 */
+	}
+}
+
+img {
+	aspect-ratio: 11.5 / 9;
+	&.large {
+		aspect-ratio: 11.5 / 9;
+		@media screen and (min-width: 1000px) {
+			aspect-ratio: 9 / 11.5;
+		}
+	}
+}
