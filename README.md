@@ -26,7 +26,7 @@ This project is a current work in progress  ⚠️ <br>
 ## Goal and Challenges 🔥
 One of the primary objectives of this project was to develop a client-side blog site and integrate it with our backend server-side API. While setting up the majority of the backend logic for the blog API, I encountered challenges related to connecting the client to the backend due to CORS not being implemented and overlooking certain considerations during API testing with Postman. For instance, I initially overlooked that Mongoose schema's virtual is a backend-specific element, among other aspects related to routers and api fetching objects. Using old project documents and revisiting the server api for some modifications, I soon was able to get the client side working again.
 
-A import blocking point was trying to figure out how to authenticate user with login/signup...
+A important blocking point was trying to figure out how to authenticate user with login/signup. For some reason, when trying to fetch the login auth route, there's server issue with retrieving wrong info. I had to eventually test with inspect on the web and breakpoint messages on the terminal to locate bug issue.
 
 ## Libraries 📚
 
