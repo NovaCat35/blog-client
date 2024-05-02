@@ -34,8 +34,6 @@ function LoginPage() {
 			password,
 		};
 
-		console.log(`HOHOHO ${username}`);
-
 		try {
 			const response = await fetch("http://localhost:3000/auth/login", {
 				method: "POST",
@@ -75,12 +73,12 @@ function LoginPage() {
 				<form onSubmit={handleSubmit} className="flex flex-col w-[470px] lg:w-[50vw] mb-10">
 					<div className="form-opt flex flex-col">
 						<label htmlFor="username">Username</label>
-						<input type="text" name="username" onChange={handleChange} id="username" className="border border-gray-300 rounded px-3 py-2 mb-3" placeholder="John Cena" required />
+						<input type="text" name="username" onChange={handleChange} id="username" className="border-2 border-gray-300 rounded px-3 py-2 mb-3" placeholder="John Cena" required />
 					</div>
 					<div className="form-opt flex flex-col">
 						<label htmlFor="password">Password</label>
 						<div className="password-container relative h-10 mb-5">
-							<input type={showPassword ? "text" : "password"} id="password" name="password" onChange={handleChange} className="border border-gray-300 rounded px-3 py-2 w-full" required />
+							<input type={showPassword ? "text" : "password"} id="password" name="password" onChange={handleChange} className="border-2 border-gray-300 rounded px-3 py-2 w-full" required />
 							<img onClick={handleTogglePassword} className="eye-icon absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer" src={showPassword ? eyeOffIconImg : eyeIconImg} alt="password eye-icon" />
 						</div>
 					</div>
@@ -88,7 +86,7 @@ function LoginPage() {
 						Login
 					</button>
 				</form>
-				{errorMessage && <div className="text-red-500 font-semibold mb-5">{errorMessage}</div>}
+				{errorMessage && <div className="error-other-msg bg-red-500 py-1 px-5 rounded-md text-white font-semibold mb-5">⚠️ {errorMessage}</div>}
 				<p className="font-bold mb-10">
 					Don't have an account?{" "}
 					<Link to="/signup" className="text-[#e7175a]">

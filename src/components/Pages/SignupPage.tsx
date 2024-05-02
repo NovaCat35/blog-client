@@ -5,7 +5,13 @@ import Navbar from "../Navbar";
 import Footer from "../Footer";
 import eyeIconImg from "../../assets/eye.svg";
 import eyeOffIconImg from "../../assets/eye-off.svg";
+import "../../styles/Signup.scss";
 import { v4 as uuidv4 } from "uuid";
+
+interface errorObj {
+	errorType: string;
+	errorMsg: string;
+}
 
 function SignupPage() {
 	const [username, setUsername] = useState("");
@@ -14,8 +20,12 @@ function SignupPage() {
 	const [email, setEmail] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
 	const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
-	const [errorMessages, setErrorMessages] = useState<string[]>([]);
+	const [errorMessages, setErrorMessages] = useState<errorObj[]>([]);
 	const { setUser } = useContext(userContext);
+
+	function getErrorMsg(errorType: string) {
+		return errorMessages.find((errorObj) => errorObj.errorType === errorType)?.errorMsg || "";
+	}
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -67,7 +77,7 @@ function SignupPage() {
 			}
 		} catch (error) {
 			console.error("Error fetching data:", error);
-			setErrorMessages(["Internal Server Error"]);
+			setErrorMessages([{ errorType: "others", errorMsg: "Internal Server Error" }]);
 		}
 	};
 
@@ -82,38 +92,40 @@ function SignupPage() {
 					</a>{" "}
 					here.
 				</h1>
-				<form onSubmit={handleSubmit} className="flex flex-col w-[470px] lg:w-[50vw] mb-10">
+				<form onSubmit={handleSubmit} className="flex flex-col w-[470px] lg:w-[50vw] mb-5">
 					<div className="form-opt flex flex-col">
 						<label htmlFor="username">Username</label>
-						<input type="text" name="username" onChange={handleChange} id="username" className="border border-gray-300 rounded px-3 py-2 mb-3" placeholder="John Cena" required />
+						<div className="username-container relative h-10 mb-5">
+							<input type="text" name="username" onChange={handleChange} id="username" className={`border-2 w-full ${getErrorMsg("username") ? "border-red-500" : "border-gray-300"} rounded px-3 py-2 mb-3`} placeholder="John Cena" maxLength={50} required />
+							<span className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400">
+								{username.length}/{50}
+							</span>
+						</div>
+						<p className="error-msg">{getErrorMsg("username")}</p>
 					</div>
 					<div className="form-opt flex flex-col">
 						<label htmlFor="email">Email</label>
-						<input type="email" name="email" onChange={handleChange} id="email" className="border border-gray-300 rounded px-3 py-2 mb-3" placeholder="johncena@gmail.com" required />
+						<input type="email" name="email" onChange={handleChange} id="email" className={`border-2 ${getErrorMsg("email") ? "border-red-500" : "border-gray-300"} rounded px-3 py-2 mb-3`} placeholder="johncena@gmail.com" required />
+						<p className="error-msg">{getErrorMsg("email")}</p>
 					</div>
 					<div className="form-opt flex flex-col">
 						<label htmlFor="password">Password</label>
 						<div className="password-container relative h-10 mb-5">
-							<input type={showPassword ? "text" : "password"} id="password" name="password" onChange={handleChange} className="border border-gray-300 rounded px-3 py-2 w-full" required />
+							<input type={showPassword ? "text" : "password"} id="password" name="password" onChange={handleChange} className="border-2 border-gray-300 rounded px-3 py-2 w-full" required />
 							<img onClick={handleTogglePassword} className="eye-icon absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer" src={showPassword ? eyeOffIconImg : eyeIconImg} alt="password eye-icon" />
 						</div>
 						<label htmlFor="password_confirm">Confirm Password</label>
 						<div className="password-confirm-container relative h-10 mb-5">
-							<input type={showPasswordConfirm ? "text" : "password"} id="password_confirm" name="password_confirm" onChange={handleChange} className="border border-gray-300 rounded px-3 py-2 w-full" required />
+							<input type={showPasswordConfirm ? "text" : "password"} id="password_confirm" name="password_confirm" onChange={handleChange} className={`border-2 ${getErrorMsg("password") ? "border-red-500" : "border-gray-300"} rounded px-3 py-2 w-full`} required />
 							<img onClick={handleTogglePasswordConfirm} className="eye-icon absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer" src={showPasswordConfirm ? eyeOffIconImg : eyeIconImg} alt="password eye-icon" />
 						</div>
+						<p className="error-msg">{getErrorMsg("password")}</p>
 					</div>
 					<button type="submit" className="bg-[#1fa1ba] text-white rounded px-4 py-2 duration-300 ease-in-out hover:bg-[#105580]">
 						Sign up
 					</button>
 				</form>
-				{errorMessages.length > 0 && (
-					<ul className="text-red-500 font-semibold mb-5 text-center">
-						{errorMessages.map((error) => (
-							<li key={uuidv4()}>⚠️ {error}</li>
-						))}
-					</ul>
-				)}
+				{errorMessages.length > 0 && <ul className="bg-red-500 py-1 px-5 rounded-md text-white font-semibold mb-5 text-center">{errorMessages.map((errorObj) => (errorObj.errorType == "other" ? <li key={uuidv4()}>⚠️ {errorObj.errorMsg}</li> : <></>))}</ul>}
 				<p className="font-bold mb-10">
 					Have an account already?{" "}
 					<Link to="/login" className="text-[#e7175a] mb-10">

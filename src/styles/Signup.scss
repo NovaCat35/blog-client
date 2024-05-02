@@ -1,0 +1,30 @@
+.error-msg {
+	color: red;
+	font-weight: 700;
+	&:not(:empty) {
+		padding: 0px 0px 10px;
+      animation: shake-left-right 0.5s ease-in-out forwards;
+	}
+}
+
+.error-other-msg {
+   animation: shake-left-right 0.5s ease-in-out forwards;
+}
+
+@keyframes shake-left-right {
+	0% {
+		transform: translateX(0);
+	}
+	25% {
+		transform: translateX(-5px);
+	}
+	50% {
+		transform: translateX(5px);
+	}
+	75% {
+		transform: translateX(-3px);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
