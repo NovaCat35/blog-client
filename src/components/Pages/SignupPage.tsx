@@ -23,6 +23,8 @@ function SignupPage() {
 	const [errorMessages, setErrorMessages] = useState<errorObj[]>([]);
 	const { setUser } = useContext(userContext);
 	const navigate = useNavigate();
+
+   // Ref here used to manipulate the shake animation for error messages
 	const usernameRef = useRef<HTMLDivElement>(null);
 	const emailRef = useRef<HTMLDivElement>(null);
 	const passwordRef = useRef<HTMLDivElement>(null);

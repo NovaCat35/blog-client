@@ -12,7 +12,7 @@ function LoginPage() {
 	const [showPassword, setShowPassword] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
 	const { setUser } = useContext(userContext);
-	const errorRef = useRef<HTMLDivElement>(null);
+	const errorRef = useRef<HTMLDivElement>(null); // Ref here used to manipulate the shake animation for error messages
 	const navigate = useNavigate();
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

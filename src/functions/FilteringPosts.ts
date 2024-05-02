@@ -15,3 +15,21 @@ export function getFavoriteBlogs(blogs: Blog[]) {
 export function getLatestBlogs(blogs: Blog[]) {
 	return blogs.sort((a, b) => new Date(b.date_posted).getTime() - new Date(a.date_posted).getTime()).slice(0, 4);
 }
+
+export function sortByLatest(blogs: Blog[]) {
+	return blogs.sort((a, b) => new Date(b.date_posted).getTime() - new Date(a.date_posted).getTime());
+}
+
+export function groupByYear(blogs: Blog[]) {
+	const sortedBlogs = sortByLatest(blogs);
+	const yearsMap = new Map<number, Blog[]>(); // using Map instead of doing a reduce((acc, currBlog) => {...}, {}) to retain order by insert (for year)
+
+	sortedBlogs.forEach((currBlog) => {
+		const blogYear = new Date(currBlog.date_posted).getFullYear();
+		const blogsOfYear = yearsMap.get(blogYear) || [];
+		blogsOfYear.push(currBlog);
+		yearsMap.set(blogYear, blogsOfYear);
+	})
+
+	return yearsMap;
+}
