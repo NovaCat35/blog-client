@@ -3,12 +3,12 @@
 	font-weight: 700;
 	&:not(:empty) {
 		padding: 0px 0px 10px;
-      animation: shake-left-right 0.5s ease-in-out forwards;
+		// animation: shake-left-right 0.5s ease-in-out forwards;
 	}
 }
 
-.error-other-msg {
-   animation: shake-left-right 0.5s ease-in-out forwards;
+.active {
+	animation: shake-left-right 0.3s ease-in-out forwards;
 }
 
 @keyframes shake-left-right {

@@ -1,6 +1,6 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { userContext } from "../../contexts/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import eyeIconImg from "../../assets/eye.svg";
@@ -22,6 +22,11 @@ function SignupPage() {
 	const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
 	const [errorMessages, setErrorMessages] = useState<errorObj[]>([]);
 	const { setUser } = useContext(userContext);
+	const navigate = useNavigate();
+	const usernameRef = useRef<HTMLDivElement>(null);
+	const emailRef = useRef<HTMLDivElement>(null);
+	const passwordRef = useRef<HTMLDivElement>(null);
+	const errorRef = useRef<HTMLLIElement>(null);
 
 	function getErrorMsg(errorType: string) {
 		return errorMessages.find((errorObj) => errorObj.errorType === errorType)?.errorMsg || "";
@@ -64,16 +69,20 @@ function SignupPage() {
 				},
 				body: JSON.stringify(newUser),
 			});
-
+			// Response good, save return info of user and token within context and local storage, respectively
 			if (response.ok) {
 				const { token, user } = await response.json();
 				localStorage.setItem("jwt_token", token);
-
 				setUser(user);
+				navigate("/");
 			} else {
 				const errorData = await response.json();
 				setErrorMessages(errorData.errorMessages || ["Sign up failed."]);
 				console.error("Sign up failed:", response.status, errorData.errorMessages);
+				usernameRef.current?.classList.add("active");
+				emailRef.current?.classList.add("active");
+				passwordRef.current?.classList.add("active");
+				errorRef.current?.classList.add("active");
 			}
 		} catch (error) {
 			console.error("Error fetching data:", error);
@@ -96,17 +105,21 @@ function SignupPage() {
 					<div className="form-opt flex flex-col">
 						<label htmlFor="username">Username</label>
 						<div className="username-container relative h-10 mb-5">
-							<input type="text" name="username" onChange={handleChange} id="username" className={`border-2 w-full ${getErrorMsg("username") ? "border-red-500" : "border-gray-300"} rounded px-3 py-2 mb-3`} placeholder="John Cena" maxLength={50} required />
+							<input type="text" name="username" onChange={handleChange} id="username" className={`border-2 w-full ${getErrorMsg("username") ? "border-red-500" : "border-gray-300"} rounded px-3 py-2 mb-3`} placeholder="Jack Sparrow" maxLength={50} required />
 							<span className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400">
 								{username.length}/{50}
 							</span>
 						</div>
-						<p className="error-msg">{getErrorMsg("username")}</p>
+						<p ref={usernameRef} className="error-msg" onAnimationEnd={() => usernameRef.current?.classList.remove("active")}>
+							{getErrorMsg("username")}
+						</p>
 					</div>
 					<div className="form-opt flex flex-col">
 						<label htmlFor="email">Email</label>
-						<input type="email" name="email" onChange={handleChange} id="email" className={`border-2 ${getErrorMsg("email") ? "border-red-500" : "border-gray-300"} rounded px-3 py-2 mb-3`} placeholder="johncena@gmail.com" required />
-						<p className="error-msg">{getErrorMsg("email")}</p>
+						<input type="email" name="email" onChange={handleChange} id="email" className={`border-2 ${getErrorMsg("email") ? "border-red-500" : "border-gray-300"} rounded px-3 py-2 mb-3`} placeholder="blackpearl32@gmail.com" required />
+						<p ref={emailRef} className="error-msg" onAnimationEnd={() => emailRef.current?.classList.remove("active")}>
+							{getErrorMsg("email")}
+						</p>
 					</div>
 					<div className="form-opt flex flex-col">
 						<label htmlFor="password">Password</label>
@@ -119,13 +132,27 @@ function SignupPage() {
 							<input type={showPasswordConfirm ? "text" : "password"} id="password_confirm" name="password_confirm" onChange={handleChange} className={`border-2 ${getErrorMsg("password") ? "border-red-500" : "border-gray-300"} rounded px-3 py-2 w-full`} required />
 							<img onClick={handleTogglePasswordConfirm} className="eye-icon absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer" src={showPasswordConfirm ? eyeOffIconImg : eyeIconImg} alt="password eye-icon" />
 						</div>
-						<p className="error-msg">{getErrorMsg("password")}</p>
+						<p ref={passwordRef} className="error-msg" onAnimationEnd={() => passwordRef.current?.classList.remove("active")}>
+							{getErrorMsg("password")}
+						</p>
 					</div>
 					<button type="submit" className="bg-[#1fa1ba] text-white rounded px-4 py-2 duration-300 ease-in-out hover:bg-[#105580]">
 						Sign up
 					</button>
 				</form>
-				{errorMessages.length > 0 && <ul className="bg-red-500 py-1 px-5 rounded-md text-white font-semibold mb-5 text-center">{errorMessages.map((errorObj) => (errorObj.errorType == "other" ? <li key={uuidv4()}>⚠️ {errorObj.errorMsg}</li> : <></>))}</ul>}
+				{errorMessages.filter((obj) => obj.errorType == "other").length > 0 && (
+					<ul>
+						{errorMessages.map((errorObj) =>
+							errorObj.errorType == "other" ? (
+								<li key={uuidv4()} ref={errorRef} className=".error-other-msg bg-red-500 py-1 px-5 rounded-md text-white font-semibold mb-5 text-center" onAnimationEnd={() => errorRef.current?.classList.remove("active")}>
+									⚠️ {errorObj.errorMsg}
+								</li>
+							) : (
+								<></>
+							)
+						)}
+					</ul>
+				)}
 				<p className="font-bold mb-10">
 					Have an account already?{" "}
 					<Link to="/login" className="text-[#e7175a] mb-10">

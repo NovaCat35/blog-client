@@ -1,6 +1,6 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { userContext } from "../../contexts/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import eyeIconImg from "../../assets/eye.svg";
@@ -12,6 +12,8 @@ function LoginPage() {
 	const [showPassword, setShowPassword] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
 	const { setUser } = useContext(userContext);
+	const errorRef = useRef<HTMLDivElement>(null);
+	const navigate = useNavigate();
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -42,16 +44,17 @@ function LoginPage() {
 				},
 				body: JSON.stringify(newUser),
 			});
-
+			// Response good, save return info of user and token within context and local storage, respectively
 			if (response.ok) {
 				const { token, user } = await response.json();
 				localStorage.setItem("jwt_token", token);
-
 				setUser(user);
+				navigate("/");
 			} else {
 				const errorData = await response.json();
 				setErrorMessage(errorData.error || "Login failed.");
 				console.error("Login failed:", response.status);
+				errorRef.current?.classList.add("active");
 			}
 		} catch (error) {
 			console.error("Error fetching data:", error);
@@ -86,7 +89,11 @@ function LoginPage() {
 						Login
 					</button>
 				</form>
-				{errorMessage && <div className="error-other-msg bg-red-500 py-1 px-5 rounded-md text-white font-semibold mb-5">⚠️ {errorMessage}</div>}
+				{errorMessage && (
+					<div ref={errorRef} className="active bg-red-500 py-1 px-5 rounded-md text-white font-semibold mb-5" onAnimationEnd={() => errorRef.current?.classList.remove("active")}>
+						⚠️ {errorMessage}
+					</div>
+				)}
 				<p className="font-bold mb-10">
 					Don't have an account?{" "}
 					<Link to="/signup" className="text-[#e7175a]">
