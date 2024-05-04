@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/cat-sail.jpeg";
+import  "../styles/Navbar.scss";
 
 function Navbar() {
 	return (
 		<nav className="flex justify-between px-10 py-5">
 			<div className="w-[70px] h-[70px] flex items-center justify-center overflow-hidden rounded-full">
 				<Link to="/">
-					<img className="w-[250px] object-cover mt-4" src={logo} alt="site logo" />
+					<img className="logo w-[250px] object-cover mt-4" src={logo} alt="site logo" />
 				</Link>
 			</div>
 

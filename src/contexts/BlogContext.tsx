@@ -16,8 +16,14 @@ export type Blog = {
 	read_time: number;
 	date_posted: string;
 	title: string;
-	texts: string;
-	blog_img: string;
+	content: string;
+	blog_img: {
+		img_file: string;
+		src: {
+			name: string;
+			link: string;
+		};
+	};
 	author: User;
 	comments: string;
 	published: boolean;

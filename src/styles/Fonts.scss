@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Mono:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+.intro-text,
+.content,
+.description {
+	-webkit-font-smoothing: antialiased;
+	font-family: "Roboto Slab", serif;
+	&.content {
+      color: #233742;
+		line-height: 1.625
+	}
+	&.intro-text {
+      color: #233742;
+		line-height: 1.625;
+		font-size: 1.5rem;
+	}
+}
+
+.title {
+	font-family: "Open Sans", sans-serif;
+	font-size: 4.5rem;
+}

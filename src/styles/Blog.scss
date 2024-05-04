@@ -1,0 +1,25 @@
+.content {
+	margin: 90px auto;
+	max-width: 800px;
+	width: 100%;
+	h3 {
+		font-size: 2rem;
+	}
+	p {
+		margin-bottom: 30px;
+	}
+   a{
+      color: #d80a77;
+   }
+	img {
+		max-width: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
+}
+
+.content-info {
+	margin: auto;
+	max-width: 1000px;
+	width: 100%;
+}

@@ -19,15 +19,8 @@ function Footer() {
 						</p>
 					</div>
 					{/* Social Media */}
-					<div className="bg-[#C2C74F] pt-5 pb-8 px-4">
+					<div className="flex items-center bg-[#C2C74F] pt-5 pb-8 px-4">
 						<img className="w-[250px]" src={lighthouse} alt="lighthouse" />
-						{/* <div className="max-w-7xl mx-auto mt-8 flex flex-col items-center text-center">
-							<a href="https://github.com/NovaCat35/shopping-cart" className="w-80 flex items-center justify-center space-x-2 rounded-md bg-gray-200 p-2">
-								<img src={githubSvg} alt="github logo" className="h-8 w-auto transform hover:rotate-[360deg] transition-transform duration-700 ease-in-out" />
-								<p className="text-gray-600">Developed by NovaCat35</p>
-							</a>
-							<div className="mt-4 text-gray-100">&copy; 2024 Wayfarer Frontier. All rights reserved.</div>
-						</div> */}
 					</div>
 				</div>
 				<div className="bottom-container bg-[#2c3e52] pt-4 pb-4 px-2">
