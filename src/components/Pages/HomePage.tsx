@@ -47,7 +47,7 @@ function Home() {
 					<h1 className="text-4xl mb-5">Favorite Blogs</h1>
 					<div className="posts-cards-container">
 						{favoriteBlogs.map((blog, index) => (
-							<div key={blog._id} className={`card  w-full flex flex-col items-center ${index == 2 ? "large" : ""}`}>
+							<Link to={`/blogs/${blog._id}`} key={blog._id} className={`card  w-full flex flex-col items-center ${index == 2 ? "large" : ""}`}>
 								<img className={`${index == 2 ? "large" : ""} w-full object-cover rounded`} src={defaultImg} alt="blog image" />
 
 								<div className={`${index == 2 ? "bg-[#c88761]" : "bg-[#718fba]"} px-4 py-0.5 rounded text-white -mt-3`}>{blog.tags[0]}</div>
@@ -59,7 +59,7 @@ function Home() {
 										<Markdown className="description text-ellipsis line-clamp-3 text-gray-700">{blog.content}</Markdown>
 									</div>
 								</div>
-							</div>
+							</Link>
 						))}
 					</div>
 				</div>
@@ -68,7 +68,7 @@ function Home() {
 					<div className="posts-cards-container flex flex-col items-start">
 						{latestBlogs.map((blog) => (
 							<div className="blog-container flex items-center justify-between w-full border-b border-gray-300 py-4" key={uuidv4()}>
-								<Link to={`/`} className="flex items-center gap-4">
+								<Link to={`/blogs/${blog._id}`} className="flex items-center gap-4">
 									<div className="img-container">
 										<img className="w-[300px] h-[300px] object-cover rounded" src={defaultImg} alt="blog image" />
 									</div>

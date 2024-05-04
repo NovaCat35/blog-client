@@ -26,7 +26,7 @@ function Footer() {
 				<div className="bottom-container bg-[#2c3e52] pt-4 pb-4 px-2">
 					{/* Developer Info */}
 					<div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-						<a href="https://github.com/NovaCat35/shopping-cart" className="w-[16rem] flex items-center justify-center space-x-2 rounded-md bg-gray-200 p-1">
+						<a href="https://github.com/NovaCat35/blog-client" className="w-[16rem] flex items-center justify-center space-x-2 rounded-md bg-gray-200 p-1" target="blank">
 							<img src={githubSvg} alt="github logo" className="h-7 w-auto transform hover:rotate-[360deg] transition-transform duration-700 ease-in-out" />
 							<p className="text-gray-600">Developed by NovaCat35</p>
 						</a>

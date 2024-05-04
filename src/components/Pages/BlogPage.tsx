@@ -49,7 +49,7 @@ function BlogPage() {
 									</li>
 								))}
 							</ul>
-							<div className="max-w-[500px] overflow-hidden mb-3">
+							<div className="max-h-[600px] overflow-hidden mb-3">
 								<img className="w-full h-full object-cover" src={defaultImg} alt="blog image" />
 							</div>
 							<p className="font-bold mb-10 text-gray-700">
