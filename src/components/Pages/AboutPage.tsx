@@ -5,7 +5,7 @@ function AboutPage() {
 		<div>
 			<Navbar />
 			<main className="p-10">
-				<h1 className="text-4xl mb-5">About Us</h1>
+				<h1 className="text-4xl mb-5">About Me</h1>
 				<p>This page is under construction ⚠️</p>
 			</main>
 		</div>

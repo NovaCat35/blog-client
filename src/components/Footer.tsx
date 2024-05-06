@@ -8,7 +8,7 @@ function Footer() {
 			<div className="bg-[#3b6175] text-white">
 				<div className="footer-top flex">
 					{/* Site Info */}
-					<div className="pt-5 pb-8 px-4 w-full">
+					<div className="pt-5 pb-8 px-8 w-full">
 						<h1 className="text-2xl border-b-2 border-[#8cbadb] pb-2 mb-4">Wayfarer's Frontier</h1>
 						<p>
 							Woah, you reach the end of this page! Remember, life is a journey. Unlike this footer we can't always know where it will end so pace yourself and keep improving! Looking forward to seeing how you and I will grow. Ganbatte!

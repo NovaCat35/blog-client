@@ -18,7 +18,7 @@ function BlogPage() {
 		<>
 			<Navbar />
 			<div className="px-20 py-10">
-				<h1 className="text-5xl font-bold mb-6">All Blogs</h1>
+				<h1 className="text-5xl text-[#223742] font-bold mb-6">All Blogs</h1>
 				<main>
 					{/* We go through the array of objects(year: Blogs[]) and separate all blog container into their year posted */}
 					{Array.from(yearsMap).map(([year, yearBlogs]) => (
@@ -32,7 +32,7 @@ function BlogPage() {
 											<img className="w-[18rem] h-[16rem] object-cover rounded" src={defaultImg} alt="" />
 										</div>
 										<div className="texts-container">
-											<h1 className="text-xl font-bold">{blog.title}</h1>
+											<h1 className="text-xl text-[#223742] font-bold">{blog.title}</h1>
 											<p className="text-gray-500">{formatDate(blog.date_posted)}</p>
 											<div className="descriptions text-gray-800 max-w-[75vw] mt-2">
 												<Markdown className="description text-ellipsis line-clamp-3 text-[#233742]">{blog.content}</Markdown>

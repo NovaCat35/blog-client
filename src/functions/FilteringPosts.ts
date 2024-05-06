@@ -13,7 +13,7 @@ export function getFavoriteBlogs(blogs: Blog[]) {
 }
 
 export function getLatestBlogs(blogs: Blog[]) {
-	return blogs.sort((a, b) => new Date(b.date_posted).getTime() - new Date(a.date_posted).getTime()).slice(0, 4);
+	return blogs.sort((a, b) => new Date(b.date_posted).getTime() - new Date(a.date_posted).getTime()).slice(0, 3);
 }
 
 export function sortByLatest(blogs: Blog[]) {

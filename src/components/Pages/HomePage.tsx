@@ -11,6 +11,8 @@ import "../../styles/Home.scss";
 import "../../styles/Fonts.scss";
 import defaultImg from "../../assets/default.jpeg";
 import arrowSvg from "../../assets/right-arrow.svg";
+import starSvg from "../../assets/star.svg";
+import starFallSvg from "../../assets/star-fall.svg";
 
 function Home() {
 	const { blogs } = useContext(BlogContext);
@@ -44,7 +46,10 @@ function Home() {
 					</p>
 				</div>
 				<div className="popular-featured-blogs mt-20">
-					<h1 className="text-4xl mb-5">Favorite Blogs</h1>
+					<div className="header flex gap-3.5 items-center mb-5">
+						<img className="w-[60px] transform -rotate-12" src={starFallSvg} alt="star fall svg" />
+						<h2 className="text-4xl text-[#223742] ">Favorite Blogs</h2>
+					</div>
 					<div className="posts-cards-container">
 						{favoriteBlogs.map((blog, index) => (
 							<Link to={`/blogs/${blog._id}`} key={blog._id} className={`card  w-full flex flex-col items-center ${index == 2 ? "large" : ""}`}>
@@ -53,7 +58,7 @@ function Home() {
 								<div className={`${index == 2 ? "bg-[#c88761]" : "bg-[#718fba]"} px-4 py-0.5 rounded text-white -mt-3`}>{blog.tags[0]}</div>
 
 								<div className="text-container px-2 mt-2 text-center">
-									<h1 className="text-xl font-bold  mt-2">{blog.title}</h1>
+									<h1 className="text-xl font-bold mt-2">{blog.title}</h1>
 									<p className="text-gray-500">{formatDate(blog.date_posted)}</p>
 									<div className="descriptions text-gray-800 max-w-[75vw]">
 										<Markdown className="description text-ellipsis line-clamp-3 text-gray-700">{blog.content}</Markdown>
@@ -64,7 +69,10 @@ function Home() {
 					</div>
 				</div>
 				<div className="latest-posts-showcase mt-20">
-					<h1 className="text-4xl mb-5">Latest Blog Posts</h1>
+					<div className="header flex gap-3.5 items-center mb-5">
+						<img className="w-[40px] transform -rotate-12" src={starSvg} alt="star svg" />
+						<h2 className="text-4xl text-[#223742] ">Latest Blog Posts</h2>
+					</div>
 					<div className="posts-cards-container flex flex-col items-start">
 						{latestBlogs.map((blog) => (
 							<div className="blog-container flex items-center justify-between w-full border-b border-gray-300 py-4" key={uuidv4()}>
@@ -91,8 +99,8 @@ function Home() {
 						))}
 					</div>
 					<Link className="flex text-center justify-end gap-3 mt-10 mb-5" to="/blogs">
-						<p className="text-2xl text-[#d80a77] font-bold">More Posts</p>
-						<img className="w-7" src={arrowSvg} alt="right arrow" />
+						<p className="text-2xl text-[#1ca1ba] font-bold">More Posts</p>
+						<img className="arrow-svg w-7" src={arrowSvg} alt="right arrow" />
 					</Link>
 				</div>
 			</main>

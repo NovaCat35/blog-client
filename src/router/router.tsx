@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, ScrollRestoration } from "react-router-dom";
 import Home from "../components/Pages/HomePage";
 import AllBlogPage from "../components/Pages/AllBlogPage";
 import BlogPage from "../components/Pages/BlogPage";
@@ -12,32 +12,67 @@ const Router = () => {
 	const router = createBrowserRouter([
 		{
 			path: "/",
-			element: <Home />,
+			element: (
+				<>
+					<ScrollRestoration />
+					<Home />
+				</>
+			),
 			errorElement: <ErrorPage />,
 		},
 		{
 			path: "/blogs",
-			element: <AllBlogPage />,
+			element: (
+				<>
+					<ScrollRestoration />
+					<AllBlogPage />
+				</>
+			),
 		},
 		{
 			path: "/blogs/:id",
-			element: <BlogPage />,
+			element: (
+				<>
+					<ScrollRestoration />
+					<BlogPage />
+				</>
+			),
 		},
 		{
 			path: "/projects",
-			element: <ProjectPage />,
+			element: (
+				<>
+					<ScrollRestoration />
+					<ProjectPage />
+				</>
+			),
 		},
 		{
 			path: "/about",
-			element: <AboutPage />,
+			element: (
+				<>
+					<ScrollRestoration />
+					<AboutPage />
+				</>
+			),
 		},
-      {
+		{
 			path: "/login",
-			element: <LoginPage />,
+			element: (
+				<>
+					<ScrollRestoration />
+					<LoginPage />
+				</>
+			),
 		},
 		{
 			path: "/signup",
-			element: <SignupPage />,
+			element: (
+				<>
+					<ScrollRestoration />
+					<SignupPage />
+				</>
+			),
 		},
 	]);
 

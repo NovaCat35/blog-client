@@ -66,4 +66,7 @@ A important blocking point was trying to figure out how to authenticate user wit
 ## Image Sources 🌅
 
 lighthouse svg: https://www.remove.bg/upload
+
 Cat images: https://danbooru.donmai.us/posts/4212089
+
+SVGs: https://www.svgrepo.com/vectors
