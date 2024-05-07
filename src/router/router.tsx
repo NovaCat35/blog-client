@@ -6,6 +6,7 @@ import ProjectPage from "../components/Pages/ProjectPage";
 import AboutPage from "../components/Pages/AboutPage";
 import LoginPage from "../components/Pages/LoginPage";
 import SignupPage from "../components/Pages/SignupPage";
+import ProfilePage from "../components/Pages/ProfilePage";
 import ErrorPage from "../components/Pages/ErrorPage";
 
 const Router = () => {
@@ -71,6 +72,15 @@ const Router = () => {
 				<>
 					<ScrollRestoration />
 					<SignupPage />
+				</>
+			),
+		},
+		{
+			path: "/profile",
+			element: (
+				<>
+					<ScrollRestoration />
+					<ProfilePage />
 				</>
 			),
 		},

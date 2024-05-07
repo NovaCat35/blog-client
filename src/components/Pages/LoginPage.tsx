@@ -1,5 +1,5 @@
 import { useState, useContext, useRef } from "react";
-import { userContext } from "../../contexts/AuthContext";
+import { AuthContext } from "../../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
@@ -11,7 +11,7 @@ function LoginPage() {
 	const [password, setPassword] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
-	const { setUser } = useContext(userContext);
+	const { setUser, setTokenActive } = useContext(AuthContext);
 	const errorRef = useRef<HTMLDivElement>(null); // Ref here used to manipulate the shake animation for error messages
 	const navigate = useNavigate();
 
@@ -46,10 +46,14 @@ function LoginPage() {
 			});
 			// Response good, save return info of user and token within context and local storage, respectively
 			if (response.ok) {
-				const { token, user } = await response.json();
+				const { token, user, expiresAt } = await response.json();
 				localStorage.setItem("jwt_token", token);
+				localStorage.setItem("jwt_expiration", expiresAt);
+
 				setUser(user);
-				navigate("/");
+				setTokenActive(true);
+				
+				navigate("/"); // return back to homepage
 			} else {
 				const errorData = await response.json();
 				setErrorMessage(errorData.error || "Login failed.");

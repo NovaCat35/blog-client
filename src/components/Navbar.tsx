@@ -1,12 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import logo from "../assets/cat-sail.jpeg";
 import "../styles/Navbar.scss";
-// https://www.linkedin.com/pulse/best-place-your-jwts-comparing-local-storage-cookies-atkinson-lerue
+import pfp from "../assets/cat-bag.jpg";
 
 function Navbar() {
 	const [show, setShow] = useState(true);
+	const [profileActive, setProfileActive] = useState(false);
 	const [lastScrollY, setLastScrollY] = useState(0);
+	const { tokenActive } = useContext(AuthContext);
+
+	useEffect(() => {
+		// we have a verified user, set a route to profile link instead of standard login/signup btn
+		if (tokenActive) {
+			setProfileActive(true);
+		}
+	}, [tokenActive]);
 
 	useEffect(() => {
 		const controlNavbar = () => {
@@ -49,9 +59,15 @@ function Navbar() {
 				<Link to="/blogs">Blogs</Link>
 				{/* <Link to="/projects">Projects</Link> */}
 				<Link to="/about">About</Link>
-				<Link to="/login" className="border border-white px-5 py-1.5 rounded-md bg-[#1ca1ba] text-white hover:bg-[#718fba]">
-					Login
-				</Link>
+				{profileActive ? (
+					<Link to="/profile" className="Profile w-[60px] h-[60px] overflow-hidden rounded-full border-4 border-[#1ca1ba]">
+						<img className="w-full h-full object-cover " src={pfp} alt="pfp" />
+					</Link>
+				) : (
+					<Link to="/login" className="border border-white px-5 py-1.5 rounded-md bg-[#1ca1ba] text-white hover:bg-[#718fba]">
+						Login
+					</Link>
+				)}
 			</div>
 		</nav>
 	);
