@@ -35,7 +35,9 @@ function BlogPage() {
 											<h1 className="text-xl text-[#223742] font-bold">{blog.title}</h1>
 											<p className="text-gray-500">{formatDate(blog.date_posted)}</p>
 											<div className="descriptions text-gray-800 max-w-[75vw] mt-2">
-												<Markdown className="description text-ellipsis line-clamp-3 text-[#233742]">{blog.content}</Markdown>
+												<Markdown disallowedElements={["a", "h3"]} className="description text-ellipsis line-clamp-3 text-[#233742]">
+													{blog.content}
+												</Markdown>
 											</div>{" "}
 											<ul className="tags-container flex flex-wrap gap-x-5 gap-y-4 mt-4">
 												{blog.tags.map((tag) => (

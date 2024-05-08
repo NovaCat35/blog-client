@@ -1,5 +1,4 @@
-import { useState, useContext, useRef } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
+import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
@@ -21,7 +20,6 @@ function SignupPage() {
 	const [showPassword, setShowPassword] = useState(false);
 	const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
 	const [errorMessages, setErrorMessages] = useState<errorObj[]>([]);
-	const { setUser, setTokenActive } = useContext(AuthContext);
 	const navigate = useNavigate();
 
    // Ref here used to manipulate the shake animation for error messages
@@ -76,10 +74,8 @@ function SignupPage() {
 				const { token, user, expiresAt } = await response.json();
 				localStorage.setItem("jwt_token", token);
 				localStorage.setItem("jwt_expiration", expiresAt);
+				localStorage.setItem("user", user);
 
-				setUser(user);
-				setTokenActive(true);
-				
 				navigate("/");
 			} else {
 				const errorData = await response.json();

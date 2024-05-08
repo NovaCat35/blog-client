@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Router from "./router/router";
+import Routes from "./router/router";
 import BlogProvider from "./contexts/BlogContext";
 import AuthProvider from "./contexts/AuthContext";
 import "./styles/tailwind.css";
@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
 		<BlogProvider>
 			<AuthProvider>
-				<Router />
+				<Routes />
 			</AuthProvider>
 		</BlogProvider>
 	</React.StrictMode>

@@ -18,7 +18,6 @@ function BlogPage() {
 
 	useEffect(() => {
 		setBlog(blogs.find((blog) => blog._id == id));
-		console.log("blog", blog);
 	}, [blog, blogs, id]);
 
 	return (

@@ -8,80 +8,97 @@ import LoginPage from "../components/Pages/LoginPage";
 import SignupPage from "../components/Pages/SignupPage";
 import ProfilePage from "../components/Pages/ProfilePage";
 import ErrorPage from "../components/Pages/ErrorPage";
+import RouteWrapper from "./RouterWrapper"; 
 
 const Router = () => {
 	const router = createBrowserRouter([
 		{
 			path: "/",
 			element: (
-				<>
-					<ScrollRestoration />
-					<Home />
-				</>
+				<RouteWrapper>
+					<>
+						<ScrollRestoration />
+						<Home />
+					</>
+				</RouteWrapper>
 			),
 			errorElement: <ErrorPage />,
 		},
 		{
 			path: "/blogs",
 			element: (
-				<>
-					<ScrollRestoration />
-					<AllBlogPage />
-				</>
+				<RouteWrapper>
+					<>
+						<ScrollRestoration />
+						<AllBlogPage />
+					</>
+				</RouteWrapper>
 			),
 		},
 		{
 			path: "/blogs/:id",
 			element: (
-				<>
-					<ScrollRestoration />
-					<BlogPage />
-				</>
+				<RouteWrapper>
+					<>
+						<ScrollRestoration />
+						<BlogPage />
+					</>
+				</RouteWrapper>
 			),
 		},
 		{
 			path: "/projects",
 			element: (
-				<>
-					<ScrollRestoration />
-					<ProjectPage />
-				</>
+				<RouteWrapper>
+					<>
+						<ScrollRestoration />
+						<ProjectPage />
+					</>
+				</RouteWrapper>
 			),
 		},
 		{
 			path: "/about",
 			element: (
-				<>
-					<ScrollRestoration />
-					<AboutPage />
-				</>
+				<RouteWrapper>
+					<>
+						<ScrollRestoration />
+						<AboutPage />
+					</>
+				</RouteWrapper>
 			),
 		},
 		{
 			path: "/login",
 			element: (
-				<>
-					<ScrollRestoration />
-					<LoginPage />
-				</>
+				<RouteWrapper>
+					<>
+						<ScrollRestoration />
+						<LoginPage />
+					</>
+				</RouteWrapper>
 			),
 		},
 		{
 			path: "/signup",
 			element: (
-				<>
-					<ScrollRestoration />
-					<SignupPage />
-				</>
+				<RouteWrapper>
+					<>
+						<ScrollRestoration />
+						<SignupPage />
+					</>
+				</RouteWrapper>
 			),
 		},
 		{
 			path: "/profile",
 			element: (
-				<>
-					<ScrollRestoration />
-					<ProfilePage />
-				</>
+				<RouteWrapper>
+					<>
+						<ScrollRestoration />
+						<ProfilePage />
+					</>
+				</RouteWrapper>
 			),
 		},
 	]);

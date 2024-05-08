@@ -54,20 +54,22 @@ function Home() {
 						{favoriteBlogs.map((blog, index) => (
 							<Link to={`/blogs/${blog._id}`} key={blog._id} className={`card  w-full flex flex-col items-center ${index == 2 ? "large" : ""}`}>
 								<img className={`${index == 2 ? "large" : ""} w-full object-cover rounded`} src={defaultImg} alt="blog image" />
-
 								<div className={`${index == 2 ? "bg-[#c88761]" : "bg-[#718fba]"} px-4 py-0.5 rounded text-white -mt-3`}>{blog.tags[0]}</div>
-
 								<div className="text-container px-2 mt-2 text-center">
 									<h1 className="text-xl font-bold mt-2">{blog.title}</h1>
 									<p className="text-gray-500">{formatDate(blog.date_posted)}</p>
 									<div className="descriptions text-gray-800 max-w-[75vw]">
-										<Markdown className="description text-ellipsis line-clamp-3 text-gray-700">{blog.content}</Markdown>
+										{/* In the description, we should disable all headers & any link (since we cant nest ahref) */}
+										<Markdown disallowedElements={["a", "h3"]} className="description text-ellipsis line-clamp-3 text-gray-700">
+											{blog.content}
+										</Markdown>
 									</div>
 								</div>
 							</Link>
 						))}
 					</div>
 				</div>
+
 				<div className="latest-posts-showcase mt-20">
 					<div className="header flex gap-3.5 items-center mb-5">
 						<img className="w-[40px] transform -rotate-12" src={starSvg} alt="star svg" />
@@ -84,7 +86,7 @@ function Home() {
 										<h1 className="text-xl font-bold">{blog.title}</h1>
 										<p className="date-posted text-gray-500">{formatDate(blog.date_posted)}</p>
 										<div className="descriptions text-gray-800 max-w-[75vw] mt-2">
-											<Markdown className="description text-ellipsis line-clamp-3 text-gray-700">{blog.content}</Markdown>
+											<Markdown disallowedElements={["a", "h3"]} className="description text-ellipsis line-clamp-3 text-gray-700">{blog.content}</Markdown>
 										</div>
 										<ul className="tags-container flex flex-wrap gap-x-5 gap-y-4 mt-4">
 											{blog.tags.map((tag) => (
