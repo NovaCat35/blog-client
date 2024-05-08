@@ -74,7 +74,7 @@ function SignupPage() {
 				const { token, user, expiresAt } = await response.json();
 				localStorage.setItem("jwt_token", token);
 				localStorage.setItem("jwt_expiration", expiresAt);
-				localStorage.setItem("user", user);
+				localStorage.setItem("user", JSON.stringify(user));
 
 				navigate("/");
 			} else {

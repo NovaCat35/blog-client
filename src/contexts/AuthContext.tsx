@@ -50,14 +50,13 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
 
 	// this function is called every time we navigate to a protected page or component that relies on the tokenActive state
 	const checkTokenActive = () => {
-		const userInfo = JSON.parse(localStorage.getItem("user") || JSON.stringify(initialUser));
+		const userInfo = JSON.parse(localStorage.getItem("user") || "{}");
 		const jwtExpirationString = localStorage.getItem("jwt_expiration");
 		const tokenExpiration = jwtExpirationString ? new Date(jwtExpirationString).getTime() : null;
 		const today = new Date().getTime();
 
-		// Does token exist?
+		// Does token expiration exist (aka jwt exist already)?
 		if (tokenExpiration) {
-			// Expiration check
 			if (today >= tokenExpiration) {
 				// Token has expired, perform cleanup and logout actions
 				localStorage.clear();
@@ -65,8 +64,11 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
 					setTokenActive(false); // Update state only if it's currently active
 					setUser(initialUser);
 				}
-			} else if (!tokenActive) {
-				setTokenActive(true); // Update state only if it's not already active
+			}
+			// Update state only if it's not already active. We do this b/c some pages rely on checking tokenActive
+			else if (!tokenActive) {
+				setTokenActive(true);
+				console.log(userInfo);
 				setUser(userInfo);
 			}
 		}

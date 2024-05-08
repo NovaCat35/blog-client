@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
@@ -6,11 +6,7 @@ import formatDate from "../../functions/DateFormatter";
 import catBagImg from "../../assets/cat-bag.jpg";
 
 function ProfilePage() {
-	const { user, checkTokenActive, tokenActive } = useContext(AuthContext);
-
-	useEffect(() => {
-		checkTokenActive();
-	}, [checkTokenActive]);
+	const { user, tokenActive } = useContext(AuthContext);
 
 	return (
 		<div className="flex flex-col min-h-screen">
@@ -18,7 +14,7 @@ function ProfilePage() {
 			<main className="px-10 py-5 flex-grow">
 				{tokenActive ? (
 					<div className="greeting-container flex flex-col justify-center items-center">
-						<h1 className="text-4xl">Welcome {user.username}</h1>
+						<h1 className="text-4xl">Welcome, {user.username}!</h1>
 						<img src={catBagImg} alt="cat laying down" className="max-w-xs mt-4 object-cover rounded-full" />
 						<div className="info mt-4">
 							<p className="mb-2">
