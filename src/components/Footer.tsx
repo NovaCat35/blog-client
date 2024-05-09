@@ -27,7 +27,7 @@ function Footer() {
 					{/* Developer Info */}
 					<div className="max-w-7xl mx-auto flex flex-col items-center text-center">
 						<a href="https://github.com/NovaCat35/blog-client" className="w-[16rem] flex items-center justify-center space-x-2 rounded-md bg-gray-200 p-1" target="blank">
-							<img src={githubSvg} alt="github logo" className="h-7 w-auto transform hover:rotate-[360deg] transition-transform duration-700 ease-in-out" />
+							<img src={githubSvg} alt="github logo" className="h-7 w-auto transform transition-transform duration-700 ease-in-out hover:rotate-[360deg]" />
 							<p className="text-gray-600">Developed by NovaCat35</p>
 						</a>
 						<div className="mt-3 text-gray-100">&copy; 2024 Wayfarer Frontier. All rights reserved.</div>

@@ -86,7 +86,9 @@ function Home() {
 										<h1 className="text-xl font-bold">{blog.title}</h1>
 										<p className="date-posted text-gray-500">{formatDate(blog.date_posted)}</p>
 										<div className="descriptions text-gray-800 max-w-[75vw] mt-2">
-											<Markdown disallowedElements={["a", "h3"]} className="description text-ellipsis line-clamp-3 text-gray-700">{blog.content}</Markdown>
+											<Markdown disallowedElements={["a", "h3"]} className="description text-ellipsis line-clamp-3 text-gray-700">
+												{blog.content}
+											</Markdown>
 										</div>
 										<ul className="tags-container flex flex-wrap gap-x-5 gap-y-4 mt-4">
 											{blog.tags.map((tag) => (

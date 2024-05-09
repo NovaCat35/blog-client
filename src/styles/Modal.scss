@@ -1,0 +1,22 @@
+.modal-tab {
+	.icon {
+		filter: invert(32%) sepia(27%) saturate(331%) hue-rotate(183deg) brightness(94%) contrast(98%);
+	}
+
+	&:hover {
+		.icon {
+			filter: invert(61%) sepia(88%) saturate(4497%) hue-rotate(157deg) brightness(98%) contrast(78%);
+		}
+	}
+}
+
+.message-arrow {
+	position: absolute;
+	// top: 0;
+	// right: 10px;
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 13px solid #1ea0ba; /* Same background color as your modal */
+}

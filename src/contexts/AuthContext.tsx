@@ -68,8 +68,12 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
 			// Update state only if it's not already active. We do this b/c some pages rely on checking tokenActive
 			else if (!tokenActive) {
 				setTokenActive(true);
-				console.log(userInfo);
 				setUser(userInfo);
+			}
+		} else {
+			if (tokenActive) {
+				setTokenActive(false);
+				setUser(initialUser);
 			}
 		}
 	};
