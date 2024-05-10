@@ -17,7 +17,7 @@ function BlogPage() {
 	return (
 		<>
 			<Navbar />
-			<div className="px-20 py-10">
+			<div className="px-[7rem] py-10">
 				<h1 className="text-5xl text-[#223742] font-bold mb-6">All Blogs</h1>
 				<main>
 					{/* We go through the array of objects(year: Blogs[]) and separate all blog container into their year posted */}
@@ -29,13 +29,13 @@ function BlogPage() {
 								<div className="blog-container flex items-center justify-between border-b border-gray-300 py-4" key={uuidv4()}>
 									<Link to={`/blogs/${blog._id}`} className="flex items-center gap-10">
 										<div className="img-container">
-											<img className="w-[18rem] h-[16rem] object-cover rounded" src={blog.blog_img.img_url == 'default' ? defaultImg : blog.blog_img.img_url} alt="" />
+											<img className="max-h-[600px] max-w-[350px] object-cover rounded" src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} alt="" />
 										</div>
 										<div className="texts-container">
 											<h1 className="text-xl text-[#223742] font-bold">{blog.title}</h1>
 											<p className="text-gray-500">{formatDate(blog.date_posted)}</p>
 											<div className="descriptions text-gray-800 max-w-[75vw] mt-2">
-												<Markdown disallowedElements={["a", "h3"]} className="description text-ellipsis line-clamp-3 text-[#233742]">
+												<Markdown disallowedElements={["a", "h3", "img"]} className="description text-ellipsis line-clamp-3 text-[#233742]">
 													{blog.content}
 												</Markdown>
 											</div>{" "}

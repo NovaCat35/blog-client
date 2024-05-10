@@ -38,9 +38,9 @@ function Home() {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<Navbar />
-			<main className="flex-grow px-20 mt-10">
+			<main className="flex-grow px-[7rem] mt-10">
 				<div className="title-card-container">
-					<h1 className="title font-bold">Tales from a wayfarer.</h1>
+					<h1 className="title leading-snug  font-bold">Tales from a wayfarer.</h1>
 					<p className="intro-text mt-2">
 						Hey, I'm Robert and welcome to my platform, <b>Wayfarer's Frontier</b>! I'll be blogging about anything interesting and showcasing some side projects I've been working on. Hopefully I can make you think a little deeper and brighten your day.
 					</p>
@@ -60,7 +60,7 @@ function Home() {
 									<p className="text-gray-500">{formatDate(blog.date_posted)}</p>
 									<div className="descriptions text-gray-800 max-w-[75vw]">
 										{/* In the description, we should disable all headers & any link (since we cant nest ahref) */}
-										<Markdown disallowedElements={["a", "h3"]} className="description text-ellipsis line-clamp-3 text-gray-700">
+										<Markdown disallowedElements={["a", "h3", "img"]} className="description text-ellipsis line-clamp-3 text-gray-700">
 											{blog.content}
 										</Markdown>
 									</div>
@@ -80,13 +80,13 @@ function Home() {
 							<div className="blog-container flex items-center justify-between w-full border-b border-gray-300 py-4" key={uuidv4()}>
 								<Link to={`/blogs/${blog._id}`} className="flex items-center gap-4">
 									<div className="img-container">
-										<img className="w-[300px] h-[300px] object-cover rounded" src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} alt="blog image" />
+										<img className="max-h-[300px] object-cover rounded" src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} alt="blog image" />
 									</div>
 									<div className="texts-container ml-4">
 										<h1 className="text-xl font-bold">{blog.title}</h1>
 										<p className="date-posted text-gray-500">{formatDate(blog.date_posted)}</p>
 										<div className="descriptions text-gray-800 max-w-[75vw] mt-2">
-											<Markdown disallowedElements={["a", "h3"]} className="description text-ellipsis line-clamp-3 text-gray-700">
+											<Markdown disallowedElements={["a", "h3", "img"]} className="description text-ellipsis line-clamp-3 text-gray-700">
 												{blog.content}
 											</Markdown>
 										</div>

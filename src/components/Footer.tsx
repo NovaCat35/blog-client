@@ -1,5 +1,6 @@
 import githubSvg from "../assets/github.svg";
 import lighthouse from "../assets/lighthouse.png";
+import "../styles/Footer.scss";
 
 function Footer() {
 	return (
@@ -19,8 +20,8 @@ function Footer() {
 						</p>
 					</div>
 					{/* Social Media */}
-					<div className="flex items-center bg-[#b1b63a] pt-5 pb-8 px-4">
-						<img className="w-[250px]" src={lighthouse} alt="lighthouse" />
+					<div className="img-container flex items-center pt-5 pb-8 px-4">
+						<img className="max-h-[250px]" src={lighthouse} alt="lighthouse" />
 					</div>
 				</div>
 				<div className="bottom-container bg-[#2c3e52] pt-4 pb-4 px-2">

@@ -27,7 +27,7 @@ function BlogPage() {
 				{blog ? (
 					<>
 						<div className="content-info">
-							<h1 className="text-7xl mb-5 font-bold">{blog.title}</h1>
+							<h1 className="title leading-tight text-7xl mb-5 font-bold">{blog.title}</h1>
 							<div className="info-container flex gap-5">
 								<div className="left-container w-[70px] h-[70px] rounded-full overflow-hidden">
 									<img className="w-full h-full object-cover" src={defaultImg} alt="pfp" />
@@ -49,9 +49,9 @@ function BlogPage() {
 								))}
 							</ul>
 							<div className="max-h-[600px] overflow-hidden mb-3">
-								<img className="w-full h-full object-cover" src={blog.blog_img.img_url == 'default' ? defaultImg : blog.blog_img.img_url} alt="blog image" />
+								<img className="w-full h-full object-cover" src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} alt="blog image" />
 							</div>
-							<p className="font-bold mb-10 text-gray-700">
+							<p className="text-xl font-bold mb-10 text-gray-700">
 								Image from{" "}
 								<a className="text-[#d80a77]" href={blog.blog_img.src.link} target="_blank">
 									{blog.blog_img.src.name}
