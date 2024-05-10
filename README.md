@@ -70,3 +70,12 @@ lighthouse svg: https://www.remove.bg/upload
 Cat images: https://danbooru.donmai.us/posts/4212089
 
 SVGs: https://www.svgrepo.com/vectors
+
+Sabbatical: https://unsplash.com/photos/silhouette-of-person-using-boat-Bt_J-VvC9-A
+
+Rubber Duck: https://unsplash.com/photos/yellow-and-red-plastic-toy-VTvnoNBowZs
+
+Navigation: https://unsplash.com/photos/person-holding-compass-facing-towards-green-pine-trees-_94HLr_QXo8
+
+sabbatical:
+https://unsplash.com/photos/person-walking-on-wooden-pathway-near-mountain-UPapS5-R_rk

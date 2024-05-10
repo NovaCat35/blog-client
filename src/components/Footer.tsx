@@ -19,7 +19,7 @@ function Footer() {
 						</p>
 					</div>
 					{/* Social Media */}
-					<div className="flex items-center bg-[#C2C74F] pt-5 pb-8 px-4">
+					<div className="flex items-center bg-[#b1b63a] pt-5 pb-8 px-4">
 						<img className="w-[250px]" src={lighthouse} alt="lighthouse" />
 					</div>
 				</div>

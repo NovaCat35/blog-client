@@ -49,7 +49,7 @@ function BlogPage() {
 								))}
 							</ul>
 							<div className="max-h-[600px] overflow-hidden mb-3">
-								<img className="w-full h-full object-cover" src={defaultImg} alt="blog image" />
+								<img className="w-full h-full object-cover" src={blog.blog_img.img_url == 'default' ? defaultImg : blog.blog_img.img_url} alt="blog image" />
 							</div>
 							<p className="font-bold mb-10 text-gray-700">
 								Image from{" "}

@@ -29,7 +29,7 @@ function BlogPage() {
 								<div className="blog-container flex items-center justify-between border-b border-gray-300 py-4" key={uuidv4()}>
 									<Link to={`/blogs/${blog._id}`} className="flex items-center gap-10">
 										<div className="img-container">
-											<img className="w-[18rem] h-[16rem] object-cover rounded" src={defaultImg} alt="" />
+											<img className="w-[18rem] h-[16rem] object-cover rounded" src={blog.blog_img.img_url == 'default' ? defaultImg : blog.blog_img.img_url} alt="" />
 										</div>
 										<div className="texts-container">
 											<h1 className="text-xl text-[#223742] font-bold">{blog.title}</h1>

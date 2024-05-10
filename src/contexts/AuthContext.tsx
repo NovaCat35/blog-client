@@ -71,6 +71,7 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
 				setUser(userInfo);
 			}
 		} else {
+			// No token found...
 			if (tokenActive) {
 				setTokenActive(false);
 				setUser(initialUser);

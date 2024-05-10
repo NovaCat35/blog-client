@@ -53,8 +53,8 @@ function Home() {
 					<div className="posts-cards-container">
 						{favoriteBlogs.map((blog, index) => (
 							<Link to={`/blogs/${blog._id}`} key={blog._id} className={`card  w-full flex flex-col items-center ${index == 2 ? "large" : ""}`}>
-								<img className={`${index == 2 ? "large" : ""} w-full object-cover rounded`} src={defaultImg} alt="blog image" />
-								<div className={`${index == 2 ? "bg-[#c88761]" : "bg-[#718fba]"} px-4 py-0.5 rounded text-white -mt-3`}>{blog.tags[0]}</div>
+								<img className={`${index == 2 ? "large" : ""} w-full object-cover rounded`} src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} alt="blog image" />
+								<div className={`${index == 2 ? "bg-[#c88761]" : "bg-[#718fba]"} px-4 py-0.5 rounded border-4 border-white text-white -mt-3`}>{blog.tags[0]}</div>
 								<div className="text-container px-2 mt-2 text-center">
 									<h1 className="text-xl font-bold mt-2">{blog.title}</h1>
 									<p className="text-gray-500">{formatDate(blog.date_posted)}</p>
@@ -80,7 +80,7 @@ function Home() {
 							<div className="blog-container flex items-center justify-between w-full border-b border-gray-300 py-4" key={uuidv4()}>
 								<Link to={`/blogs/${blog._id}`} className="flex items-center gap-4">
 									<div className="img-container">
-										<img className="w-[300px] h-[300px] object-cover rounded" src={defaultImg} alt="blog image" />
+										<img className="w-[300px] h-[300px] object-cover rounded" src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} alt="blog image" />
 									</div>
 									<div className="texts-container ml-4">
 										<h1 className="text-xl font-bold">{blog.title}</h1>

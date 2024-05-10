@@ -14,18 +14,18 @@ function ProfilePage() {
 			<main className="px-10 py-5 flex-grow">
 				{tokenActive ? (
 					<div className="greeting-container flex flex-col justify-center items-center">
-						<h1 className="text-4xl">Welcome, {user.username}!</h1>
-						<img src={catBagImg} alt="cat laying down" className="max-w-xs mt-4 object-cover rounded-full" />
-						<div className="info mt-4">
-							<p className="mb-2">
+						<h1 className="text-5xl text-center">Welcome, {user.username}!</h1>
+						<img className="max-w-xs mt-8 object-cover rounded-lg" src={catBagImg} alt="cat laying down" />
+						<div className="info mt-6">
+							<div className="mb-2">
 								<span className="font-semibold">Email:</span> {user.email}
-							</p>
-							<p className="mb-2">
+							</div>
+							<div className="mb-2">
 								<span className="font-semibold">Date Joined:</span> {formatDate(user.date_joined)}
-							</p>
-							<p className="mb-2">
-								<span className="font-semibold">Role:</span> {user.admin_access ? "Member" : "Admin"}
-							</p>
+							</div>
+							<div className="mb-2 flex gap-2 font-semibold">
+								<span>Role:</span> <p className="text-[#d80a77]">{user.admin_access ? "Member" : "Admin"}</p>
+							</div>
 						</div>
 					</div>
 				) : (

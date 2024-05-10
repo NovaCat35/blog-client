@@ -18,7 +18,7 @@ export type Blog = {
 	title: string;
 	content: string;
 	blog_img: {
-		img_file: string;
+		img_url: string;
 		src: {
 			name: string;
 			link: string;
