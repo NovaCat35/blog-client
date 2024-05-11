@@ -15,7 +15,7 @@ function Modal() {
 	};
 
 	return (
-		<div className="modal-container absolute w-[200px] top-[100px] right-[30px]">
+		<div className="modal-container absolute w-[200px] top-[110px] right-[30px]">
 			<div className="message-arrow top-[-12px] right-[30px]"></div>
 			<div className="modal font-normal bg-[#ffffff]">
 				<div className="username-container flex flex-col items-center bg-[#1ea0ba] w-full text-white py-2">

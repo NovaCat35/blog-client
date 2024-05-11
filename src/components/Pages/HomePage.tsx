@@ -40,7 +40,7 @@ function Home() {
 			<Navbar />
 			<main className="flex-grow px-[7rem] mt-10">
 				<div className="title-card-container">
-					<h1 className="title leading-snug  font-bold">Tales from a wayfarer.</h1>
+					<h1 className="title leading-snug font-bold">Tales from a wayfarer.</h1>
 					<p className="intro-text mt-2">
 						Hey, I'm Robert and welcome to my platform, <b>Wayfarer's Frontier</b>! I'll be blogging about anything interesting and showcasing some side projects I've been working on. Hopefully I can make you think a little deeper and brighten your day.
 					</p>

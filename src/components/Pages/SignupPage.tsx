@@ -4,7 +4,7 @@ import Navbar from "../Navbar";
 import Footer from "../Footer";
 import eyeIconImg from "../../assets/eye.svg";
 import eyeOffIconImg from "../../assets/eye-off.svg";
-import "../../styles/Signup.scss";
+import "../../styles/Auth.scss";
 import { v4 as uuidv4 } from "uuid";
 
 interface errorObj {
@@ -22,7 +22,7 @@ function SignupPage() {
 	const [errorMessages, setErrorMessages] = useState<errorObj[]>([]);
 	const navigate = useNavigate();
 
-   // Ref here used to manipulate the shake animation for error messages
+	// Ref here used to manipulate the shake animation for error messages
 	const usernameRef = useRef<HTMLDivElement>(null);
 	const emailRef = useRef<HTMLDivElement>(null);
 	const passwordRef = useRef<HTMLDivElement>(null);

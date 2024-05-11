@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/cat-sail.jpeg";
 import "../styles/Navbar.scss";
 import pfp from "../assets/cat-bag.jpg";
@@ -11,6 +11,10 @@ function Navbar() {
 	const [showModal, setShowModal] = useState(false);
 	const [lastScrollY, setLastScrollY] = useState(0);
 	const { tokenActive } = useContext(AuthContext); // we have a verified user (e.g. token is active), set a route to profile link instead of standard login/signup btn
+	const location = useLocation(); // gets current location
+
+	// State to track the active link
+	const [activeLink, setActiveLink] = useState("");
 
 	useEffect(() => {
 		const controlNavbar = () => {
@@ -40,6 +44,11 @@ function Navbar() {
 		}
 	}, [lastScrollY]);
 
+	useEffect(() => {
+		// Set the active link based on the current pathname
+		setActiveLink(location.pathname);
+	}, [location.pathname]);
+
 	const toggleModal = () => {
 		if (showModal) {
 			setShowModal(false);
@@ -49,7 +58,7 @@ function Navbar() {
 	};
 
 	return (
-		<nav className={`flex justify-between px-10 py-5 bg-white bg-opacity-80 sticky top-0 z-10 transition-transform duration-300 transform ${showNav ? "translate-y-0" : "-translate-y-full"}`}>
+		<nav className={`flex justify-between px-10 py-7 bg-white bg-opacity-90 sticky top-0 z-10 transition-transform duration-300 transform ${showNav ? "translate-y-0" : "-translate-y-full"}`}>
 			<div className="w-[70px] h-[70px] flex items-center justify-center overflow-hidden rounded-full">
 				<Link to="/">
 					<img className="logo w-[250px] object-cover mt-4" src={logo} alt="site logo" />
@@ -57,12 +66,18 @@ function Navbar() {
 			</div>
 
 			<div className="right-side flex gap-8 items-center text-[#223742] text-lg font-bold">
-				<Link to="/">Home</Link>
-				<Link to="/blogs">Blogs</Link>
+				<Link to="/" className={`${activeLink == "/" ? "activeLink" : ""} underline-offset-4 hover:underline`}>
+					Home
+				</Link>
+				<Link to="/blogs" className={`${activeLink == "/blogs" ? "activeLink" : ""} underline-offset-4 hover:underline`}>
+					Blogs
+				</Link>
 				{/* <Link to="/projects">Projects</Link> */}
-				<Link to="/about">About</Link>
+				<Link to="/about" className={`${activeLink == "/about" ? "activeLink" : ""} underline-offset-4 hover:underline`}>
+					About
+				</Link>
 				{tokenActive ? (
-					<div onClick={toggleModal} className="Profile w-[60px] h-[60px] overflow-hidden rounded-full border-4 border-[#1ca1ba]">
+					<div onClick={toggleModal} className="Profile cursor-pointer w-[60px] h-[60px] overflow-hidden rounded-full border-4 border-[#1ca1ba]">
 						<img className="w-full h-full object-cover " src={pfp} alt="pfp" />
 						{showModal && <Modal />}
 					</div>

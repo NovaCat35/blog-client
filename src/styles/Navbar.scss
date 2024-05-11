@@ -1,3 +1,33 @@
 .logo {
-   max-width: none;
+	max-width: none;
+}
+
+.activeLink {
+	font-family: "Wave", "Roboto Slab", monospace;
+	text-align: center;
+	color: #1d8dcf;
+	position: relative;
+
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+	}
+
+	&::before {
+		background-color: rgb(39, 123, 197);
+		border-radius: 0 0px 150px 150px;
+		width: 30px;
+		height: 10px;
+		top: -10px;
+		left: 50%;
+		transform: translate(-50%);
+	}
+	&::after {
+		border-width: 0 0 15px 20px; /* Triangle for sails */
+		border-color: transparent transparent #ec6e46 transparent;
+		top: -28px;
+		left: 50%;
+		transform: translate(-70%);
+	}
 }

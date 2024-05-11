@@ -10,7 +10,6 @@ const RouteWrapper = ({ children }: { children: React.ReactNode }) => {
 	useEffect(() => {
 		// Calls checkTokenActive() on every route change. Essentially will check if token is active for protected links and navbar
 		checkTokenActive();
-		console.log("YAHOOOO!");
 	}, [checkTokenActive, location]);
 
 	return <>{children}</>;
