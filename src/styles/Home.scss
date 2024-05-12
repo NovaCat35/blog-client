@@ -1,7 +1,12 @@
 .posts-cards-container {
-	display: grid;
-	grid-template: 1fr / repeat(auto-fit, minmax(350px, 1fr));
+	display: flex;
+	flex-direction: column;
 	gap: 35px;
+	
+	@media screen and (min-width: 600px) {
+		display: grid;
+		grid-template: 1fr / repeat(auto-fit, minmax(350px, 1fr));
+	}
 	@media screen and (min-width: 1000px) {
 		grid-template: minmax(200px, auto) / 1fr minmax(100px, 1fr) 1fr;
 	}
@@ -15,7 +20,10 @@
 }
 
 img {
-	aspect-ratio: 11.5 / 9;
+	aspect-ratio: 16 / 9;
+	@media screen and (min-width: 600px) {
+		aspect-ratio: 11.5 / 9;
+	}
 	&.large {
 		aspect-ratio: 11.5 / 9;
 		@media screen and (min-width: 1000px) {
@@ -26,4 +34,7 @@ img {
 
 .arrow-svg {
 	filter: invert(15%) sepia(8%) saturate(4909%) hue-rotate(190deg) brightness(94%) contrast(97%);
+}
+
+.popular-featured-blogs {
 }

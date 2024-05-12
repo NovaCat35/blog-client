@@ -20,14 +20,14 @@ function Footer() {
 						</p>
 					</div>
 					{/* Social Media */}
-					<div className="img-container flex items-center pt-5 pb-8 px-4">
-						<img className="max-h-[250px]" src={lighthouse} alt="lighthouse" />
+					<div className="img-container flex justify-center items-center pt-5 pb-8 px-4">
+						<img className=" md:w-full md:max-h-[250px]" src={lighthouse} alt="lighthouse" />
 					</div>
 				</div>
 				<div className="bottom-container bg-[#2c3e52] pt-5 pb-4 px-2">
 					{/* Developer Info */}
 					<div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-						<a href="https://github.com/NovaCat35/blog-client" className="w-[16rem] flex items-center justify-center space-x-2 rounded-md bg-gray-200 p-1" target="blank">
+						<a href="https://github.com/NovaCat35/blog-client" className="w-[16.3rem] flex items-center justify-center space-x-2 rounded-md bg-gray-200 p-1 pr-3" target="blank">
 							<img src={githubSvg} alt="github logo" className="h-7 w-auto transform transition-transform duration-700 ease-in-out hover:rotate-[360deg]" />
 							<p className="text-gray-600">Developed by NovaCat35</p>
 						</a>

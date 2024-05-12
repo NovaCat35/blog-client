@@ -1,3 +1,15 @@
-.img-container {
-	background-image: linear-gradient(to bottom right, #b2eee8, #f9eaa6);
+.footer-top {
+	flex-direction: column;
+	.img-container {
+		background-image: linear-gradient(to bottom right, #b2eee8, #f9eaa6);
+		@media screen and (max-width: 600px) {
+			img{
+				width: 200px;
+				height: 150px;
+			}
+		}
+	}
+	@media screen and (min-width: 600px) {
+		flex-direction: row;
+	}
 }

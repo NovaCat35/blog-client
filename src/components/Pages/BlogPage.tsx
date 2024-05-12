@@ -23,11 +23,11 @@ function BlogPage() {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<Navbar />
-			<main className="flex-grow px-20 mt-10">
+			<main className="flex-grow  px-[30px] md:px-20 mt-10">
 				{blog ? (
 					<>
 						<div className="content-info">
-							<h1 className="title leading-tight text-7xl mb-5 font-bold">{blog.title}</h1>
+							<h1 className="title leading-tight text-6xl md:text-7xl mb-5 font-bold">{blog.title}</h1>
 							<div className="info-container flex gap-5">
 								<div className="left-container w-[70px] h-[70px] rounded-full overflow-hidden">
 									<img className="w-full h-full object-cover" src={defaultImg} alt="pfp" />

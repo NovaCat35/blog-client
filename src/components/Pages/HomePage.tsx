@@ -38,7 +38,7 @@ function Home() {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<Navbar />
-			<main className="flex-grow px-[7rem] mt-10">
+			<main className="flex-grow px-[30px] md:px-[7rem] mt-10">
 				<div className="title-card-container">
 					<h1 className="title leading-snug font-bold">Tales from a wayfarer.</h1>
 					<p className="intro-text mt-2">
@@ -58,7 +58,7 @@ function Home() {
 								<div className="text-container px-2 mt-2 text-center">
 									<h1 className="text-xl font-bold mt-2">{blog.title}</h1>
 									<p className="text-gray-500">{formatDate(blog.date_posted)}</p>
-									<div className="descriptions text-gray-800 max-w-[75vw]">
+									<div className="descriptions text-gray-800">
 										{/* In the description, we should disable all headers & any link (since we cant nest ahref) */}
 										<Markdown disallowedElements={["a", "h3", "img"]} className="description text-ellipsis line-clamp-3 text-gray-700">
 											{blog.content}
@@ -77,8 +77,8 @@ function Home() {
 					</div>
 					<div className="posts-cards-container flex flex-col items-start">
 						{latestBlogs.map((blog) => (
-							<div className="blog-container flex items-center justify-between w-full border-b border-gray-300 py-4" key={uuidv4()}>
-								<Link to={`/blogs/${blog._id}`} className="flex items-center gap-4">
+							<div className="blog-container flex items-center justify-center md:justify-between w-full border-b border-gray-300 py-4" key={uuidv4()}>
+								<Link to={`/blogs/${blog._id}`} className="flex flex-col md:flex-row items-center gap-4">
 									<div className="img-container">
 										<img className="max-h-[300px] object-cover rounded" src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} alt="blog image" />
 									</div>

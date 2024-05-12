@@ -1,5 +1,9 @@
 .logo {
+	display: none;
 	max-width: none;
+	@media screen and (min-width: 470px) {
+		display: block;
+	}
 }
 
 .activeLink {

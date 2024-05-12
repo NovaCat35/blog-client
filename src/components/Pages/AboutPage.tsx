@@ -5,7 +5,7 @@ function AboutPage() {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<Navbar />
-			<main className="py-10 px-[7rem] flex-grow">
+			<main className="py-10 px-[30px] md:px-[7rem] flex-grow">
 				<h1 className="text-4xl mb-5">About Me</h1>
 				<p className="inline-block px-10 py-2 bg-[#f0c033] font-bold rounded">This page is under construction ⚠️</p>
 

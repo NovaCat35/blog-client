@@ -1,12 +1,12 @@
 .content {
-	margin: 90px auto;
+	margin: 30px auto;
 	max-width: 800px;
 	width: 100%;
 	h3 {
 		font-size: 2rem;
 		font-family: "Open Sans", sans-serif;
 		font-weight: 600;
-		color:#223742;
+		color: #223742;
 	}
 	p {
 		margin-bottom: 30px;
@@ -18,6 +18,9 @@
 		max-width: 100%;
 		width: 100%;
 		object-fit: cover;
+	}
+	@media screen and (min-width: 600px) {
+		margin: 60px auto;
 	}
 }
 
