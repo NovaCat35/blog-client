@@ -79,7 +79,7 @@ function Navbar() {
 				{tokenActive ? (
 					<div onClick={toggleModal} className="Profile cursor-pointer w-[60px] h-[60px] overflow-hidden rounded-full border-4 border-[#1ca1ba]">
 						<img className="w-full h-full object-cover " src={pfp} alt="pfp" />
-						{showModal && <Modal />}
+						{showModal && <Modal setShowModal={setShowModal} />}
 					</div>
 				) : (
 					<Link to="/login" className="border border-white px-5 py-1.5 rounded-md bg-[#1ca1ba] text-white hover:bg-[#718fba]">

@@ -24,7 +24,7 @@ function Footer() {
 						<img className="max-h-[250px]" src={lighthouse} alt="lighthouse" />
 					</div>
 				</div>
-				<div className="bottom-container bg-[#2c3e52] pt-4 pb-4 px-2">
+				<div className="bottom-container bg-[#2c3e52] pt-5 pb-4 px-2">
 					{/* Developer Info */}
 					<div className="max-w-7xl mx-auto flex flex-col items-center text-center">
 						<a href="https://github.com/NovaCat35/blog-client" className="w-[16rem] flex items-center justify-center space-x-2 rounded-md bg-gray-200 p-1" target="blank">
