@@ -8,7 +8,7 @@ import LoginPage from "../components/Pages/LoginPage";
 import SignupPage from "../components/Pages/SignupPage";
 import ProfilePage from "../components/Pages/ProfilePage";
 import ErrorPage from "../components/Pages/ErrorPage";
-import RouteWrapper from "./RouterWrapper"; 
+import RouteWrapper from "./RouterWrapper";
 
 const Router = () => {
 	const router = createBrowserRouter([
@@ -16,10 +16,8 @@ const Router = () => {
 			path: "/",
 			element: (
 				<RouteWrapper>
-					<>
-						<ScrollRestoration />
-						<Home />
-					</>
+					<ScrollRestoration />
+					<Home />
 				</RouteWrapper>
 			),
 			errorElement: <ErrorPage />,
@@ -28,10 +26,8 @@ const Router = () => {
 			path: "/blogs",
 			element: (
 				<RouteWrapper>
-					<>
-						<ScrollRestoration />
-						<AllBlogPage />
-					</>
+					<ScrollRestoration />
+					<AllBlogPage />
 				</RouteWrapper>
 			),
 		},
@@ -39,10 +35,8 @@ const Router = () => {
 			path: "/blogs/:id",
 			element: (
 				<RouteWrapper>
-					<>
-						<ScrollRestoration />
-						<BlogPage />
-					</>
+					<ScrollRestoration />
+					<BlogPage />
 				</RouteWrapper>
 			),
 		},
@@ -50,10 +44,8 @@ const Router = () => {
 			path: "/projects",
 			element: (
 				<RouteWrapper>
-					<>
-						<ScrollRestoration />
-						<ProjectPage />
-					</>
+					<ScrollRestoration />
+					<ProjectPage />
 				</RouteWrapper>
 			),
 		},
@@ -61,10 +53,8 @@ const Router = () => {
 			path: "/about",
 			element: (
 				<RouteWrapper>
-					<>
-						<ScrollRestoration />
-						<AboutPage />
-					</>
+					<ScrollRestoration />
+					<AboutPage />
 				</RouteWrapper>
 			),
 		},
@@ -72,10 +62,8 @@ const Router = () => {
 			path: "/login",
 			element: (
 				<RouteWrapper>
-					<>
-						<ScrollRestoration />
-						<LoginPage />
-					</>
+					<ScrollRestoration />
+					<LoginPage />
 				</RouteWrapper>
 			),
 		},
@@ -83,10 +71,8 @@ const Router = () => {
 			path: "/signup",
 			element: (
 				<RouteWrapper>
-					<>
-						<ScrollRestoration />
-						<SignupPage />
-					</>
+					<ScrollRestoration />
+					<SignupPage />
 				</RouteWrapper>
 			),
 		},
@@ -94,10 +80,8 @@ const Router = () => {
 			path: "/profile",
 			element: (
 				<RouteWrapper>
-					<>
-						<ScrollRestoration />
-						<ProfilePage />
-					</>
+					<ScrollRestoration />
+					<ProfilePage />
 				</RouteWrapper>
 			),
 		},

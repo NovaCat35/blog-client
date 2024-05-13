@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import { Link, useLocation } from "react-router-dom";
+import { NavbarContext } from "../contexts/NavContext";
+import { Link } from "react-router-dom";
 import logo from "../assets/cat-sail.jpeg";
 import "../styles/Navbar.scss";
 import pfp from "../assets/cat-bag.jpg";
@@ -11,10 +12,8 @@ function Navbar() {
 	const [showModal, setShowModal] = useState(false);
 	const [lastScrollY, setLastScrollY] = useState(0);
 	const { tokenActive } = useContext(AuthContext); // we have a verified user (e.g. token is active), set a route to profile link instead of standard login/signup btn
-	const location = useLocation(); // gets current location
+	const { activeLink } = useContext(NavbarContext);
 
-	// State to track the active link
-	const [activeLink, setActiveLink] = useState("");
 
 	useEffect(() => {
 		const controlNavbar = () => {
@@ -44,10 +43,6 @@ function Navbar() {
 		}
 	}, [lastScrollY]);
 
-	useEffect(() => {
-		// Set the active link based on the current pathname
-		setActiveLink(location.pathname);
-	}, [location.pathname]);
 
 	const toggleModal = () => {
 		if (showModal) {
@@ -58,7 +53,7 @@ function Navbar() {
 	};
 
 	return (
-		<nav className={`flex justify-between px-10 py-7 bg-white bg-opacity-90 sticky top-0 z-10 transition-transform duration-300 transform ${showNav ? "translate-y-0" : "-translate-y-full"}`}>
+		<nav className={`flex justify-between px-10 pt-7 pb-5 bg-white bg-opacity-90 sticky top-0 z-10 transition-transform duration-300 transform ${showNav ? "translate-y-0" : "-translate-y-full"}`}>
 			<div className="w-[70px] h-[70px] flex items-center justify-center overflow-hidden rounded-full">
 				<Link to="/">
 					<img className="logo w-[250px] object-cover mt-4" src={logo} alt="site logo" />

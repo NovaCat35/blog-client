@@ -8,7 +8,6 @@ export function getFavoriteBlogs(blogs: Blog[]) {
 	// We're swapping the favorite blog from index 0 with the center (index 2) is so it's displayed as the center article on the home's favorite section
 	blogSorted.splice(2, 1, favoriteBlog);
 	blogSorted.splice(0, 1, centerBlog);
-
 	return blogSorted;
 }
 

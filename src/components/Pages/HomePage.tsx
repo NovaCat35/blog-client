@@ -20,7 +20,7 @@ function Home() {
 	const [latestBlogs, setLatestBlogs] = useState(blogs);
 
 	useEffect(() => {
-		if (blogs.length > 0) {
+		if (blogs.length > 2) { // Sort blogs out for styling if more than 2 blogs
 			// we need to wait for the context to finish
 			const favorites = getFavoriteBlogs(blogs);
 			setFavoriteBlogs(favorites);
