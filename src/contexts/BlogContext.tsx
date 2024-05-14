@@ -45,7 +45,7 @@ function BlogProvider({ children }: { children: React.ReactNode }) {
 	useEffect(() => {
 		const fetchBlogs = async () => {
 			try {
-				const response = await fetch("http://localhost:3000/posts/", {
+				const response = await fetch("https://wayfarers-frontier-api.fly.dev/posts/", {
 					mode: "cors",
 				});
 				if (!response.ok) {

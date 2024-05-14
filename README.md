@@ -1,12 +1,13 @@
 # Wayfarer's Frontier
 
-Life is a beautiful mix of ups and downs. For all its worth, I like to sort out my thoughts, post some projects I'm working on, and collect insights from all walks of lives while I try to make sense of my own.
+Life is a beautiful mix of ups and downs. For all its worth, I like to sort out my thoughts, post some projects I'm working on, and collect insights from all walks of lives while I try to make sense of my own. 🧳
 
 > Dear readers: some of the features from site is still in development stage and there's still so many cool ideas I want to implement. That said, by golly, this project is at a good point where I'm proud to showcase it. Disclaimer: most of the blogs have been rough drafted and plug into ChatGPT to be stylized as I'm more focus on flushing out the site's development. If you have any feedback, please feel free to reach out. Thank you!
 
+
 ## Project Links 🔗
 
-- Live Demo: https://wayfarers-frontier.pages.dev/ 🧳
+- [Live Demo](https://wayfarers-frontier.pages.dev/)
 - Frontend Client _(You are here)_
 - [Backend API ](https://github.com/NovaCat35/blog-api)
 - CMS: work in progress

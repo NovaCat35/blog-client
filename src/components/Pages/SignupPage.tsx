@@ -62,7 +62,7 @@ function SignupPage() {
 		};
 
 		try {
-			const response = await fetch("http://localhost:3000/auth/signup", {
+			const response = await fetch("https://wayfarers-frontier-api.fly.dev/auth/signup", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
