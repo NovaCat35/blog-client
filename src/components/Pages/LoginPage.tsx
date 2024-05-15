@@ -48,7 +48,7 @@ function LoginPage() {
 				localStorage.setItem("jwt_token", token);
 				localStorage.setItem("jwt_expiration", expiresAt);
 				localStorage.setItem("user", JSON.stringify(user));
-				
+
 				navigate("/"); // return back to homepage
 			} else {
 				const errorData = await response.json();
@@ -67,13 +67,13 @@ function LoginPage() {
 			<Navbar />
 			<main className="flex-grow flex flex-col items-center justify-center px-10">
 				<h1 className="text-xl text-center font-semibold mb-10">
-					AHOY MATEY, welcome back! <br /> Please continue to follow our community{" "}
+					AHOY MATEY, welcome back! <br /> Here be a reminder of our community{" "}
 					<a className="underline underline-offset-4 text-[#e7175a]" href="">
 						guidelines
 					</a>
-					, yargh!!
+					, yarrgh!!
 				</h1>
-				<form onSubmit={handleSubmit} className="flex flex-col w-[470px] lg:w-[50vw] mb-10">
+				<form onSubmit={handleSubmit} className="flex flex-col w-[80vw] md:w-[470px] lg:w-[50vw] mb-10">
 					<div className="form-opt flex flex-col">
 						<label htmlFor="username">Username</label>
 						<input type="text" name="username" onChange={handleChange} id="username" className="border-2 border-gray-300 rounded px-3 py-2 mb-3" placeholder="John Cena" required />

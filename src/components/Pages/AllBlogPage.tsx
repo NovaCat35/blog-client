@@ -31,7 +31,7 @@ function BlogPage() {
 										<div className="img-container">
 											<img className="max-h-[600px] md:max-w-[350px] object-cover rounded" src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} alt="blog banner" />
 										</div>
-										<div className="texts-container flex flex-col items-center md:items-start">
+										<div className="texts-container flex flex-col items-center text-center md:text-left md:items-start">
 											<h1 className="text-xl text-[#223742] font-bold">{blog.title}</h1>
 											<p className="text-gray-500">{formatDate(blog.date_posted)}</p>
 											<div className="descriptions text-gray-800 max-w-[75vw] mt-2">
@@ -39,7 +39,7 @@ function BlogPage() {
 													{blog.content}
 												</Markdown>
 											</div>{" "}
-											<ul className="tags-container flex flex-wrap gap-x-5 gap-y-4 mt-4">
+											<ul className="tags-container flex flex-wrap justify-center md:justify-start gap-x-5 gap-y-4 mt-4">
 												{blog.tags.map((tag) => (
 													<li key={uuidv4()} className="bg-gray-800 px-2 py-1 rounded text-white flex justify-center items-center text-center">
 														{tag}

@@ -17,8 +17,8 @@ function AboutPage() {
 						</a>{" "}
 						page.{" "}
 					</p>
-					<p className="mb-5">I created this website originally with one purpose in mind. It was the goal of developing a grandioso full stack site to finally complete that long anticipated desire of connecting the frontend with the backend. It's like the feeling of seeing a beacon light from a distant lighthouse after being out at sea for so long, my magnum opus if you will. </p>
-					<p className="mb-5">I guess to say so much has happened since I began my debut into the development world. I suppose seeing how I will soon reach the end of this project, it may be worth while keeping it updated with some thoughts and projects I'm working on. It may not gather that much view, maybe I'll end up talking to myself in the end ... But hey, that's cool too. Anyway, I will try to fill this vibrant space with whatever artistic expression I have and showcases of my various side projects. Who knows, maybe I can grow myself as I grow this site too.</p>
+					<p className="mb-5">This website was created in part to showcase a grandioso full stack blog page and utilizing crucial skills in full stack development . The reason I named it "Wayfarer's Frontier" was partly because of my metaphorical idea of life. Where one's out lost at sea, with occasions such as a bright glimmer of a beacon light from the distant shoreline. </p>
+					<p className="mb-5">While this is now far from my magnum opus, this project is something i'm proud of and will most likely be updated from time to time with some of my thoughts and projects I'm working on. It may not gather that much view, maybe I'll end up talking to myself in the end ... But hey, that's cool too. Anyway, I will try to fill this vibrant space with whatever artistic expression I have and showcases of my various side projects. Who knows, maybe I can grow myself as I grow this site too.</p>
 					<p className="mb-5">As the PBS shows always ends it, This site was made possible by viewers like you. Thank you!</p>
 				</div>
 			</main>

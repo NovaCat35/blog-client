@@ -97,13 +97,13 @@ function SignupPage() {
 			<Navbar />
 			<main className="flex-grow flex flex-col items-center justify-center px-10">
 				<h1 className="text-xl text-center font-semibold mb-10">
-					Welcome to the community, happy to have you aboard! <br /> Please follow our community{" "}
+					Yargh, welcome aboard to our community! <br /> Please follow our community{" "}
 					<a className="underline underline-offset-4 text-[#e7175a]" href="">
 						guidelines
 					</a>{" "}
 					here.
 				</h1>
-				<form onSubmit={handleSubmit} className="flex flex-col w-[470px] lg:w-[50vw] mb-5">
+				<form onSubmit={handleSubmit} className="flex flex-col w-[80vw] md:w-[470px] lg:w-[50vw] mb-5">
 					<div className="form-opt flex flex-col">
 						<label htmlFor="username">Username</label>
 						<div className="username-container relative h-10 mb-5">
