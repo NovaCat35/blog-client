@@ -4,7 +4,6 @@ Life is a beautiful mix of ups and downs. For all its worth, I like to sort out 
 
 > Dear readers: some of the features from site is still in development stage and there's still so many cool ideas I want to implement. That said, by golly, this project is at a good point where I'm proud to showcase it. Disclaimer: most of the blogs have been rough drafted and plug into ChatGPT to be stylized as I'm more focus on flushing out the site's development. If you have any feedback, please feel free to reach out. Thank you!
 
-
 ## Project Links 🔗
 
 - [Live Demo](https://wayfarers-frontier.pages.dev/)
@@ -20,6 +19,7 @@ Life is a beautiful mix of ups and downs. For all its worth, I like to sort out 
 - Comments
 
 ## Hosting Platforms 🌐
+
 - [Cloudflare](https://dash.cloudflare.com/): for deploying and hosting the application
 
 ## Technologies Used 🚀
@@ -33,7 +33,7 @@ Life is a beautiful mix of ups and downs. For all its worth, I like to sort out 
 
 One of the primary objectives of this project was to develop a client-side blog site and integrate it with our backend server-side API. While setting up the majority of the backend logic for the blog API, I encountered challenges related to connecting the client to the backend due to CORS not being implemented and overlooking certain considerations during API testing with Postman. For instance, I initially overlooked that Mongoose schema's virtual is a backend-specific element, among other aspects related to routers and api fetching objects. Using old project documents and revisiting the server api for some modifications, I soon was able to get the client side working again.
 
-A important blocking point was trying to figure out how to authenticate user with login/signup. For some reason, when trying to fetch the login auth route, there's server issue with retrieving wrong info. I had to eventually test with inspect on the web and breakpoint messages on the terminal to locate bug issue.
+An important turning point for me was trying to figure out how to authenticate user with login/sign-up. For some reason, when trying to fetch the login auth route, there's server issue with retrieving wrong info and status errors. I approach this issue by testing various sections of fetching routes with web inspection and breakpoint messages on the code and terminal to locate the various bug issue. Then I also notice issues with CORS not setup properly on the backend. These two approaches eventually helped me solve these various issues of fetching the correct data.
 
 ## Libraries 📚
 
@@ -47,7 +47,9 @@ A important blocking point was trying to figure out how to authenticate user wit
    npx tailwindcss init -p
    npm install -D sass
    npm install react-paginate
-   npm install react-markdown
+   npm install react-markdown  (note: blog format is changed after using tinyMCE for production vs the dev-sample json blogs. This pkg is not needed anymore)
+npm install html-react-parser --save
+   npm install --save @tinymce/tinymce-react
 ```
 
 > Don't forget to modify tailwind.config & create a tailwind.css file

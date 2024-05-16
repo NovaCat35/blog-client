@@ -7,6 +7,7 @@ import AboutPage from "../components/Pages/AboutPage";
 import LoginPage from "../components/Pages/LoginPage";
 import SignupPage from "../components/Pages/SignupPage";
 import ProfilePage from "../components/Pages/ProfilePage";
+import WritePage from "../components/Pages/WritePage";
 import ErrorPage from "../components/Pages/ErrorPage";
 import RouteWrapper from "./RouterWrapper";
 
@@ -82,6 +83,15 @@ const Router = () => {
 				<RouteWrapper>
 					<ScrollRestoration />
 					<ProfilePage />
+				</RouteWrapper>
+			),
+		},
+		{
+			path: "/editor",
+			element: (
+				<RouteWrapper>
+					<ScrollRestoration />
+					<WritePage />
 				</RouteWrapper>
 			),
 		},

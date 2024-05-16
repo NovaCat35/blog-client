@@ -46,7 +46,7 @@ function Modal({ setShowModal }: ModalProps) {
 							<img className="icon w-10" src={profileSvg} alt="profile icon" />
 							<p>Profile</p>
 						</Link>
-						<Link to="/profile" className="modal-tab px-2 py-2 flex justify-start items-center gap-2 text-[#4a5366] hover:bg-gray-100 hover:text-[black]">
+						<Link to="/editor" className="modal-tab px-2 py-2 flex justify-start items-center gap-2 text-[#4a5366] hover:bg-gray-100 hover:text-[black]">
 							<img className="icon w-10" src={writeSvg} alt="write icon" />
 							<p>Write</p>
 						</Link>
