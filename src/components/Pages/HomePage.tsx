@@ -20,7 +20,8 @@ function Home() {
 	const [latestBlogs, setLatestBlogs] = useState(blogs);
 
 	useEffect(() => {
-		if (blogs.length > 2) { // Sort blogs out for styling if more than 2 blogs
+		if (blogs.length > 2) {
+			// Sort blogs out for styling if more than 2 blogs
 			// we need to wait for the context to finish
 			const favorites = getFavoriteBlogs(blogs);
 			setFavoriteBlogs(favorites);
@@ -103,7 +104,7 @@ function Home() {
 						))}
 					</div>
 					<Link className="flex text-center justify-end gap-3 mt-10 mb-5" to="/blogs">
-						<p className="text-2xl text-[#1ca1ba] font-bold">More Posts</p>
+						<p className="text-2xl text-[#1ca1ba] font-bold underline-offset-4 hover:underline">More Posts</p>
 						<img className="arrow-svg w-7" src={arrowSvg} alt="right arrow" />
 					</Link>
 				</div>

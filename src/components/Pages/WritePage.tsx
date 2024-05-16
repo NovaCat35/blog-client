@@ -18,7 +18,7 @@ function WritePage() {
 			<Navbar />
 			<p className="flex justify-center inline-block px-10 py-2 bg-[#f0c033] font-bold">This page is under construction ⚠️</p>
 
-			<main className="flex flex-col md:flex-row gap-10 p-5">
+			<main className="flex flex-col md:flex-row gap-5 p-5">
 				<Editor
 					apiKey="7qfev4qoqie78fs39wy2e3z0is6z6julvewat0azq5ut11gm"
 					onInit={(_evt, editor) => (editorRef.current = editor)}
@@ -31,7 +31,7 @@ function WritePage() {
 					}}
 					initialValue="Add your content here!"
 				/>
-				<div className="display w-full md:w-[50vw] border-2 border-black p-3">{parse(content)}</div>
+				<div className="display w-full md:w-[50vw] border-2 border-gray-300 p-3 rounded-md">{parse(content)}</div>
 			</main>
 			<Footer />
 		</>
