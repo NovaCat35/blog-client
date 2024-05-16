@@ -10,6 +10,15 @@ export type User = {
 	admin_access: boolean;
 };
 
+export type Comment = {
+	_id: string;
+	user: User;
+	text: string;
+	likes: number;
+	date_posted: Date;
+	replies: Comment[];
+};
+
 export type Blog = {
 	_id: string;
 	tags: string[];
@@ -25,7 +34,7 @@ export type Blog = {
 		};
 	};
 	author: User;
-	comments: string;
+	comments: Comment[];
 	published: boolean;
 	likes: number;
 };

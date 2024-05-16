@@ -1,11 +1,13 @@
 import { useContext, useState, useEffect } from "react";
 import { BlogContext } from "../../contexts/BlogContext";
+import { AuthContext } from "../../contexts/AuthContext";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import formatDate from "../../functions/DateFormatter";
 import defaultImg from "../../assets/default.jpeg";
+import { Link } from "react-router-dom";
 import "../../styles/Fonts.scss";
 import "../../styles/Blog.scss";
 import Markdown from "react-markdown";
@@ -14,6 +16,7 @@ import remarkGfm from "remark-gfm";
 function BlogPage() {
 	const { id } = useParams();
 	const { blogs } = useContext(BlogContext);
+	const { user, tokenActive } = useContext(AuthContext);
 	const [blog, setBlog] = useState(blogs.find((blog) => blog._id == id));
 
 	useEffect(() => {
@@ -65,6 +68,36 @@ function BlogPage() {
 				) : (
 					<p>Loading...</p>
 				)}
+
+				<h3 className="font-semibold">{blog?.comments.length} Comments</h3>
+				<div className="user-form-container flex justify-center mt-5">
+					{tokenActive ? (
+						<div className='user-form'>
+							<p>{user.username}</p>
+							<form className="border w-[80vw]" action="/">
+								<label htmlFor="comment"></label>
+								<div className="relative">
+									<textarea className="w-full outline-none px-5 py-5" id="comment" name="comment" minLength={2} rows={2} />
+									<div className="absolute bottom-0 right-3 flex justify-end gap-5 pb-2">
+										<button className="font-semibold">Cancel</button>
+										<button type="submit" className="bg-[#1ca1ba] font-semibold text-white px-5 py-1 rounded-md">
+											Respond
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					) : (
+						<Link to="/login" className="alert-container flex items-center gap-5 px-5 py-3 border-2 border-[#e84267] rounded-md hover:bg-[#e84267] hover:text-white transition duration-300 ease-in-out">
+							<p className="text-xl hover">Join us, log in to comment.</p>
+						</Link>
+					)}
+				</div>
+
+				<div className="comment-section flex flex-col items-center border-t-2 border-gray-300 pt-5 mt-5 mb-10 text-gray-800">{
+				blog?.comments.length == 0 ? (<div>No comments yet, why not be the first to comment?</div>) : 
+				blog?.comments.map((comment) => <div key={comment._id} className="comment-container">{comment.text}</div>)
+				}</div>
 			</main>
 			<Footer />
 		</div>
