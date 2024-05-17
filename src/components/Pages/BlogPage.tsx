@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { BlogContext } from "../../contexts/BlogContext";
+import { BlogContext, Comment } from "../../contexts/BlogContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
@@ -15,13 +15,24 @@ import remarkGfm from "remark-gfm";
 
 function BlogPage() {
 	const { id } = useParams();
-	const { blogs } = useContext(BlogContext);
+	const { blogs, fetchComments } = useContext(BlogContext);
 	const { user, tokenActive } = useContext(AuthContext);
 	const [blog, setBlog] = useState(blogs.find((blog) => blog._id == id));
+	const [comments, setComments] = useState<Comment[]>([]);
 
 	useEffect(() => {
 		setBlog(blogs.find((blog) => blog._id == id));
 	}, [blog, blogs, id]);
+
+	useEffect(() => {
+		if (blog && id) {
+			const fetchData = async () => {
+				const commentList = await fetchComments(id); // Fetch comments for the current blog
+				setComments(commentList);
+			};
+			fetchData();
+		}
+	}, [blog, fetchComments, id]);
 
 	return (
 		<div className="flex flex-col min-h-screen">
@@ -30,7 +41,7 @@ function BlogPage() {
 				{blog ? (
 					<>
 						<div className="content-info">
-							<h1 className="title leading-tight text-6xl md:text-7xl mb-5 font-bold">{blog.title}</h1>
+							<h1 className="title leading-tight text-5xl md:text-6xl lg:text-7xl mb-5 font-bold">{blog.title}</h1>
 							<div className="info-container flex gap-5">
 								<div className="left-container w-[70px] h-[70px] rounded-full overflow-hidden">
 									<img className="w-full h-full object-cover" src={defaultImg} alt="pfp" />
@@ -72,7 +83,7 @@ function BlogPage() {
 				<h3 className="font-semibold">{blog?.comments.length} Comments</h3>
 				<div className="user-form-container flex justify-center mt-5">
 					{tokenActive ? (
-						<div className='user-form'>
+						<div className="user-form">
 							<p>{user.username}</p>
 							<form className="border w-[80vw]" action="/">
 								<label htmlFor="comment"></label>
@@ -94,10 +105,17 @@ function BlogPage() {
 					)}
 				</div>
 
-				<div className="comment-section flex flex-col items-center border-t-2 border-gray-300 pt-5 mt-5 mb-10 text-gray-800">{
-				blog?.comments.length == 0 ? (<div>No comments yet, why not be the first to comment?</div>) : 
-				blog?.comments.map((comment) => <div key={comment._id} className="comment-container">{comment.text}</div>)
-				}</div>
+				<div className="comment-section flex flex-col items-center border-t-2 border-gray-300 pt-5 mt-5 mb-10 text-gray-800">
+					{comments.length == 0 ? (
+						<div className="text-center">No comments yet, be the first to comment!</div>
+					) : (
+						comments.map((comment) => (
+							<div key={comment._id} className="comment-container">
+								{comment.text}
+							</div>
+						))
+					)}
+				</div>
 			</main>
 			<Footer />
 		</div>

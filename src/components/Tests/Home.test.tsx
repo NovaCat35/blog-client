@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import Home from "../Pages/HomePage";
 import { BrowserRouter } from "react-router-dom";
-import BlogProvider, { BlogContext } from "../../contexts/BlogContext";
+import BlogProvider, { BlogContext, Comment } from "../../contexts/BlogContext";
 import RouteWrapper from "../../router/RouterWrapper";
 import { describe, it, expect } from "vitest";
 
@@ -30,24 +30,7 @@ const mockBlogs = [
 			date_joined: "2023-01-01",
 			admin_access: true,
 		},
-		comments: [
-			{
-				_id: "comment1",
-				user: {
-					_id: "user1",
-					username: "Alice",
-					email: "alice@example.com",
-					password: "hashedpassword",
-					profile_img: "https://example.com/profile3.jpg",
-					date_joined: "2023-03-01",
-					admin_access: false,
-				},
-				text: "Great post!",
-				likes: 10,
-				date_posted: new Date("2024-05-13"),
-				replies: [],
-			},
-		],
+		comments: ["comment1"], // Comments array contains IDs
 		published: true,
 		likes: 20,
 	},
@@ -74,47 +57,71 @@ const mockBlogs = [
 			date_joined: "2023-02-01",
 			admin_access: false,
 		},
-		comments: [
-			{
-				_id: "comment2",
-				user: {
-					_id: "user2",
-					username: "Bob",
-					email: "bob@example.com",
-					password: "hashedpassword",
-					profile_img: "https://example.com/profile4.jpg",
-					date_joined: "2023-04-01",
-					admin_access: false,
-				},
-				text: "Fascinating read!",
-				likes: 5,
-				date_posted: new Date("2024-05-10"),
-				replies: [
-					{
-						_id: "reply1",
-						user: {
-							_id: "user3",
-							username: "Charlie",
-							email: "charlie@example.com",
-							password: "hashedpassword",
-							profile_img: "https://example.com/profile5.jpg",
-							date_joined: "2023-05-01",
-							admin_access: false,
-						},
-						text: "Agreed!",
-						likes: 3,
-						date_posted: new Date("2024-05-11"),
-						replies: [],
-					},
-				],
-			},
-		],
+		comments: ["comment2"], // Comments array contains IDs
 		published: true,
 		likes: 15,
 	},
 ];
 
-const MockedBlogProvider = ({ children }: { children: React.ReactNode }) => <BlogContext.Provider value={{ blogs: mockBlogs }}>{children}</BlogContext.Provider>;
+// MOCKED VALUES
+const MockedFetch = async (): Promise<Comment[]> => {
+	// Your mocked data here
+	const mockedComments: Comment[] = [
+		{
+			_id: "comment2",
+			user: {
+				_id: "user2",
+				username: "Bob",
+				email: "bob@example.com",
+				password: "hashedpassword",
+				profile_img: "https://example.com/profile4.jpg",
+				date_joined: "2023-04-01",
+				admin_access: false,
+			},
+			text: "Fascinating read!",
+			likes: 5,
+			date_posted: "2024-05-10",
+			replies: [
+				{
+					_id: "reply1",
+					user: {
+						_id: "user3",
+						username: "Charlie",
+						email: "charlie@example.com",
+						password: "hashedpassword",
+						profile_img: "https://example.com/profile5.jpg",
+						date_joined: "2023-05-01",
+						admin_access: false,
+					},
+					text: "Agreed!",
+					likes: 3,
+					date_posted:"2024-05-11",
+					replies: [],
+				},
+			],
+		},
+		{
+			_id: "comment3", // New comment ID
+			user: {
+				_id: "user4", // New user ID
+				username: "David",
+				email: "david@example.com",
+				password: "hashedpassword",
+				profile_img: "https://example.com/profile6.jpg",
+				date_joined: "2023-06-01",
+				admin_access: false,
+			},
+			text: "Interesting perspective!",
+			likes: 8,
+			date_posted: "2024-05-12",
+			replies: [],
+		},
+	];
+
+	return Promise.resolve(mockedComments);
+};
+
+const MockedBlogProvider = ({ children }: { children: React.ReactNode }) => <BlogContext.Provider value={{ blogs: mockBlogs, fetchComments: MockedFetch }}>{children}</BlogContext.Provider>;
 
 describe("Home Page", () => {
 	it("renders title banner", () => {

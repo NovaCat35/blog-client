@@ -35,3 +35,16 @@
 		transform: translate(-70%);
 	}
 }
+
+nav {
+	justify-content: center;
+	.logo-container {
+		display: none;
+		@media screen and (min-width: 470px) {
+			display: flex;
+		}
+	}
+	@media screen and (min-width: 470px) {
+		justify-content: space-between;
+	}
+}

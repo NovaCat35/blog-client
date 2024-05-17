@@ -12,7 +12,7 @@ function Footer() {
 					<div className="footer-text-info pt-5 pb-8 px-8 w-full">
 						<h1 className="text-2xl border-b-2 border-[#8cbadb] pb-2 mb-4">Wayfarer's Frontier</h1>
 						<p>
-							Woah, you reach the end of this page! Remember, life is a journey. Unlike this footer we can't always know where it will end so pace yourself and keep improving! Looking forward to seeing how you and I will grow. Ganbatte!
+							Woah, you reach the end of this page! Unlike this footer we can't always know where our journey will end so pace yourself and keep at it! Looking forward to seeing how you grow. Ganbatte!
 							<br /> <br />
 							If you find my contents interesting, consider bookmarking this site.
 							<br />

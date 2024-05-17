@@ -15,15 +15,15 @@ export type Comment = {
 	user: User;
 	text: string;
 	likes: number;
-	date_posted: Date;
-	replies: Comment[];
+	date_posted: string; // Date turn to string with .json()
+	replies: Comment[]; // Array of Object IDs of reply comments
 };
 
 export type Blog = {
 	_id: string;
 	tags: string[];
 	read_time: number;
-	date_posted: string;
+	date_posted: string; // Date turn to string with .json()
 	title: string;
 	content: string;
 	blog_img: {
@@ -34,7 +34,7 @@ export type Blog = {
 		};
 	};
 	author: User;
-	comments: Comment[];
+	comments: string[];
 	published: boolean;
 	likes: number;
 };
@@ -42,10 +42,14 @@ export type Blog = {
 // Specify the type for the context value explicitly
 type BlogContextType = {
 	blogs: Blog[];
+	fetchComments: (id: string) => Promise<Comment[]>;
 };
 
 export const BlogContext = createContext<BlogContextType>({
 	blogs: [],
+	fetchComments: async () => {
+		throw new Error("fetchComments function not implemented");
+	},
 });
 
 function BlogProvider({ children }: { children: React.ReactNode }) {
@@ -69,7 +73,18 @@ function BlogProvider({ children }: { children: React.ReactNode }) {
 		fetchBlogs();
 	}, []);
 
-	return <BlogContext.Provider value={{ blogs }}>{children}</BlogContext.Provider>;
+	const fetchComments = async (id: string) => {
+		const response = await fetch(`/posts/${id}/comments`, {
+			mode: "cors",
+		});
+		if (!response.ok) {
+			throw new Error("Failed to fetch data");
+		}
+		const comments = await response.json();
+		return comments;
+	};
+
+	return <BlogContext.Provider value={{ blogs, fetchComments }}>{children}</BlogContext.Provider>;
 }
 
 export default BlogProvider;

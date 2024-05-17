@@ -27,6 +27,7 @@
 }
 
 .title {
+	hyphens: auto;
 	color: #233742;
 	font-family: "Open Sans", sans-serif;
 	font-size: clamp(3.5rem, 7.4666vw + 1.5rem, 7rem);
@@ -35,4 +36,3 @@
 		font-size: 5rem;
 	}
 }
-

@@ -14,7 +14,6 @@ function Navbar() {
 	const { tokenActive } = useContext(AuthContext); // we have a verified user (e.g. token is active), set a route to profile link instead of standard login/signup btn
 	const { activeLink } = useContext(NavbarContext);
 
-
 	useEffect(() => {
 		const controlNavbar = () => {
 			if (typeof window !== "undefined") {
@@ -43,7 +42,6 @@ function Navbar() {
 		}
 	}, [lastScrollY]);
 
-
 	const toggleModal = () => {
 		if (showModal) {
 			setShowModal(false);
@@ -53,22 +51,22 @@ function Navbar() {
 	};
 
 	return (
-		<nav className={`flex justify-between px-10 pt-7 pb-5 bg-white bg-opacity-90 sticky top-0 z-10 transition-transform duration-300 transform ${showNav ? "translate-y-0" : "-translate-y-full"}`}>
-			<div className="w-[70px] h-[70px] flex items-center justify-center overflow-hidden rounded-full">
+		<nav className={`flex px-10 pt-7 pb-5 bg-white bg-opacity-90 sticky top-0 z-10 transition-transform duration-300 transform ${showNav ? "translate-y-0" : "-translate-y-full"}`}>
+			<div className="logo-container w-[70px] h-[70px] flex items-center justify-center overflow-hidden rounded-full">
 				<Link to="/">
 					<img className="logo w-[250px] object-cover mt-4" src={logo} alt="site logo" />
 				</Link>
 			</div>
 
 			<div className="right-side flex gap-8 items-center text-[#223742] text-lg font-bold">
-				<Link to="/" className={`${activeLink == "/" ? "activeLink" : ""} underline-offset-4 hover:underline`}>
+				<Link to="/" className={`${activeLink == "/" ? "activeLink decoration-wavy" : ""} underline-offset-4 hover:underline`}>
 					Home
 				</Link>
-				<Link to="/blogs" className={`${activeLink == "/blogs" ? "activeLink" : ""} underline-offset-4 hover:underline`}>
+				<Link to="/blogs" className={`${activeLink == "/blogs" ? "activeLink decoration-wavy" : ""} underline-offset-4 hover:underline`}>
 					Blogs
 				</Link>
 				{/* <Link to="/projects">Projects</Link> */}
-				<Link to="/about" className={`${activeLink == "/about" ? "activeLink" : ""} underline-offset-4 hover:underline`}>
+				<Link to="/about" className={`${activeLink == "/about" ? "activeLink decoration-wavy" : ""} underline-offset-4 hover:underline`}>
 					About
 				</Link>
 				{tokenActive ? (
