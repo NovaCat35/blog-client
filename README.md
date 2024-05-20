@@ -48,7 +48,7 @@ An important turning point for me was trying to figure out how to authenticate u
    npm install -D sass
    npm install react-paginate
    npm install react-markdown  (note: blog format is changed after using tinyMCE for production vs the dev-sample json blogs. This pkg is not needed anymore)
-npm install html-react-parser --save
+   npm install html-react-parser --save
    npm install --save @tinymce/tinymce-react
 ```
 

@@ -1,32 +1,14 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import profileSvg from "../assets/profile.svg";
 import writeSvg from "../assets/edit.svg";
 import "../styles/Modal.scss";
 
-interface ModalProps {
-	setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
-function Modal({ setShowModal }: ModalProps) {
+function Modal() {
 	const { user } = useContext(AuthContext);
 	const navigate = useNavigate();
-	const modalRef = useRef<HTMLDivElement>(null);
-
-	useEffect(() => {
-		const handleClickOutside = (event: MouseEvent) => {
-			if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-				setShowModal(false);
-			}
-		};
-
-		window.addEventListener("mousedown", handleClickOutside);
-
-		return () => {
-			window.removeEventListener("mousedown", handleClickOutside);
-		};
-	}, [setShowModal]);
 
 	const logout = () => {
 		localStorage.clear();
@@ -34,7 +16,7 @@ function Modal({ setShowModal }: ModalProps) {
 	};
 
 	return (
-		<div ref={modalRef} className="modal-container absolute w-[200px] top-[110px] right-[30px]">
+		<div className="modal-container absolute w-[200px] top-[110px] right-[30px]">
 			<div className="message-arrow top-[-12px] right-[30px]"></div>
 			<div className="modal font-normal bg-[#ffffff]">
 				<div className="username-container flex flex-col items-center bg-[#1ea0ba] w-full text-white py-2">

@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { NavbarContext } from "../contexts/NavContext";
 import { Link } from "react-router-dom";
@@ -13,6 +13,22 @@ function Navbar() {
 	const [lastScrollY, setLastScrollY] = useState(0);
 	const { tokenActive } = useContext(AuthContext); // we have a verified user (e.g. token is active), set a route to profile link instead of standard login/signup btn
 	const { activeLink } = useContext(NavbarContext);
+
+	const modalNavRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		// Click outside pfp-nav container and it's children (modal) will make modal not be shown
+		const handleClickOutside = (event: MouseEvent) => {
+			if (modalNavRef.current && !modalNavRef.current.contains(event.target as Node)) {
+				setShowModal(false);
+			}
+		};
+
+		window.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			window.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, [setShowModal]);
 
 	useEffect(() => {
 		const controlNavbar = () => {
@@ -59,20 +75,20 @@ function Navbar() {
 			</div>
 
 			<div className="right-side flex gap-8 items-center text-[#223742] text-lg font-bold">
-				<Link to="/" className={`${activeLink == "/" ? "activeLink decoration-wavy" : ""} underline-offset-4 hover:underline`}>
+				<Link to="/" className={`${activeLink == "/" ? "activeLink" : ""} underline-offset-4 hover:underline`}>
 					Home
 				</Link>
-				<Link to="/blogs" className={`${activeLink == "/blogs" ? "activeLink decoration-wavy" : ""} underline-offset-4 hover:underline`}>
+				<Link to="/blogs" className={`${activeLink == "/blogs" ? "activeLink" : ""} underline-offset-4 hover:underline`}>
 					Blogs
 				</Link>
 				{/* <Link to="/projects">Projects</Link> */}
-				<Link to="/about" className={`${activeLink == "/about" ? "activeLink decoration-wavy" : ""} underline-offset-4 hover:underline`}>
+				<Link to="/about" className={`${activeLink == "/about" ? "activeLink" : ""} underline-offset-4 hover:underline`}>
 					About
 				</Link>
 				{tokenActive ? (
-					<div onClick={toggleModal} className="Profile cursor-pointer w-[60px] h-[60px] overflow-hidden rounded-full border-4 border-[#1ca1ba]">
+					<div ref={modalNavRef} onClick={toggleModal} className="pfp-modal-container cursor-pointer w-[60px] h-[60px] overflow-hidden rounded-full border-4 border-[#1ca1ba]">
 						<img className="w-full h-full object-cover " src={pfp} alt="pfp" />
-						{showModal && <Modal setShowModal={setShowModal} />}
+						{showModal && <Modal />}
 					</div>
 				) : (
 					<Link to="/login" className="border border-white px-5 py-1.5 rounded-md bg-[#1ca1ba] text-white hover:bg-[#718fba]">
