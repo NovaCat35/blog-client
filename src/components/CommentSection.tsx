@@ -24,11 +24,15 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 			throw new Error("JWT token not found");
 		}
 
+		console.log("Blog ID:", blogId);
+		console.log("Comment Text:", commentText);
+
 		// Post new comment to this blog
 		const response = await fetch("https://wayfarers-frontier-api.fly.dev/comments", {
 			mode: "cors",
 			method: "POST",
 			headers: {
+				"Content-Type": "application/json",
 				Authorization: `Bearer ${token}`,
 			},
 			body: JSON.stringify({
@@ -71,7 +75,7 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 						<form className="border w-[80vw]" onSubmit={handleSubmit} action="/">
 							<label htmlFor="comment"></label>
 							<div className="relative">
-								<textarea onChange={handleCommentChange} className="w-full outline-none px-5 py-5" id="comment" name="comment" minLength={2} rows={2} />
+								<textarea onChange={handleCommentChange} value={commentText} placeholder="What are your thoughts?" className="w-full outline-none px-5 py-5" id="comment" name="comment" minLength={2} rows={2} />
 								<div className="absolute bottom-0 right-3 flex justify-end gap-5 pb-2">
 									<button className="font-semibold">Cancel</button>
 									<button type="submit" className="bg-[#1ca1ba] font-semibold text-white px-5 py-1 rounded-md">
@@ -82,18 +86,18 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 						</form>
 					</div>
 				) : (
-					<Link to="/login" className="alert-container flex items-center gap-5 px-5 py-3 border-2 border-[#e84267] rounded-md hover:bg-[#e84267] hover:text-white transition duration-300 ease-in-out">
+					<Link to="/login" className="alert-container flex items-center gap-5 px-5 py-3 border-4 border-[#e84267] rounded-md hover:bg-[#e84267] hover:text-white transition duration-300 ease-in-out">
 						<p className="text-xl hover">Join us, log in to comment.</p>
 					</Link>
 				)}
 			</div>
 
-			<div className="comment-section flex flex-col items-center border-t-2 border-gray-300 pt-5 mt-5 mb-10 text-gray-800">
+			<div className="comment-section flex flex-col items-center border-t-8 border-gray-300 pt-5 mt-5 mb-10 text-gray-800">
 				{comments.length == 0 ? (
 					<div className="text-center">No comments yet, be the first to comment!</div>
 				) : (
 					comments.map((comment) => (
-						<div key={comment._id} className="comment-container flex flex-col border-y-2 border-gray-200 w-full px-2 py-3">
+						<div key={comment._id} className="comment-container flex flex-col border-y-2 border-gray-200 w-[75vw] px-2 py-3">
 							<div className="user-info mb-3 flex gap-4 items-center">
 								<div className="img-container w-[60px] h-[60px] rounded-full overflow-hidden">
 									<img className="w-full h-full object-fit" src={defaultImg} alt="comment pfp" />
