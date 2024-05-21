@@ -40,6 +40,7 @@ const Router = () => {
 					<BlogPage />
 				</RouteWrapper>
 			),
+			errorElement: <ErrorPage />,
 		},
 		{
 			path: "/projects",

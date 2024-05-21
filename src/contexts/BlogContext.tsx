@@ -74,14 +74,18 @@ function BlogProvider({ children }: { children: React.ReactNode }) {
 	}, []);
 
 	const fetchComments = async (id: string) => {
-		const response = await fetch(`/posts/${id}/comments`, {
-			mode: "cors",
-		});
-		if (!response.ok) {
-			throw new Error("Failed to fetch data");
+		try {
+			const response = await fetch(`https://wayfarers-frontier-api.fly.dev/posts/${id}/comments`, {
+				mode: "cors",
+			});
+			if (!response.ok) {
+				throw new Error("Failed to fetch data");
+			}
+			const comments = await response.json();
+			return comments.commentList;
+		} catch (error) {
+			console.error(error);
 		}
-		const comments = await response.json();
-		return comments;
 	};
 
 	return <BlogContext.Provider value={{ blogs, fetchComments }}>{children}</BlogContext.Provider>;

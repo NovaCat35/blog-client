@@ -2,6 +2,8 @@ import { useContext, useState, useEffect, ChangeEvent } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { BlogContext, Comment, Blog } from "../contexts/BlogContext";
 import { Link } from "react-router-dom";
+import formatDate from "../functions/DateFormatter";
+import defaultImg from "../assets/default.jpeg";
 
 interface CommentSectionProps {
 	blog: Blog | undefined;
@@ -91,8 +93,20 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 					<div className="text-center">No comments yet, be the first to comment!</div>
 				) : (
 					comments.map((comment) => (
-						<div key={comment._id} className="comment-container">
-							{comment.text}
+						<div key={comment._id} className="comment-container flex flex-col border-y-2 border-gray-200 w-full px-2 py-3">
+							<div className="user-info mb-3 flex gap-4 items-center">
+								<div className="img-container w-[60px] h-[60px] rounded-full overflow-hidden">
+									<img className="w-full h-full object-fit" src={defaultImg} alt="comment pfp" />
+								</div>
+								<div className="texts-container">
+									<p className="font-semibold">{comment.user.username}</p>
+									<p className="text-gray-500">{formatDate(comment.date_posted)}</p>
+								</div>
+							</div>
+							<div className="comment-container flex">
+								<div className="connector ml-7 -mt-1 border-l-2 border-b-2 w-[13px] h-[20px] border-[#d80a77]"></div>
+								<p className="ml-3">{comment.text}</p>
+							</div>
 						</div>
 					))
 				)}

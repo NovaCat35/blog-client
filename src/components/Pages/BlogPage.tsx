@@ -6,13 +6,11 @@ import { useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import formatDate from "../../functions/DateFormatter";
 import defaultImg from "../../assets/default.jpeg";
-// import { Link } from "react-router-dom";
 import "../../styles/Fonts.scss";
 import "../../styles/Blog.scss";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import CommentSection from "../CommentSection";
-
 
 function BlogPage() {
 	const { id } = useParams();
@@ -20,7 +18,10 @@ function BlogPage() {
 	const [blog, setBlog] = useState(blogs.find((blog) => blog._id == id));
 
 	useEffect(() => {
-		setBlog(blogs.find((blog) => blog._id == id));
+		const foundBlog = blogs.find((blog) => blog._id === id);
+		if (foundBlog) {
+			setBlog(foundBlog);
+		} 
 	}, [blog, blogs, id]);
 
 	return (
@@ -70,7 +71,7 @@ function BlogPage() {
 				)}
 
 				<h3 className="font-semibold">{blog?.comments.length} Comments</h3>
-				<CommentSection blog={blog} blogId={id}/>
+				<CommentSection blog={blog} blogId={id} />
 			</main>
 			<Footer />
 		</div>

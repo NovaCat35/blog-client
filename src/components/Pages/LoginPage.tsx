@@ -38,6 +38,7 @@ function LoginPage() {
 			const response = await fetch("https://wayfarers-frontier-api.fly.dev/auth/login", {
 				method: "POST",
 				headers: {
+					mode: "cors",
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify(newUser),
