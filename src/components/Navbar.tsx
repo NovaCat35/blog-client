@@ -13,23 +13,11 @@ function Navbar() {
 	const [lastScrollY, setLastScrollY] = useState(0);
 	const { tokenActive } = useContext(AuthContext); // we have a verified user (e.g. token is active), set a route to profile link instead of standard login/signup btn
 	const { activeLink } = useContext(NavbarContext);
-
 	const modalNavRef = useRef<HTMLDivElement>(null);
 
-	useEffect(() => {
-		// Click outside pfp-nav container and it's children (modal) will make modal not be shown
-		const handleClickOutside = (event: MouseEvent) => {
-			if (modalNavRef.current && !modalNavRef.current.contains(event.target as Node)) {
-				setShowModal(false);
-			}
-		};
-
-		window.addEventListener("mousedown", handleClickOutside);
-		return () => {
-			window.removeEventListener("mousedown", handleClickOutside);
-		};
-	}, [setShowModal]);
-
+	/**
+	 * SCROLL CONTROL: disappear when user scrolls down and reappear when scroll up
+	 */
 	useEffect(() => {
 		const controlNavbar = () => {
 			if (typeof window !== "undefined") {
@@ -58,6 +46,11 @@ function Navbar() {
 		}
 	}, [lastScrollY]);
 
+	/** 
+	 * MODAL controls below:
+	 * 1) Direct click on img: toggle modal
+	 * 2) Click outside of modal -> close modal
+	 */
 	const toggleModal = () => {
 		if (showModal) {
 			setShowModal(false);
@@ -65,6 +58,19 @@ function Navbar() {
 			setShowModal(true);
 		}
 	};
+	useEffect(() => {
+		// Click outside pfp-nav container and it's children (modal) will make modal not be shown
+		const handleClickOutside = (event: MouseEvent) => {
+			if (modalNavRef.current && !modalNavRef.current.contains(event.target as Node)) {
+				setShowModal(false);
+			}
+		};
+
+		window.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			window.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, [setShowModal]);
 
 	return (
 		<nav className={`flex px-10 pt-7 pb-5 bg-white bg-opacity-90 sticky top-0 z-10 transition-transform duration-300 transform ${showNav ? "translate-y-0" : "-translate-y-full"}`}>
