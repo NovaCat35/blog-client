@@ -6,8 +6,8 @@ import formatDate from "../functions/DateFormatter";
 import defaultImg from "../assets/default.jpeg";
 import dotsSvg from "../assets/dots-horizontal.svg";
 import CommentModal from "./CommentModal";
-import EditForm from "./Forms/EditForm"
-import CommentForm from "./Forms/CommentForm"
+import EditForm from "./Forms/EditForm";
+import CommentForm from "./Forms/CommentForm";
 
 interface CommentSectionProps {
 	blog: Blog | undefined;
@@ -154,9 +154,14 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 								<div className="texts-container">
 									<div className="flex items-center gap-3">
 										<p className="font-semibold">{comment.user.username}</p>
-										{user._id === comment.user._id && <p className="bg-[#89a02c] rounded-md px-3 text-white text-sm">YOU</p>}
+										<div className="user-tags flex items-center gap-2">
+											{user._id === comment.user._id && <p className="bg-[#e3801d] rounded-md px-3 text-white text-sm">YOU</p>}
+											{comment.user._id === blog?.author._id && <p className="bg-[#89a02c] rounded-md px-3 text-white text-sm">OP</p>}
+										</div>
 									</div>
-									<p className="text-gray-500">{formatDate(comment.date_posted)}</p>
+									<p className="text-gray-500">
+										{formatDate(comment.date_posted)} {comment.edited && "(edited)"}
+									</p>
 								</div>
 								{tokenActive && user._id === comment.user._id && (
 									<div ref={(element) => moreOptionsContainerRefs.current.push(element)} className="more-options-container relative ml-auto -mt-5 cursor-pointer">
@@ -167,11 +172,7 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 							</div>
 							<div className="comment-container flex">
 								<div className="connector ml-7 -mt-1 border-l-2 border-b-2 w-[13px] h-[20px] border-[#d80a77]"></div>
-								{editActive && activeEditCommentId === comment._id ? (
-									<EditForm handleEditChange={handleEditCommentChange} editCommentText={editCommentText} setEditActive={setEditActive} />
-								) : (
-									<p className="ml-3">{comment.text}</p>
-								)}
+								{editActive && activeEditCommentId === comment._id ? <EditForm commentId={activeEditCommentId} handleEditChange={handleEditCommentChange} editCommentText={editCommentText} setEditActive={setEditActive} refreshComments={refreshComments} /> : <p className="ml-3">{comment.text}</p>}
 							</div>
 						</div>
 					))

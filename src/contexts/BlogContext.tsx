@@ -17,6 +17,7 @@ export type Comment = {
 	likes: number;
 	date_posted: string; // Date turn to string with .json()
 	replies: Comment[]; // Array of Object IDs of reply comments
+	edited: boolean;
 };
 
 export type Blog = {
