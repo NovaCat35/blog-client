@@ -6,6 +6,8 @@ import formatDate from "../functions/DateFormatter";
 import defaultImg from "../assets/default.jpeg";
 import dotsSvg from "../assets/dots-horizontal.svg";
 import CommentModal from "./CommentModal";
+import EditForm from "./Forms/EditForm"
+import CommentForm from "./Forms/CommentForm"
 
 interface CommentSectionProps {
 	blog: Blog | undefined;
@@ -45,7 +47,6 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 
 	// Opening up edit
 	const handleEditComment = (comment: Comment) => {
-		console.log("open edit");
 		setEditActive(true);
 		setEditCommentText(comment.text);
 		setActiveEditCommentId(activeModalCommentId); // makes current editorId same as current commentId (so we can close the modal but keep the comment's id)
@@ -109,7 +110,6 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
 			// if (moreOptionsContainerRef.current && !moreOptionsContainerRef.current.contains(event.target as Node)) {
-			// 	console.log("we are out");
 			// 	setActiveModalCommentId(null);
 			// }
 			if (!moreOptionsContainerRefs.current.some((ref) => ref?.contains(event.target as Node))) {
@@ -132,20 +132,7 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 				{tokenActive ? (
 					<div className="user-form">
 						<p>{user.username}</p>
-						<form className="border-2 w-[80vw]" onSubmit={handleSubmit} action="/">
-							<label htmlFor="comment"></label>
-							<div className="relative">
-								<textarea onChange={handleCommentChange} value={commentText} placeholder="What are your thoughts?" className="w-full outline-none px-5 py-5" id="comment" name="comment" minLength={2} rows={2} />
-								<div className="absolute bottom-0 right-3 flex justify-end gap-5 pb-2">
-									<button type="button" className="font-semibold" onClick={() => setCommentText("")}>
-										Cancel
-									</button>
-									<button type="submit" className="bg-[#1ca1ba] font-semibold text-white px-5 py-1 rounded-md">
-										Respond
-									</button>
-								</div>
-							</div>
-						</form>
+						<CommentForm handleSubmit={handleSubmit} handleCommentChange={handleCommentChange} commentText={commentText} setCommentText={setCommentText} />
 					</div>
 				) : (
 					<Link to="/login" className="alert-container flex items-center gap-5 px-5 py-3 border-4 border-[#e84267] rounded-md hover:bg-[#e84267] hover:text-white transition duration-300 ease-in-out">
@@ -181,20 +168,7 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 							<div className="comment-container flex">
 								<div className="connector ml-7 -mt-1 border-l-2 border-b-2 w-[13px] h-[20px] border-[#d80a77]"></div>
 								{editActive && activeEditCommentId === comment._id ? (
-									<form className="border-2 w-[100%] mb-3" action="/">
-										<label htmlFor="comment"></label>
-										<div className="relative">
-											<textarea onChange={handleEditCommentChange} value={editCommentText} placeholder="What are your thoughts?" className="w-full outline-none px-3 py-3" id="comment" name="comment" minLength={2} rows={2} />
-											<div className="absolute -bottom-5 right-3 flex justify-end gap-3 pb-2">
-												<button type="button" className="bg-[#a5adba] text-sm text-white px-3 py-1 rounded-md" onClick={() => setEditActive(false)}>
-													Cancel
-												</button>
-												<button type="submit" className="bg-[#89a02c] text-sm text-white px-5 py-[0.5px] rounded">
-													Edit
-												</button>
-											</div>
-										</div>
-									</form>
+									<EditForm handleEditChange={handleEditCommentChange} editCommentText={editCommentText} setEditActive={setEditActive} />
 								) : (
 									<p className="ml-3">{comment.text}</p>
 								)}
