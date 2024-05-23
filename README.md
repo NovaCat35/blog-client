@@ -81,3 +81,6 @@ Navigation: https://unsplash.com/photos/person-holding-compass-facing-towards-gr
 
 Sabbatical:
 https://unsplash.com/photos/person-walking-on-wooden-pathway-near-mountain-UPapS5-R_rk
+
+Seagulls:
+https://www.vexels.com/png-svg/preview/235038/seagull-bird-side-view

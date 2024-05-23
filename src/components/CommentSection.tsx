@@ -5,9 +5,13 @@ import { Link } from "react-router-dom";
 import formatDate from "../functions/DateFormatter";
 import defaultImg from "../assets/default.jpeg";
 import dotsSvg from "../assets/dots-horizontal.svg";
+import heartSvg from "../assets/heart.svg";
+import heartFilledSvg from "../assets/heart-filled.svg";
+import messageSvg from "../assets/chat-bubble.svg";
 import CommentModal from "./CommentModal";
 import EditForm from "./Forms/EditForm";
 import CommentForm from "./Forms/CommentForm";
+import "../styles/Comment.scss";
 
 interface CommentSectionProps {
 	blog: Blog | undefined;
@@ -21,10 +25,21 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 	const [editActive, setEditActive] = useState(false);
 	const [editCommentText, setEditCommentText] = useState("");
 	const [commentText, setCommentText] = useState("");
-	const [activeModalCommentId, setActiveModalCommentId] = useState<string | null>(null);
-	// we keep a separate activeId for edit since we want to close(or make null) the modal when editing
-	const [activeEditCommentId, setActiveEditCommentId] = useState<string | null>(null);
 	const moreOptionsContainerRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+	/* we keep a separate activeId for edit since we want to close(or make null) the modal when editing */
+	const [activeEditCommentId, setActiveEditCommentId] = useState<string | null>(null);
+	const [activeModalCommentId, setActiveModalCommentId] = useState<string | null>(null);
+
+	/* heart animation */
+	const [activeHeart, setActiveHeart] = useState<string | null>(null);
+	const handleAnimation = (commentId: string) => {
+		setActiveHeart(commentId);
+	};
+
+	const handleAnimationEnd = () => {
+		setActiveHeart(null);
+	};
 
 	// LOADING/FETCHING up comments for current blog
 	useEffect(() => {
@@ -173,6 +188,13 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 							<div className="comment-container flex">
 								<div className="connector ml-7 -mt-1 border-l-2 border-b-2 w-[13px] h-[20px] border-[#d80a77]"></div>
 								{editActive && activeEditCommentId === comment._id ? <EditForm commentId={activeEditCommentId} handleEditChange={handleEditCommentChange} editCommentText={editCommentText} setEditActive={setEditActive} refreshComments={refreshComments} /> : <p className="ml-3">{comment.text}</p>}
+							</div>
+							<div className="bottom-container flex items-center gap-2 mt-3 ">
+								<img className={`heart w-[30px] cursor-pointer ${activeHeart == comment._id ? "animate" : ""}`} src={activeHeart == comment._id ? heartFilledSvg : heartSvg} alt="heart icon" onClick={() => handleAnimation(comment._id)} onAnimationEnd={handleAnimationEnd} />
+								<div className="reply flex items-center gap-1 cursor-pointer">
+									<img className="w-[28px]" src={messageSvg} alt="reply icon" />
+									<p className="text-[14px] text-[#8d939e] font-medium">Reply</p>
+								</div>
 							</div>
 						</div>
 					))

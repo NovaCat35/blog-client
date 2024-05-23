@@ -97,8 +97,10 @@ const MockedFetch = async (): Promise<Comment[]> => {
 					likes: 3,
 					date_posted:"2024-05-11",
 					replies: [],
+					edited: false,
 				},
 			],
+			edited: false,
 		},
 		{
 			_id: "comment3", // New comment ID
@@ -115,6 +117,7 @@ const MockedFetch = async (): Promise<Comment[]> => {
 			likes: 8,
 			date_posted: "2024-05-12",
 			replies: [],
+			edited: false,
 		},
 	];
 
