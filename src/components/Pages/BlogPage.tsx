@@ -70,9 +70,6 @@ function BlogPage() {
 					<p>Loading...</p>
 				)}
 
-				<h3 className="font-semibold">
-					{blog?.comments.length} Comment{blog?.comments && blog?.comments.length > 1 ? "s" : ""}
-				</h3>
 				<CommentSection blog={blog} blogId={id} />
 			</main>
 			<Footer />
