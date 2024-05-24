@@ -4,6 +4,7 @@ import { BlogContext, Comment, Blog } from "../contexts/BlogContext";
 import { Link } from "react-router-dom";
 import formatDate from "../functions/DateFormatter";
 import defaultImg from "../assets/default.jpeg";
+import seagullImg from "../assets/seagull.png";
 import dotsSvg from "../assets/dots-horizontal.svg";
 import heartSvg from "../assets/heart.svg";
 import heartFilledSvg from "../assets/heart-filled.svg";
@@ -139,24 +140,38 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 	}, []);
 
 	return (
-		<>
-			<h3 className="font-semibold">
-				{comments.length} Comment{comments.length > 1 ? "s" : ""}
-			</h3>
-			<div className="user-form-container flex justify-center mt-5">
-				{tokenActive ? (
-					<div className="user-form">
-						<p>{user.username}</p>
-						<CommentForm handleSubmit={handleSubmit} handleCommentChange={handleCommentChange} commentText={commentText} setCommentText={setCommentText} />
-					</div>
-				) : (
-					<Link to="/login" className="alert-container flex items-center gap-5 px-5 py-3 border-4 border-[#e84267] rounded-md hover:bg-[#e84267] hover:text-white transition duration-300 ease-in-out">
-						<p className="text-xl hover">Join us, log in to comment.</p>
-					</Link>
-				)}
+		<div className="mt-[100px]">
+			<div className="user-comment-container">
+				<h3 className="font-semibold">
+					{comments.length} Comment{comments.length > 1 ? "s" : ""}
+				</h3>
+				<div className="user-form-container flex justify-center mt-5">
+					{tokenActive ? (
+						<div className="user-form">
+							<p>{user.username}</p>
+							<CommentForm handleSubmit={handleSubmit} handleCommentChange={handleCommentChange} commentText={commentText} setCommentText={setCommentText} />
+						</div>
+					) : (
+						<Link to="/login" className="alert-container flex items-center gap-5 px-5 py-3 border-4 border-[#1ca1ba] rounded-md hover:bg-[#e84267] hover:border-[#e84267] hover:text-white transition duration-300 ease-in-out">
+							<p className="text-xl hover">Join us, log in to comment.</p>
+						</Link>
+					)}
+				</div>
 			</div>
 
-			<div className="comment-section flex flex-col items-center border-t-8 border-gray-300 pt-5 mt-5 mb-10 text-gray-800">
+			{tokenActive ? (
+				<div className="separator relative mt-5">
+					<img className="bird absolute top-[-205px] right-[50px] h-[100px] w-[130px] object-contain" src={seagullImg} alt="" />
+					<div className="land bg-[#c8b9b1] w-full h-[50px] border-t-[15px] border-[#ece7d1]"></div>
+				</div>
+			) : (
+				<div className="separator relative mt-5">
+					<img className="bird absolute top-[-88px] right-[50px] h-[100px] w-[130px] object-contain" src={seagullImg} alt="" />
+					<div className="land bg-[#c8b9b1] w-full h-[50px] border-t-[15px] border-[#ece7d1]"></div>
+				</div>
+			)}
+
+			<div className="comment-section flex flex-col items-center border-t-8 border-gray-300 pt-5 mb-10 text-gray-800">
 				{comments.length == 0 ? (
 					<div className="text-center">No comments yet, be the first to comment!</div>
 				) : (
@@ -200,7 +215,7 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 					))
 				)}
 			</div>
-		</>
+		</div>
 	);
 }
 
