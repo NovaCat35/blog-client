@@ -67,12 +67,11 @@ function LoginPage() {
 		<div className="flex flex-col min-h-screen">
 			<Navbar />
 			<main className="flex-grow flex flex-col items-center justify-center px-10">
-				<h1 className="text-xl text-center font-semibold mb-10">
+				<h1 className="text-xl text-[#223742] text-center font-semibold mb-10">
 					AHOY MATEY, welcome back! <br /> Here be a reminder of our community{" "}
-					<a className="underline underline-offset-4 text-[#e7175a]" href="">
-						guidelines
+					<a className="underline underline-offset-8 text-[#e7175a]" href="/guideline">
+						guidelines.
 					</a>
-					, yarrgh!!
 				</h1>
 				<form onSubmit={handleSubmit} className="flex flex-col w-[80vw] md:w-[470px] lg:w-[50vw] mb-10">
 					<div className="form-opt flex flex-col">

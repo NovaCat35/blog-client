@@ -3,11 +3,11 @@ import Footer from "../Footer";
 import { Link } from "react-router-dom";
 import errorImg from "../../assets/dungeon-meshi.png";
 
-function BlogPage() {
+function ErrorPage() {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<Navbar />
-			<main className="flex-grow">
+			<main className="flex-grow overflow-hidden w-[100vw]">
 				<div className="banner bg-[#8dbadb] w-full h-5 border-b-4 border-[#105581]"></div>
 				<div className="flex flex-col items-center">
 					<h1 className="text-3xl font-bold text-[#d80a77] mt-8 mb-5">404: YOLO!</h1>
@@ -30,4 +30,4 @@ function BlogPage() {
 	);
 }
 
-export default BlogPage;
+export default ErrorPage;

@@ -97,9 +97,9 @@ function SignupPage() {
 		<div className="flex flex-col min-h-screen">
 			<Navbar />
 			<main className="flex-grow flex flex-col items-center justify-center px-10">
-				<h1 className="text-xl text-center font-semibold mb-10">
+				<h1 className="text-xl text-[#223742] text-center font-semibold mb-10">
 					Yargh, welcome aboard to our community! <br /> Please follow our community{" "}
-					<a className="underline underline-offset-4 text-[#e7175a]" href="">
+					<a className="underline underline-offset-8 text-[#e7175a]" href="/guideline">
 						guidelines
 					</a>{" "}
 					here.

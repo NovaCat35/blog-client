@@ -9,6 +9,7 @@ import SignupPage from "../components/Pages/SignupPage";
 import ProfilePage from "../components/Pages/ProfilePage";
 import WritePage from "../components/Pages/WritePage";
 import ErrorPage from "../components/Pages/ErrorPage";
+import GuidelinePage from "../components/Pages/GuidelinePage";
 import RouteWrapper from "./RouterWrapper";
 
 const Router = () => {
@@ -93,6 +94,15 @@ const Router = () => {
 				<RouteWrapper>
 					<ScrollRestoration />
 					<WritePage />
+				</RouteWrapper>
+			),
+		},
+		{
+			path: "/guideline",
+			element: (
+				<RouteWrapper>
+					<ScrollRestoration />
+					<GuidelinePage />
 				</RouteWrapper>
 			),
 		},
