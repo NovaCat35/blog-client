@@ -16,7 +16,13 @@
 	}
 }
 
-.bird {
+.bird-intro {
+	top: -175px;
+	right: 50px;
+	@media screen and (min-width: "590px") {
+		top: -90px;
+		right: 50px;
+	}
 }
 
 @keyframes pop {
