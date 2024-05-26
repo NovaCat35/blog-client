@@ -6,9 +6,9 @@ import formatDate from "../../functions/DateFormatter";
 import defaultImg from "../../assets/default.jpeg";
 import seagullImg from "../../assets/seagull3.png";
 import dotsSvg from "../../assets/dots-horizontal.svg";
-import messageSvg from "../../assets/chat-bubble.svg";
 import CommentModal from "./CommentModal";
 import CommentLikes from "./CommentLikes";
+import CommentReplies from "./CommentReplies";
 import EditForm from "./Forms/EditForm";
 import CommentForm from "./Forms/CommentForm";
 import "../../styles/Comment.scss";
@@ -214,10 +214,7 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 							</div>
 							<div className="bottom-container flex items-center gap-2 mt-3 ">
 								<CommentLikes comment={comment} refreshComments={refreshComments} />
-								<div className="reply flex items-center gap-1 cursor-pointer">
-									<img className="w-[28px]" src={messageSvg} alt="reply icon" />
-									<p className="text-[14px] text-[#8d939e] font-medium">Reply</p>
-								</div>
+								<CommentReplies />
 							</div>
 						</div>
 					))

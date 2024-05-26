@@ -79,7 +79,7 @@ const MockedFetch = async (): Promise<Comment[]> => {
 				admin_access: false,
 			},
 			text: "Fascinating read!",
-			likes: 5,
+			likes: ["user1", "user2"],
 			date_posted: "2024-05-10",
 			replies: [
 				{
@@ -94,7 +94,7 @@ const MockedFetch = async (): Promise<Comment[]> => {
 						admin_access: false,
 					},
 					text: "Agreed!",
-					likes: 3,
+					likes: ["user1", "user2"],
 					date_posted:"2024-05-11",
 					replies: [],
 					edited: false,
@@ -114,7 +114,7 @@ const MockedFetch = async (): Promise<Comment[]> => {
 				admin_access: false,
 			},
 			text: "Interesting perspective!",
-			likes: 8,
+			likes: ["user1"],
 			date_posted: "2024-05-12",
 			replies: [],
 			edited: false,
