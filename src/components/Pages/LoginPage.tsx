@@ -68,7 +68,7 @@ function LoginPage() {
 			<Navbar />
 			<main className="flex-grow flex flex-col items-center justify-center px-10">
 				<h1 className="text-xl text-[#223742] text-center font-semibold mb-10">
-					AHOY MATEY, welcome back! <br /> Here be a reminder of our community{" "}
+					AHOY, welcome back! <br /> Here be a reminder of our community{" "}
 					<a className="underline underline-offset-8 text-[#e7175a]" href="/guideline">
 						guidelines.
 					</a>
@@ -76,7 +76,7 @@ function LoginPage() {
 				<form onSubmit={handleSubmit} className="flex flex-col w-[80vw] md:w-[470px] lg:w-[50vw] mb-10">
 					<div className="form-opt flex flex-col">
 						<label htmlFor="username">Username</label>
-						<input type="text" name="username" onChange={handleChange} id="username" className="border-2 border-gray-300 rounded px-3 py-2 mb-3" placeholder="John Cena" required />
+						<input type="text" name="username" onChange={handleChange} id="username" className="border-2 border-gray-300 rounded px-3 py-2 mb-3" placeholder="Jack Sparrow" required />
 					</div>
 					<div className="form-opt flex flex-col">
 						<label htmlFor="password">Password</label>

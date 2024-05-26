@@ -23,8 +23,8 @@ function AboutPage() {
 							</a>{" "}
 							page.{" "}
 						</p>
-						<p className="mb-5">This website was created in part to showcase some crucial skills I have learned so far from the ODIN PROJECT full stack path . The reason I named it "Wayfarer's Frontier" was partly because of my metaphorical idea of life. Where one's out lost at sea, with occasions such as a bright glimmer of a beacon light from the distant shoreline. </p>
-						<p className="mb-5">While this is now far from my magnum opus, this project is something i'm proud of and will most likely be updated from time to time with some of my thoughts and projects I'm working on. It may not gather that much views, maybe I'll end up talking to myself in the end . . . but hey, that's cool too. Anyway, I will try to fill this vibrant space with whatever artistic expression I have and showcases of my various side projects. Who knows, maybe I can grow myself as I grow this site too and make someone's day while I'm at it.</p>
+						<p className="mb-5">This website was created in part to showcase some crucial skills I have learned so far from the Odin Project's full stack path . The reason I named it "Wayfarer's Frontier" was partly because of my metaphorical idea of life. Where one's out lost at sea, with occasions such as a bright glimmer of a beacon light from the distant shoreline. </p>
+						<p className="mb-5">As I approach the end of this project, I'm quite proud of what I created and will likely update from time to time. Perhaps I'll end up talking to myself in the end, but hey, it's cool to just journal some thoughts! Anyway, I'll try to fill this space with whatever comes to mind and showcase some of my various side projects too. Who knows, maybe I can grow myself as I grow this site and make someone's day while I'm at it.</p>
 						<p className="text-2xl font-bold mb-2">Viewers Like You.</p>
 						<p className="mb-5">
 							As the PBS shows always ends it, This site was made possible by viewers like you. <span className="text-[#e7175a] font-bold">Thank you!</span>

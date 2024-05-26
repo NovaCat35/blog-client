@@ -1,4 +1,4 @@
-import { Comment } from "../contexts/BlogContext";
+import { Comment } from "../../contexts/BlogContext";
 
 interface CommentModalProps {
 	commentId: string;
@@ -40,12 +40,15 @@ function CommentModal({ commentId, refreshComments, comment, handleEditComment }
 
 	return (
 		<div className="comment-modal-container absolute z-10 border-2 border-gray-400 px-4 py-2 rounded-md top-6 -right-5 bg-white">
-			<p className="text-gray-500 hover:text-black" onClick={() =>{ 
-            console.log('HIT EDIT')
-            handleEditComment(comment)}}>
+			<p
+				className="text-gray-500 hover:text-black"
+				onClick={() => {
+					handleEditComment(comment);
+				}}
+			>
 				Edit
 			</p>
-			<p className="text-gray-500 hover:text-[#e7175a]" onClick={() => {console.log('delete'); handleDelete()}}>
+			<p className="text-gray-500 hover:text-[#e7175a]" onClick={handleDelete}>
 				Delete
 			</p>
 		</div>

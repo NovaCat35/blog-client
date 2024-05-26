@@ -1,18 +1,17 @@
 import { useContext, useState, useEffect, ChangeEvent, useRef } from "react";
-import { AuthContext } from "../contexts/AuthContext";
-import { BlogContext, Comment, Blog } from "../contexts/BlogContext";
+import { AuthContext } from "../../contexts/AuthContext";
+import { BlogContext, Comment, Blog } from "../../contexts/BlogContext";
 import { Link } from "react-router-dom";
-import formatDate from "../functions/DateFormatter";
-import defaultImg from "../assets/default.jpeg";
-import seagullImg from "../assets/seagull3.png";
-import dotsSvg from "../assets/dots-horizontal.svg";
-import heartSvg from "../assets/heart.svg";
-import heartFilledSvg from "../assets/heart-filled.svg";
-import messageSvg from "../assets/chat-bubble.svg";
+import formatDate from "../../functions/DateFormatter";
+import defaultImg from "../../assets/default.jpeg";
+import seagullImg from "../../assets/seagull3.png";
+import dotsSvg from "../../assets/dots-horizontal.svg";
+import messageSvg from "../../assets/chat-bubble.svg";
 import CommentModal from "./CommentModal";
+import CommentLikes from "./CommentLikes";
 import EditForm from "./Forms/EditForm";
 import CommentForm from "./Forms/CommentForm";
-import "../styles/Comment.scss";
+import "../../styles/Comment.scss";
 
 interface CommentSectionProps {
 	blog: Blog | undefined;
@@ -32,15 +31,6 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 	const [activeEditCommentId, setActiveEditCommentId] = useState<string | null>(null);
 	const [activeModalCommentId, setActiveModalCommentId] = useState<string | null>(null);
 
-	/* heart animation */
-	const [activeHeart, setActiveHeart] = useState<string | null>(null);
-	const handleAnimation = (commentId: string) => {
-		setActiveHeart(commentId);
-	};
-
-	const handleAnimationEnd = () => {
-		setActiveHeart(null);
-	};
 
 	// LOADING/FETCHING up comments for current blog
 	useEffect(() => {
@@ -223,7 +213,7 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 								{editActive && activeEditCommentId === comment._id ? <EditForm commentId={activeEditCommentId} handleEditChange={handleEditCommentChange} editCommentText={editCommentText} setEditActive={setEditActive} refreshComments={refreshComments} /> : <p className="ml-3">{comment.text}</p>}
 							</div>
 							<div className="bottom-container flex items-center gap-2 mt-3 ">
-								<img className={`heart w-[30px] cursor-pointer ${activeHeart == comment._id ? "animate" : ""}`} src={activeHeart == comment._id ? heartFilledSvg : heartSvg} alt="heart icon" onClick={() => handleAnimation(comment._id)} onAnimationEnd={handleAnimationEnd} />
+								<CommentLikes comment={comment} refreshComments={refreshComments} />
 								<div className="reply flex items-center gap-1 cursor-pointer">
 									<img className="w-[28px]" src={messageSvg} alt="reply icon" />
 									<p className="text-[14px] text-[#8d939e] font-medium">Reply</p>

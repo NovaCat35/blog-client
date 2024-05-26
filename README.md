@@ -84,3 +84,6 @@ https://unsplash.com/photos/person-walking-on-wooden-pathway-near-mountain-UPapS
 
 Seagulls:
 https://www.vexels.com/png-svg/preview/235038/seagull-bird-side-view
+
+Wave generator:
+https://www.softr.io/tools/svg-wave-generator

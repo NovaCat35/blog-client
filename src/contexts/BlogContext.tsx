@@ -14,7 +14,7 @@ export type Comment = {
 	_id: string;
 	user: User;
 	text: string;
-	likes: number;
+	likes: string[];
 	date_posted: string; // Date turn to string with .json()
 	replies: Comment[]; // Array of Object IDs of reply comments
 	edited: boolean;

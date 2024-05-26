@@ -36,7 +36,6 @@ function ProfilePage() {
 						<img src={catBagImg} alt="cat laying down" className="max-w-xs object-cover rounded-md" />
 					</div>
 				)}
-
 				<p className="inline-block mt-5 px-10 py-2 bg-[#f0c033] font-bold rounded text-center">This page is under construction ⚠️</p>
 			</main>
 			<Footer />

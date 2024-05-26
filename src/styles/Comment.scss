@@ -1,17 +1,25 @@
-.heart {
-	filter: invert(18%) sepia(96%) saturate(3791%) hue-rotate(316deg) brightness(83%) contrast(104%);
-	transition: transform 0.2s ease-in-out;
-	&.animate {
-		animation: pop 0.3s ease-in-out forwards;
+.bottom-container {
+	img {
+		-webkit-user-drag: none;
+		-khtml-user-drag: none;
+		-moz-user-drag: none;
+		-o-user-drag: none;
+		user-drag: none;
 	}
-}
-
-.reply {
-	filter: invert(61%) sepia(8%) saturate(406%) hue-rotate(180deg) brightness(94%) contrast(91%);
-	&:hover {
-		filter: invert(8%) sepia(10%) saturate(3667%) hue-rotate(166deg) brightness(95%) contrast(93%);
-		p {
-			color: black;
+	.heart {
+		filter: invert(18%) sepia(96%) saturate(3791%) hue-rotate(316deg) brightness(83%) contrast(104%);
+		transition: transform 0.2s ease-in-out;
+		&.animate {
+			animation: pop 0.3s ease-in-out forwards;
+		}
+	}
+	.reply {
+		filter: invert(61%) sepia(8%) saturate(406%) hue-rotate(180deg) brightness(94%) contrast(91%);
+		&:hover {
+			filter: invert(8%) sepia(10%) saturate(3667%) hue-rotate(166deg) brightness(95%) contrast(93%);
+			p {
+				color: black;
+			}
 		}
 	}
 }

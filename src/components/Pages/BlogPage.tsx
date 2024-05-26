@@ -10,7 +10,7 @@ import "../../styles/Fonts.scss";
 import "../../styles/Blog.scss";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import CommentSection from "../CommentSection";
+import CommentSection from "../CommentParts/CommentSection";
 
 function BlogPage() {
 	const { id } = useParams();
