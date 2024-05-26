@@ -1,47 +1,72 @@
 import { useState } from "react";
 import messageSvg from "../../assets/chat-bubble.svg";
-// import { Comment } from "../../contexts/BlogContext";
+import { Comment } from "../../contexts/BlogContext";
 
-// interface CommentLikesProps {
-// 	comment: Comment;
-// 	refreshComments: () => void;
-// }
+interface CommentLikesProps {
+	comment: Comment;
+	refreshComments: () => void;
+}
 
-function CommentReplies() {
-	// const handleClick = async () => {
-	// 	try {
-	// 		// Get the JWT token from localStorage
-	// 		const token = localStorage.getItem("jwt_token");
-	// 		if (!token) {
-	// 			throw new Error("JWT token not found");
-	// 		}
-	// 		const response = await fetch(`https://wayfarers-frontier-api.fly.dev/comments/${comment._id}/likes`, {
-	// 			mode: "cors",
-	// 			method: "PUT",
-	// 			headers: {
-	// 				"Content-Type": "application/json",
-	// 				Authorization: `Bearer ${token}`,
-	// 			},
-	// 		});
+function CommentReplies({ comment, refreshComments }: CommentLikesProps) {
+	const [replyText, setReplyText] = useState("");
+	const [replyFormActive, setReplyFormActive] = useState(false);
 
-	// 		if (response.ok) {
-	// 			refreshComments();
-	// 			const data = await response.json();
-	// 			console.log(data.message);
-	// 		} else {
-	// 			const errorMessage = await response.text();
-	// 			console.error("Failed to update comment:", response.status, errorMessage);
-	// 		}
-	// 	} catch (error) {
-	// 		console.error("An error occurred while replying:", error);
-	// 	}
-	// };
+	const handleSubmit = async () => {
+		try {
+			// Get the JWT token from localStorage
+			const token = localStorage.getItem("jwt_token");
+			if (!token) {
+				throw new Error("JWT token not found");
+			}
+			const response = await fetch(`https://wayfarers-frontier-api.fly.dev/comments/${comment._id}/reply`, {
+				mode: "cors",
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${token}`,
+				},
+				body: JSON.stringify({
+					reply: replyText,
+				}),
+			});
+
+			if (response.ok) {
+				refreshComments();
+				const data = await response.json();
+				console.log(data.message);
+			} else {
+				const errorMessage = await response.text();
+				console.error("Failed to upload reply:", response.status, errorMessage);
+			}
+		} catch (error) {
+			console.error("An error occurred while replying:", error);
+		}
+	};
+
+	const handleClick = () => {
+		setReplyFormActive((state) => !state);
+	};
+
+	const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+		setReplyText(e.target.value);
+	};
 
 	return (
-      <div className="reply flex items-center gap-1 cursor-pointer">
-      <img className="w-[28px]" src={messageSvg} alt="reply icon" />
-      <p className="text-[14px] text-[#8d939e] font-medium">Reply</p>
-   </div>
+		<div className="reply-section flex flex-col relative">
+			{" "}
+			<div onClick={handleClick} className="reply flex items-center gap-1 cursor-pointer">
+				<img className="w-[28px]" src={messageSvg} alt="reply icon" />
+				<p className="text-[14px] text-[#8d939e] font-medium">Reply</p>
+			</div>
+			{replyFormActive && (
+				<form className="flex flex-col w-[60vw]" onSubmit={handleSubmit}>
+					<textarea onChange={handleTextChange} value={replyText} placeholder="Something to share? (Note: replying is work-in-progress, only saves your data for now)" className="w-full outline-none mt-2 px-3 py-3 border" id="comment" name="comment" minLength={2} rows={1} />
+					<button className="bg-[#89a02c] text-sm text-white px-5 py-[0.5px] transition ease-in-out hover:bg-[#788c27]" type="submit">
+						Reply
+					</button>
+				</form>
+			)}
+		</div>
 	);
 }
 

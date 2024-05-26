@@ -214,7 +214,7 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 							</div>
 							<div className="bottom-container flex items-center gap-2 mt-3 ">
 								<CommentLikes comment={comment} refreshComments={refreshComments} />
-								<CommentReplies />
+								<CommentReplies comment={comment} refreshComments={refreshComments}/>
 							</div>
 						</div>
 					))
