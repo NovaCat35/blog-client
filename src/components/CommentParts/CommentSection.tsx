@@ -56,8 +56,13 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 	};
 
 	const handleReplyClick = (replyId: string) => {
-		setActiveReplyId(replyId)
-		setReplyFormActive((state) => !state);
+		// we click the same reply btn again (toggle the on/off)
+		if (replyId == activeReplyId) {
+			setReplyFormActive((state) => !state);
+		} else {
+			setActiveReplyId(replyId);
+			setReplyFormActive(true);
+		}
 	};
 
 	// Opening up edit
@@ -225,7 +230,7 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 								<CommentLikes comment={comment} refreshComments={refreshComments} />
 								<div onClick={() => handleReplyClick(comment._id)} className="reply flex items-center gap-1 cursor-pointer">
 									<img className="w-[28px]" src={messageSvg} alt="reply icon" />
-									<p className="text-[14px] text-[#8d939e] font-medium">Reply</p>
+									<p className="text-[14px] text-[#8d939e] font-medium">{(replyFormActive && comment._id == activeReplyId) ? "Hide" : "Reply"}</p>
 								</div>
 							</div>
 							{replyFormActive && comment._id == activeReplyId && <ReplyForm comment={comment} refreshComments={refreshComments} />}
@@ -247,16 +252,16 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 										<div className="connector ml-7 -mt-1 border-l-2 border-b-2 w-[13px] md:h-[20px] border-[#00adb3]"></div>
 										<p className="ml-3">{reply.text}</p>
 									</div>
-									<div className="bottom-container flex items-center gap-2 mt-3 ">
+									<div className="bottom-container flex items-center gap-3 mt-3 ">
 										<CommentLikes comment={reply} refreshComments={refreshComments} />
 										<div onClick={() => handleReplyClick(reply._id)} className="reply flex items-center gap-1 cursor-pointer">
 											<img className="w-[28px]" src={messageSvg} alt="reply icon" />
-											<p className="text-[14px] text-[#8d939e] font-medium">Reply</p>
+											<p className="text-[14px] text-[#8d939e] font-medium">{(replyFormActive && reply._id == activeReplyId) ? "Hide" : "Reply"}</p>
 										</div>
 										{tokenActive && user._id === reply.user._id && (
-											<div className="trash cursor-pointer flex items-center ml-2 text-[14px] text-[#8d939e] font-medium">
+											<div className="trash cursor-pointer flex items-center text-[14px] text-[#8d939e] font-medium">
 												<img className="w-[33px]" src={trashImg} alt="trashcan icon" />
-												<DeleteBtn commentId={reply._id} refreshComments={refreshComments} />
+												<DeleteBtn commentId={comment._id} refreshComments={refreshComments} replyId={reply._id}/>
 											</div>
 										)}
 									</div>

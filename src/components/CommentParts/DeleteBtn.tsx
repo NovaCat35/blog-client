@@ -1,9 +1,10 @@
 interface DeleteBtnProps {
 	refreshComments: () => void;
   commentId: string;
+  replyId: string;
 }
 
-function DeleteBtn({ refreshComments, commentId }: DeleteBtnProps) {
+function DeleteBtn({ refreshComments, commentId, replyId }: DeleteBtnProps) {
 	const handleDelete = async () => {
 		try {
 			// Get the JWT token from localStorage
@@ -12,7 +13,7 @@ function DeleteBtn({ refreshComments, commentId }: DeleteBtnProps) {
 				throw new Error("JWT token not found");
 			}
 
-			const response = await fetch(`https://wayfarers-frontier-api.fly.dev/comments/${commentId}`, {
+			const response = await fetch(`https://wayfarers-frontier-api.fly.dev/comments/${commentId}/replies/${replyId}`, {
 				mode: "cors",
 				method: "DELETE",
 				headers: {
