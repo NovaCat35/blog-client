@@ -7,9 +7,10 @@ import defaultImg from "../../assets/default.jpeg";
 import seagullImg from "../../assets/seagull3.png";
 import trashImg from "../../assets/trashcan.svg";
 import dotsSvg from "../../assets/dots-horizontal.svg";
+import messageSvg from "../../assets/chat-bubble.svg";
 import CommentModal from "./CommentModal";
 import CommentLikes from "./CommentLikes";
-import CommentReplies from "./CommentReplies";
+import ReplyForm from "./Forms/ReplyForm";
 import DeleteBtn from "./DeleteBtn";
 import EditForm from "./Forms/EditForm";
 import CommentForm from "./Forms/CommentForm";
@@ -27,11 +28,13 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 	const [editActive, setEditActive] = useState(false);
 	const [editCommentText, setEditCommentText] = useState("");
 	const [commentText, setCommentText] = useState("");
+	const [replyFormActive, setReplyFormActive] = useState(false);
 	const moreOptionsContainerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
 	/* we keep a separate activeId for edit since we want to close(or make null) the modal when editing */
 	const [activeEditCommentId, setActiveEditCommentId] = useState<string | null>(null);
 	const [activeModalCommentId, setActiveModalCommentId] = useState<string | null>(null);
+	const [activeReplyId, setActiveReplyId] = useState<string | null>(null);
 
 	// LOADING/FETCHING up comments for current blog
 	useEffect(() => {
@@ -50,6 +53,11 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 			setComments(updatedComments);
 			setCommentText(""); // Clear the comment textarea
 		}
+	};
+
+	const handleReplyClick = (replyId: string) => {
+		setActiveReplyId(replyId)
+		setReplyFormActive((state) => !state);
 	};
 
 	// Opening up edit
@@ -209,37 +217,42 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 									</div>
 								)}
 							</div>
-							<div className="comment-text-container flex">
-								<div className="connector ml-7 -mt-1 border-l-2 border-b-2 w-[13px] h-[20px] border-[#d80a77]"></div>
+							<div className="comment-text-container flex h-full">
+								<div className="connector ml-7 -mt-1 border-l-2 border-b-2 w-[13px] md:h-[20px] border-[#d80a77]"></div>
 								{editActive && activeEditCommentId === comment._id ? <EditForm commentId={activeEditCommentId} handleEditChange={handleEditCommentChange} editCommentText={editCommentText} setEditActive={setEditActive} refreshComments={refreshComments} /> : <p className="ml-3">{comment.text}</p>}
 							</div>
 							<div className="bottom-container flex items-center gap-2 mt-3 ">
 								<CommentLikes comment={comment} refreshComments={refreshComments} />
-								<CommentReplies comment={comment} refreshComments={refreshComments} />
+								<div onClick={() => handleReplyClick(comment._id)} className="reply flex items-center gap-1 cursor-pointer">
+									<img className="w-[28px]" src={messageSvg} alt="reply icon" />
+									<p className="text-[14px] text-[#8d939e] font-medium">Reply</p>
+								</div>
 							</div>
+							{replyFormActive && comment._id == activeReplyId && <ReplyForm comment={comment} refreshComments={refreshComments} />}
 
 							{comment.replies.map((reply) => (
-								<div key={reply._id} className="reply-container ml-20 mt-3 pb-2 border-b-2">
+								<div key={reply._id} className="reply-container ml-12 md:ml-20 mt-3 pb-2 border-b-2">
 									<div className="user-info mb-3 flex gap-4 items-center">
 										<div className="texts-container">
 											<div className="flex items-center gap-3">
 												<p className="font-semibold">{comment.user.username}</p>
-												<div className="user-tags flex items-center gap-2">
-													{reply.user._id === blog?.author._id && <p className="bg-[#89a02c] rounded-md px-3 text-white text-sm">OP</p>}
-												</div>
+												<div className="user-tags flex items-center gap-2">{reply.user._id === blog?.author._id && <p className="bg-[#89a02c] rounded-md px-3 text-white text-sm">OP</p>}</div>
 											</div>
 											<p className="text-gray-500">
 												{formatDate(reply.date_posted)} {reply.edited && "(edited)"}
 											</p>
 										</div>
 									</div>
-									<div className="comment-text-container flex">
-										<div className="connector ml-7 -mt-1 border-l-2 border-b-2 w-[13px] h-[20px] border-[#00adb3]"></div>
+									<div className="comment-text-container flex h-full">
+										<div className="connector ml-7 -mt-1 border-l-2 border-b-2 w-[13px] md:h-[20px] border-[#00adb3]"></div>
 										<p className="ml-3">{reply.text}</p>
 									</div>
 									<div className="bottom-container flex items-center gap-2 mt-3 ">
 										<CommentLikes comment={reply} refreshComments={refreshComments} />
-										<CommentReplies comment={comment} refreshComments={refreshComments} />
+										<div onClick={() => handleReplyClick(reply._id)} className="reply flex items-center gap-1 cursor-pointer">
+											<img className="w-[28px]" src={messageSvg} alt="reply icon" />
+											<p className="text-[14px] text-[#8d939e] font-medium">Reply</p>
+										</div>
 										{tokenActive && user._id === reply.user._id && (
 											<div className="trash cursor-pointer flex items-center ml-2 text-[14px] text-[#8d939e] font-medium">
 												<img className="w-[33px]" src={trashImg} alt="trashcan icon" />
@@ -247,6 +260,7 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 											</div>
 										)}
 									</div>
+									{replyFormActive && reply._id == activeReplyId && <ReplyForm comment={comment} refreshComments={refreshComments} />}
 								</div>
 							))}
 						</div>
