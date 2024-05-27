@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import formatDate from "../../functions/DateFormatter";
 import defaultImg from "../../assets/default.jpeg";
 import seagullImg from "../../assets/seagull3.png";
+import trashImg from "../../assets/trashcan.svg";
 import dotsSvg from "../../assets/dots-horizontal.svg";
 import CommentModal from "./CommentModal";
 import CommentLikes from "./CommentLikes";
 import CommentReplies from "./CommentReplies";
+import DeleteBtn from "./DeleteBtn";
 import EditForm from "./Forms/EditForm";
 import CommentForm from "./Forms/CommentForm";
 import "../../styles/Comment.scss";
@@ -30,7 +32,6 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 	/* we keep a separate activeId for edit since we want to close(or make null) the modal when editing */
 	const [activeEditCommentId, setActiveEditCommentId] = useState<string | null>(null);
 	const [activeModalCommentId, setActiveModalCommentId] = useState<string | null>(null);
-
 
 	// LOADING/FETCHING up comments for current blog
 	useEffect(() => {
@@ -208,14 +209,46 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 									</div>
 								)}
 							</div>
-							<div className="comment-container flex">
+							<div className="comment-text-container flex">
 								<div className="connector ml-7 -mt-1 border-l-2 border-b-2 w-[13px] h-[20px] border-[#d80a77]"></div>
 								{editActive && activeEditCommentId === comment._id ? <EditForm commentId={activeEditCommentId} handleEditChange={handleEditCommentChange} editCommentText={editCommentText} setEditActive={setEditActive} refreshComments={refreshComments} /> : <p className="ml-3">{comment.text}</p>}
 							</div>
 							<div className="bottom-container flex items-center gap-2 mt-3 ">
 								<CommentLikes comment={comment} refreshComments={refreshComments} />
-								<CommentReplies comment={comment} refreshComments={refreshComments}/>
+								<CommentReplies comment={comment} refreshComments={refreshComments} />
 							</div>
+
+							{comment.replies.map((reply) => (
+								<div key={reply._id} className="reply-container ml-20 mt-3 pb-2 border-b-2">
+									<div className="user-info mb-3 flex gap-4 items-center">
+										<div className="texts-container">
+											<div className="flex items-center gap-3">
+												<p className="font-semibold">{comment.user.username}</p>
+												<div className="user-tags flex items-center gap-2">
+													{reply.user._id === blog?.author._id && <p className="bg-[#89a02c] rounded-md px-3 text-white text-sm">OP</p>}
+												</div>
+											</div>
+											<p className="text-gray-500">
+												{formatDate(reply.date_posted)} {reply.edited && "(edited)"}
+											</p>
+										</div>
+									</div>
+									<div className="comment-text-container flex">
+										<div className="connector ml-7 -mt-1 border-l-2 border-b-2 w-[13px] h-[20px] border-[#00adb3]"></div>
+										<p className="ml-3">{reply.text}</p>
+									</div>
+									<div className="bottom-container flex items-center gap-2 mt-3 ">
+										<CommentLikes comment={reply} refreshComments={refreshComments} />
+										<CommentReplies comment={comment} refreshComments={refreshComments} />
+										{tokenActive && user._id === reply.user._id && (
+											<div className="trash cursor-pointer flex items-center ml-2 text-[14px] text-[#8d939e] font-medium">
+												<img className="w-[33px]" src={trashImg} alt="trashcan icon" />
+												<DeleteBtn commentId={reply._id} refreshComments={refreshComments} />
+											</div>
+										)}
+									</div>
+								</div>
+							))}
 						</div>
 					))
 				)}
