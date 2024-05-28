@@ -14,10 +14,10 @@ function ProfilePage() {
 			<main className="px-10 py-5 flex-grow flex flex-col justify-center">
 				{tokenActive ? (
 					<div className="greeting-container flex flex-col justify-center items-center">
-						<h1 className="text-5xl text-center">Hi, {user.username}!</h1>
+						<h1 className="text-5xl text-center">Welcome, {user.username}</h1>
 						<div className="flex flex-col md:flex-row justify-center items-center md:gap-5 ">
 							<img className="max-w-xs mt-8 object-cover rounded-lg" src={catBagImg} alt="cat laying down" />
-							<div className="info mt-6">
+							<div className="info mt-6 text-lg">
 								<div className="mb-2">
 									<span className="font-semibold">Email:</span> {user.email}
 								</div>
@@ -36,7 +36,6 @@ function ProfilePage() {
 						<img src={catBagImg} alt="cat laying down" className="max-w-xs object-cover rounded-md" />
 					</div>
 				)}
-				<p className="inline-block mt-5 px-10 py-2 bg-[#f0c033] font-bold rounded text-center">This page is under construction ⚠️</p>
 			</main>
 			<Footer />
 		</div>

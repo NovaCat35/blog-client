@@ -14,7 +14,7 @@ function Footer() {
 					<div className="footer-text-info pt-5 pb-8 px-8 w-full">
 						<h1 className="text-2xl border-b-2 border-[#8cbadb] pb-2 mb-4">Wayfarer's Frontier</h1>
 						<p>
-							Woah, you reach the end of this page! Unlike this footer, we're not always sure where we'll our journey will end. What's important is to keep going until we reach that end of the trail. Ganbatte!
+							Woah, you reach the end of this page! Unlike this footer, our journey isn't so linear nor will we know where it will end. Yet, it's important that we keep going and exploring alongside this journey until we reach that end of the trail. Ganbatte!
 							<br /> <br />
 							If you find my contents interesting, consider bookmarking this site.
 							<br />
