@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 35px;
-	
+
 	@media screen and (min-width: 600px) {
 		display: grid;
 		grid-template: 1fr / repeat(auto-fit, minmax(350px, 1fr));
@@ -36,5 +36,6 @@ img {
 	filter: invert(15%) sepia(8%) saturate(4909%) hue-rotate(190deg) brightness(94%) contrast(97%);
 }
 
-.popular-featured-blogs {
+.page-wave {
+	filter: invert(90%) sepia(1%) saturate(2764%) hue-rotate(195deg) brightness(110%) contrast(94%);
 }

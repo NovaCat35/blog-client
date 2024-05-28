@@ -13,6 +13,7 @@ import defaultImg from "../../assets/default.jpeg";
 import arrowSvg from "../../assets/right-arrow.svg";
 import starSvg from "../../assets/star.svg";
 import starFallSvg from "../../assets/star-fall.svg";
+import loadingGif from "../../assets/loading.gif";
 
 function Home() {
 	const { blogs } = useContext(BlogContext);
@@ -39,6 +40,10 @@ function Home() {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<Navbar />
+			<svg className="page-wave absolute" viewBox="0 0 1440 116" preserveAspectRatio="none">
+				<path d="M0,40c30,20,60,40,90,60s60,40,90,60s60,20,90,0s60-20,90-40s60-40,90-60s60-40,90-20s60,20,90,40s60,60,90,80s60,40,90,20s60-40,90-60s60-40,90-20s60,20,90,40s60,40,90,20s60-40,90-60s60-40,90-20s60,20,90,40s60,20,90,0s60-20,90-40v-60H0V40z"></path>
+			</svg>
+
 			<main className="flex-grow px-[30px] md:px-[7rem] mt-10">
 				<div className="title-card-container">
 					<h1 className="title leading-snug font-bold">Tales from a wayfarer.</h1>
@@ -46,28 +51,35 @@ function Home() {
 						Hi, I'm Robert and welcome to my platform, <b>Wayfarer's Frontier</b>! I'll be blogging about anything interesting and showcasing some side projects I've been working on. Hopefully I can make you think a little deeper and brighten your day.
 					</p>
 				</div>
-				<div className="popular-featured-blogs mt-20">
+				<div className="popular-featured-blogs mt-16">
 					<div className="header flex gap-3.5 items-center mb-5">
 						<img className="w-[60px] transform -rotate-12" src={starFallSvg} alt="star fall svg" />
 						<h2 className="text-4xl text-[#223742] ">Favorite Blogs</h2>
 					</div>
 					<div className="posts-cards-container">
-						{favoriteBlogs.map((blog, index) => (
-							<Link to={`/blogs/${blog._id}`} key={blog._id} className={`card  w-full flex flex-col items-center ${index == 2 ? "large" : ""}`}>
-								<img className={`${index == 2 ? "large" : ""} w-full object-cover rounded`} src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} alt="blog image" />
-								<div className={`${index == 2 ? "bg-[#c88761]" : "bg-[#718fba]"} px-4 py-0.5 rounded border-4 border-white text-white -mt-3`}>{blog.tags[0]}</div>
-								<div className="text-container px-2 mt-2 text-center">
-									<h1 className="text-xl font-bold mt-2">{blog.title}</h1>
-									<p className="text-gray-500">{formatDate(blog.date_posted)}</p>
-									<div className="descriptions text-gray-800">
-										{/* In the description, we should disable all headers & any link (since we cant nest ahref) */}
-										<Markdown disallowedElements={["a", "h3", "img"]} className="description text-ellipsis line-clamp-3 text-gray-700">
-											{blog.content}
-										</Markdown>
+						{blogs ? (
+							favoriteBlogs.map((blog, index) => (
+								<Link to={`/blogs/${blog._id}`} key={blog._id} className={`card  w-full flex flex-col items-center ${index == 2 ? "large" : ""}`}>
+									<img className={`${index == 2 ? "large" : ""} w-full object-cover rounded`} src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} alt="blog image" />
+									<div className={`${index == 2 ? "bg-[#c88761]" : "bg-[#718fba]"} px-4 py-0.5 rounded border-4 border-white text-white -mt-3`}>{blog.tags[0]}</div>
+									<div className="text-container px-2 mt-2 text-center">
+										<h1 className="text-xl font-bold mt-2">{blog.title}</h1>
+										<p className="text-gray-500">{formatDate(blog.date_posted)}</p>
+										<div className="descriptions text-gray-800">
+											{/* In the description, we should disable all headers & any link (since we cant nest ahref) */}
+											<Markdown disallowedElements={["a", "h3", "img"]} className="description text-ellipsis line-clamp-3 text-gray-700">
+												{blog.content}
+											</Markdown>
+										</div>
 									</div>
-								</div>
-							</Link>
-						))}
+								</Link>
+							))
+						) : (
+							<div className="bg-[#4fd1ec] flex items-center flex-col relative rounded-md">
+								<img className="h-[350px] w-[80vw] object-contain" src={loadingGif} alt="loading gif" />
+								<h1 className="loading absolute text-white bottom-2 md:bottom-1 text-4xl">Loading . . .</h1>
+							</div>
+						)}
 					</div>
 				</div>
 

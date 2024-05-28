@@ -52,7 +52,7 @@ function CommentReplies({ comment, refreshComments }: CommentLikesProps) {
 
 	return (
 		<form className="flex flex-col md:ml-10 mb-5" onSubmit={handleSubmit}>
-			<textarea onChange={handleTextChange} value={replyText} placeholder="Something to share? (Note: replying is work-in-progress, only saves your data for now)" className="w-full outline-none mt-2 px-3 py-3 border" id="comment" name="comment" minLength={2} rows={2} />
+			<textarea onChange={handleTextChange} value={replyText} placeholder="Something to share?" className="w-full outline-none mt-2 px-3 py-3 border" id="comment" name="comment" minLength={2} rows={2} />
 			<button className="bg-[#89a02c] text-sm text-white px-5 py-[0.5px] transition ease-in-out hover:bg-[#788c27]" type="submit">
 				Reply
 			</button>

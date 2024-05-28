@@ -6,13 +6,15 @@ function Footer() {
 	return (
 		<footer className="">
 			<div className="banner bg-[#8cbadb] w-full h-3 mt-3 "></div>
-			<div className="bg-[#3b6175] text-white">
+			{/* Old: #3c6075 */}
+			{/* 2E5E7A */}
+			<div className="bg-[#1C6E8C] text-white">
 				<div className="footer-top flex">
 					{/* Site Info */}
 					<div className="footer-text-info pt-5 pb-8 px-8 w-full">
 						<h1 className="text-2xl border-b-2 border-[#8cbadb] pb-2 mb-4">Wayfarer's Frontier</h1>
 						<p>
-							Woah, you reach the end of this page! Unlike this footer we can't always know where our journey will end so pace yourself and keep at it! Looking forward to seeing how you will grow. Ganbatte!
+							Woah, you reach the end of this page! Unlike this footer, we're not always sure where we'll our journey will end. What's important is to keep going until we reach that end of the trail. Ganbatte!
 							<br /> <br />
 							If you find my contents interesting, consider bookmarking this site.
 							<br />
@@ -24,7 +26,8 @@ function Footer() {
 						<img className=" md:w-full md:max-h-[250px]" src={lighthouse} alt="lighthouse" />
 					</div>
 				</div>
-				<div className="bottom-container bg-[#2c3e52] pt-5 pb-4 px-2">
+				{/* Old: #2c3e51 */}
+				<div className="bottom-container bg-[#274156] pt-5 pb-4 px-2">
 					{/* Developer Info */}
 					<div className="max-w-7xl mx-auto flex flex-col items-center text-center">
 						<a href="https://github.com/NovaCat35/blog-client" className="w-[16.3rem] flex items-center justify-center space-x-2 rounded-md bg-gray-200 p-1 pr-3" target="blank">

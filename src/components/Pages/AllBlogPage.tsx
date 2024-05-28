@@ -15,11 +15,11 @@ function BlogPage() {
 	const yearsMap = groupByYear(blogs);
 
 	return (
-		<>
+		<div className="flex flex-col min-h-screen">
 			<Navbar />
-			<div className="px-[30px] md:px-[7rem] py-10">
+			<div className="px-[30px] md:px-[7rem] py-10 flex-grow">
 				<h1 className="text-5xl text-[#223742] font-bold mb-6">All Blogs</h1>
-				<main>
+				<main className="">
 					{/* We go through the array of objects(year: Blogs[]) and separate all blog container into their year posted */}
 					{Array.from(yearsMap).map(([year, yearBlogs]) => (
 						<div key={year} className="year-container mb-10">
@@ -55,7 +55,7 @@ function BlogPage() {
 				</main>
 			</div>
 			<Footer />
-		</>
+		</div>
 	);
 }
 

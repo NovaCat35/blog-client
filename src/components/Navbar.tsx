@@ -73,7 +73,7 @@ function Navbar() {
 	}, [setShowModal]);
 
 	return (
-		<nav className={`flex px-10 pt-7 pb-5 bg-white bg-opacity-90 sticky top-0 z-10 transition-transform duration-300 transform ${showNav ? "translate-y-0" : "-translate-y-full"}`}>
+		<nav className={`flex px-10 pt-7 pb-5 bg-white bg-[opacity-90] sticky top-0 z-10 transition-transform duration-300 transform ${showNav ? "translate-y-0" : "-translate-y-full"}`}>
 			<div className="logo-container w-[70px] h-[70px] flex items-center justify-center overflow-hidden rounded-full">
 				<Link to="/">
 					<img className="logo w-[250px] object-cover mt-4" src={logo} alt="site logo" />
