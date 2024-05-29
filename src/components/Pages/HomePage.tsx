@@ -40,13 +40,10 @@ function Home() {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<Navbar />
-			<svg className="page-wave absolute" viewBox="0 0 1440 116" preserveAspectRatio="none">
-				<path d="M0,40c30,20,60,40,90,60s60,40,90,60s60,20,90,0s60-20,90-40s60-40,90-60s60-40,90-20s60,20,90,40s60,60,90,80s60,40,90,20s60-40,90-60s60-40,90-20s60,20,90,40s60,40,90,20s60-40,90-60s60-40,90-20s60,20,90,40s60,20,90,0s60-20,90-40v-60H0V40z"></path>
-			</svg>
 
 			<main className="flex-grow px-[30px] md:px-[7rem] mt-10">
 				<div className="title-card-container">
-					<h1 className="title leading-snug font-bold">Tales from a wayfarer.</h1>
+					<h1 className="title leading-tight md:leading-snug font-bold">Tales from a wayfarer.</h1>
 					<p className="intro-text mt-2">
 						Hi, I'm Robert and welcome to my platform, <b>Wayfarer's Frontier</b>! I'll be blogging about anything interesting and showcasing some side projects I've been working on. Hopefully I can make you think a little deeper and brighten your day.
 					</p>
@@ -83,7 +80,7 @@ function Home() {
 					</div>
 				</div>
 
-				<div className="latest-posts-showcase mt-20">
+				<div className="latest-posts-showcase mt-16">
 					<div className="header flex gap-3.5 items-center mb-5">
 						<img className="w-[40px] transform -rotate-12" src={starSvg} alt="star svg" />
 						<h2 className="text-4xl text-[#223742] ">Latest Blog Posts</h2>
