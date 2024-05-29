@@ -11,7 +11,7 @@
 	text-align: center;
 	color: #1d8dcf;
 	position: relative;
-	text-shadow: 0px 0px 5px white, 0px 0px 5px white, 0px 0px 5px white, 0px 0px 5px white;
+	text-shadow: 0px 0px 5px white, 0px 0px 5px white, 0px 0px 10px white, 0px 0px 10px white;
 
 	&::before,
 	&::after {
@@ -53,10 +53,7 @@ nav {
 	}
 }
 
-// WAVE SVG: make bigger in height for smaller screens
-.page-wave {
-	viewbox: 0 130 1440 300; /* Adjust the height as needed */
-	@media (min-width: 600px) {
-		viewbox: 0 130 1440 200;
-	}
+.pfp-modal-container {
+	border: 2px solid transparent;
+	background: linear-gradient(white, white) padding-box, linear-gradient(to bottom, #0ac3d8, #1ca1ba) border-box;
 }

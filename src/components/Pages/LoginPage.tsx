@@ -66,7 +66,7 @@ function LoginPage() {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<Navbar />
-			<main className="flex-grow flex flex-col items-center justify-center px-10">
+			<main className="flex-grow flex flex-col items-center justify-center mt-10 px-10">
 				<h1 className="text-xl text-[#223742] text-center font-semibold mb-10">
 					AHOY, welcome back! <br /> Here be a reminder of our community{" "}
 					<a className="underline underline-offset-8 text-[#e7175a]" href="/guideline">

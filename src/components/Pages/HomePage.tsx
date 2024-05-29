@@ -7,13 +7,13 @@ import formatDate from "../../functions/DateFormatter";
 import { getFavoriteBlogs, getLatestBlogs } from "../../functions/FilteringPosts";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
+import Loading from "../Loading";
 import "../../styles/Home.scss";
 import "../../styles/Fonts.scss";
 import defaultImg from "../../assets/default.jpeg";
 import arrowSvg from "../../assets/right-arrow.svg";
 import starSvg from "../../assets/star.svg";
 import starFallSvg from "../../assets/star-fall.svg";
-import loadingGif from "../../assets/loading.gif";
 
 function Home() {
 	const { blogs } = useContext(BlogContext);
@@ -72,10 +72,7 @@ function Home() {
 								</Link>
 							))
 						) : (
-							<div className="bg-[#4fd1ec] flex items-center flex-col relative rounded-md">
-								<img className="h-[350px] w-[80vw] object-contain" src={loadingGif} alt="loading gif" />
-								<h1 className="loading absolute text-white bottom-2 md:bottom-1 text-4xl">Loading . . .</h1>
-							</div>
+							<Loading />
 						)}
 					</div>
 				</div>

@@ -2,11 +2,11 @@ import { useContext, useState, useEffect } from "react";
 import { BlogContext, Blog } from "../../contexts/BlogContext";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
+import Loading from "../Loading";
 import { useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import formatDate from "../../functions/DateFormatter";
 import defaultImg from "../../assets/default.jpeg";
-import loadingGif from "../../assets/loading.gif";
 import "../../styles/Fonts.scss";
 import "../../styles/Blog.scss";
 import Markdown from "react-markdown";
@@ -68,10 +68,7 @@ function BlogPage() {
                         </Markdown>
                     </>
                 ) : (
-                    <div className="bg-[#4fd1ec] flex items-center flex-col relative rounded-md">
-                        <img className="h-[350px] w-[80vw] object-contain" src={loadingGif} alt="loading gif" />
-                        <h1 className="loading absolute text-white bottom-2 md:bottom-1 text-4xl">Loading . . .</h1>
-                    </div>
+                    <Loading />
                 )}
 
                 <CommentSection blog={blog} blogId={id} />

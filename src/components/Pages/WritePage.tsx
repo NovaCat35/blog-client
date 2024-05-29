@@ -59,7 +59,7 @@ function WritePage() {
 						initialValue="Add your content here!"
 					/>
 				)}
-				<div className="display w-full md:w-[50vw] border-2 border-gray-300 p-3 rounded-md">{parse(content)}</div>
+				<div className="display bg-white w-full md:w-[50vw] border-2 border-gray-300 p-3 rounded-md">{parse(content)}</div>
 			</main>
 			<Footer />
 		</>
