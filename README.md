@@ -1,12 +1,16 @@
 # Wayfarer's Frontier
 
-Life is a beautiful mix of ups and downs. For all its worth, I like to sort out my thoughts, post some projects I'm working on, and collect insights from all walks of lives while I try to make sense of my own. 🧳
+Life is a beautiful mix of ups and downs. For all its worth, I like to sort out my thoughts, post some projects I'm working on, and collect insights from all walks of life while I try to make sense of my own. 
 
-> Dear readers: some of the features from site is still in development stage and there's still so many cool ideas I want to implement. That said, by golly, this project is at a good point where I'm proud to showcase it. Disclaimer: most of the blogs have been rough drafted and plug into ChatGPT to be stylized as I'm more focus on flushing out the site's development. If you have any feedback, please feel free to reach out. Thank you!
+> Dear readers: some of the features from the site are still in the development stage and many more cool features are to come. That said, the current project's progress is fully functional and for showcasing. Disclaimer: most of the blogs have been rough drafted and plugged into ChatGPT to be stylized as I'm more focused on flushing out the site's development. If you have any feedback, please feel free to reach out. Thank you!
+
+Live link: https://wayfarers-frontier.pages.dev/ 🧳
+
+<img width="903" alt="Screenshot 2024-06-03 at 2 23 30 AM" src="https://github.com/NovaCat35/blog-client/assets/54908064/e27498aa-c8f7-46fe-b1d8-128499e28c6d">
+
 
 ## Project Links 🔗
-
-- [Live Demo](https://wayfarers-frontier.pages.dev/)
+- [Site Link](https://wayfarers-frontier.pages.dev/)
 - Frontend Client _(You are here)_
 - [Backend API ](https://github.com/NovaCat35/blog-api)
 - CMS: work in progress
