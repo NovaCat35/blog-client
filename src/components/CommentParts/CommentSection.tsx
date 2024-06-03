@@ -194,7 +194,7 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 							<div key={comment._id} className="comment-container flex flex-col border-y-2 border-gray-200 w-[80vw] md:w-[65vw] px-2 py-3">
 								<div className="user-info mb-3 flex gap-4 items-center">
 									<div className="img-container w-[60px] h-[60px] rounded-full overflow-hidden">
-										<img className="w-full h-full object-fit" src={defaultImg} alt="comment pfp" />
+										<img className="w-full h-full object-fit" src={comment.user.profile_img !== 'default' ? comment.user.profile_img : defaultImg} alt="comment pfp" />
 									</div>
 									<div className="texts-container">
 										<div className="flex items-center gap-3">

@@ -4,7 +4,7 @@ import { NavbarContext } from "../contexts/NavContext";
 import { Link } from "react-router-dom";
 import logo from "../assets/cat-sail.jpeg";
 import "../styles/Navbar.scss";
-import pfp from "../assets/cat-bag.jpg";
+import defaultPfp from "../assets/cat-bag.jpg";
 import Modal from "./Modal";
 
 function Navbar() {
@@ -12,7 +12,7 @@ function Navbar() {
 	const [showModal, setShowModal] = useState(false);
 	const [lastScrollY, setLastScrollY] = useState(0);
 	const [isScrolled, setIsScrolled] = useState(false); // for changing color of the nav background to be blue whenever we're at the start before threshold
-	const { tokenActive } = useContext(AuthContext); // we have a verified user (e.g. token is active), set a route to profile link instead of standard login/signup btn
+	const { user, tokenActive } = useContext(AuthContext); // we have a verified user (e.g. token is active), set a route to profile link instead of standard login/signup btn
 	const { activeLink } = useContext(NavbarContext);
 	const modalNavRef = useRef<HTMLDivElement>(null);
 
@@ -76,7 +76,8 @@ function Navbar() {
 
 	/**
 	 * WaveSVG controller:
-	 *
+	 * Changes the size of the wave svg to be bigger for mobile screens 
+	 * (since original svg resizes to small as you shrink page)
 	 */
 	useEffect(() => {
 		const updateViewBox = () => {
@@ -90,13 +91,9 @@ function Navbar() {
 			}
 		};
 
-		// Update viewBox on initial load
 		updateViewBox();
-
-		// Update viewBox on resize
 		window.addEventListener("resize", updateViewBox);
 
-		// Cleanup event listener on component unmount
 		return () => {
 			window.removeEventListener("resize", updateViewBox);
 		};
@@ -124,7 +121,7 @@ function Navbar() {
 					</Link>
 					{tokenActive ? (
 						<div ref={modalNavRef} onClick={toggleModal} className="pfp-modal-container cursor-pointer w-[60px] h-[60px] overflow-hidden rounded-full border-4">
-							<img className="w-full h-full object-cover " src={pfp} alt="pfp" />
+							<img className="w-full h-full object-cover " src={user.profile_img !== 'default' ? user.profile_img : defaultPfp} alt="pfp" />
 							{showModal && <Modal />}
 						</div>
 					) : (
@@ -134,11 +131,6 @@ function Navbar() {
 					)}
 				</div>
 			</nav>
-			{/* OLD: fill="#0099ff" */}
-			{/* OLD: fill="#006eb1" */}
-			{/* OLD: fill="#5bb6c8" */}
-			{/* OLD: fill="#f1f5f7" */}
-			{/* OLD: fill="#bfdeef" */}
 			<svg className="page-wave absolute -z-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 130 1440 200">
 				<path fill="#90d5d5" fillOpacity="1" d="M0,256L80,240C160,224,320,192,480,197.3C640,203,800,245,960,250.7C1120,256,1280,224,1360,208L1440,192L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
 			</svg>
