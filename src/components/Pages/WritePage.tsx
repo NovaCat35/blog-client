@@ -1,68 +1,58 @@
-import { useRef, useEffect, useState } from "react";
+import { useState } from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
-import { Editor } from "@tinymce/tinymce-react";
-import { Editor as TinyMCEEditor } from "tinymce";
+import TinyMCE from "../EditorParts/tinyMCE";
+import GeneralInput from "../EditorParts/GeneralInput";
+import ImageInput from "../EditorParts/ImageInput";
+import SubmitBlog from "../EditorParts/SubmitBlog";
 import parse from "html-react-parser";
 
 function WritePage() {
-	const [content, setContent] = useState("Add your content here!");
-	const [apiKey, setApiKey] = useState(null);
-	const editorRef = useRef<TinyMCEEditor | null>(null);
+	const [activeTab, setActiveTab] = useState('general')
+	const [content, setContent] = useState("Add your content here!"); // This is to display on "preview" the main content of blog
 
-	const handleEditorChange = (content: string) => {
+	const handleTinyMceEditorChange = (content: string) => {
 		setContent(content);
 	};
 
-	useEffect(() => {
-		// Get the JWT token from localStorage
-		const token = localStorage.getItem("jwt_token");
-		if (!token) {
-			throw new Error("JWT token not found");
-		}
-
-		const fetchAPI = async () => {
-			try {
-				const response = await fetch("https://wayfarers-frontier-api.fly.dev/tiny_mce_api_key", {
-					mode: "cors",
-					headers: { Authorization: `Bearer ${token}` },
-				});
-				if (!response.ok) {
-					throw new Error("Failed to fetch data");
-				}
-				const api_key = await response.json();
-				setApiKey(api_key.api_key);
-			} catch (error) {
-				console.error("Error fetching data:", error);
-			}
-		};
-		fetchAPI();
-	}, []);
+	const handleTabChange = (newTab: string) => {
+		setActiveTab(newTab)
+	}
 
 	return (
-		<>
+		<div className="flex flex-col min-h-screen">
 			<Navbar />
-			<p className="flex justify-center inline-block px-10 py-2 bg-[#f0c033] font-bold">This page is under construction ⚠️</p>
-
-			<main className="flex flex-col md:flex-row gap-5 p-5">
-				{apiKey && (
-					<Editor
-						apiKey={apiKey}
-						onInit={(_evt, editor) => (editorRef.current = editor)}
-						onEditorChange={handleEditorChange}
-						init={{
-							height: 500,
-							plugins: ["advlist", "autolink", "lists", "link", "image", "charmap", "preview", "anchor", "searchreplace", "visualblocks", "code", "fullscreen", "insertdatetime", "media", "table", "code", "help", "wordcount"],
-							toolbar: "undo redo | blocks fontfamily | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
-							content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
-						}}
-						initialValue="Add your content here!"
-					/>
-				)}
-				<div className="display bg-white w-full md:w-[50vw] border-2 border-gray-300 p-3 rounded-md">{parse(content)}</div>
+			<main className="flex-grow  flex flex-col md:flex-row gap-5 p-5">
+				<div className="left-side ">
+					<div className="tabs flex gap-2 md:ml-8 -mb-[2.5px] font-semibold">
+						<button onClick={() => handleTabChange('general')} className={`${activeTab == 'general' ? 'border-2 border-[#f2efee] border-b-2 border-b-[#f1f5f7] bg-[#f1f5f7] text-[#db117d]' : ''} p-2 rounded-t-md`} type="button">GENERAL</button>
+						<button onClick={() => handleTabChange('image')} className={`${activeTab == 'image' ? 'border-2 border-[#f2efee] border-b-2 border-b-[#f1f5f7] bg-[#f1f5f7] text-[#db117d]' : ''} p-2 rounded-t-md`} type="button">IMAGE</button>
+						<button onClick={() => handleTabChange('content')} className={`${activeTab == 'content' ? 'border-2 border-[#f2efee] border-b-2 border-b-[#f1f5f7] bg-[#f1f5f7] text-[#db117d]' : ''} p-2 rounded-t-md`} type="button">CONTENT</button>
+						<button onClick={() => handleTabChange('submit')} className={`${activeTab == 'submit' ? 'border-2 border-[#f2efee] border-b-2 border-b-[#f1f5f7] bg-[#f1f5f7] text-[#db117d]' : ''} p-2 rounded-t-md`} type="button">SUBMIT</button>
+					</div>
+					<div className="input-section pt-2 bg-[#f1f5f7] border-2 border-[#f2efee] rounded-l-md rounded-r-md ">
+						{
+							activeTab == 'content' ? (
+								<TinyMCE handleEditorChange={handleTinyMceEditorChange} />
+							) : activeTab == 'general' ? (
+								<GeneralInput />
+							) : activeTab == 'image' ? (
+								<ImageInput />
+							) : (
+								<SubmitBlog />
+							)
+						}
+					</div>
+				</div>
+				<div className="right-side w-full md:w-[50vw]">
+					<div className="flex justify-center -mb-[2px]">
+						<h2 className="py-2 px-4 rounded-t-md text-center bg-[#db117d] border-2 border-2-[#a5adba] text-white font-semibold">Preview</h2>
+					</div>
+					<div className="display bg-white border-2 border-2-[#a5adba] p-3 rounded-md h-[93%]">{parse(content)}</div>
+				</div>
 			</main>
 			<Footer />
-		</>
+		</div>
 	);
 }
 
