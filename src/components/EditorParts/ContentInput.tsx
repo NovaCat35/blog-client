@@ -6,7 +6,7 @@ interface tinyMCEProps {
    handleEditorChange: (content: string) => void;
 }
 
-function TinyMCE({handleEditorChange} : tinyMCEProps) {
+function ContentInput({handleEditorChange} : tinyMCEProps) {
    const [apiKey, setApiKey] = useState(null);
 	const editorRef = useRef<TinyMCEEditor | null>(null);
 
@@ -38,7 +38,7 @@ function TinyMCE({handleEditorChange} : tinyMCEProps) {
 	}, []);
 
 	return (
-		<div className="h-[500px] w-[48vw]">
+		<div className="h-[500px] md:w-[48vw]">
 			{apiKey && (
 				<Editor
 					apiKey={apiKey}
@@ -57,4 +57,4 @@ function TinyMCE({handleEditorChange} : tinyMCEProps) {
 	);
 }
 
-export default TinyMCE;
+export default ContentInput;

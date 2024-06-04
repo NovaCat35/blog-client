@@ -1,0 +1,11 @@
+.input-container {
+   display: flex;
+   flex-direction: column;
+   label {
+      font-weight: 500;
+   }
+   input {
+      outline: none;
+      padding: 5px 10px;
+   }
+}
