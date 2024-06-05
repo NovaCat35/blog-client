@@ -14,11 +14,10 @@ function Footer() {
 					<div className="footer-text-info pt-5 pb-8 px-8 w-full">
 						<h1 className="text-2xl border-b-2 border-[#8cbadb] pb-2 mb-4">Wayfarer's Frontier</h1>
 						<p>
-							Woah, you reach the end of this page! Unlike this footer, our journey isn't so linear nor will we know where it will end. Yet, it's important that we keep going and exploring alongside this journey until we reach that end of the trail. Ganbatte!
+							Woah, you reach the end of this page! Unlike this footer, our journey isn't so linear and the ride ahead can be bumpy sometimes. However, don't be discouraged, this too shall pass, and you will be on to better days.  Right now, it's important that we keep moving forward until we reach that end of the road. You got this!
 							<br /> <br />
-							If you find my contents interesting, consider bookmarking this site.
-							<br />
-							~Thank you very much, dear viewers.
+							If you find my contents somewhat interesting, consider bookmarking this page. 
+							<br /> Feel free to reach out with any suggestions. Thank you!
 						</p>
 					</div>
 					{/* Social Media */}
