@@ -54,7 +54,7 @@ function GeneralInput() {
 						Tags:{" "}
 						{tags.map((tag) => (
 							<p className="px-2 bg-[white] border rounded-md cursor-pointer" key={tag} onClick={() => removeTag(tag)}>
-								{tag} <span className="text-[red]">x</span>
+								{tag} <span className="cross text-[#db117d]">x</span>
 							</p>
 						))}
 					</div>

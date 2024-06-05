@@ -4,6 +4,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import defaultImg from "../../assets/cat-bag.jpg";
 import formatDate from "../../functions/DateFormatter";
 import parse from "html-react-parser";
+/** Additional styling found in blog.scss **/
 
 function Preview() {
 	const { title, readTime, tags, imgCreatorName, imgSrcName, file, content } = useContext(EditorContext);
@@ -20,9 +21,9 @@ function Preview() {
 				</div>
 				<div className="right-container flex flex-col justify-center">
 					<p className="text-base font-semibold">{user.username}</p>
-					<div className=" flex">
+					<div className="flex">
 						<p>{readTime} min read</p>
-						<span className="mx-3 font-black">&#8226;</span>
+						<span className="mx-2 font-black">&#8226;</span>
 						<p>{formatDate(todayDate.toString())}</p>
 					</div>
 				</div>
@@ -35,13 +36,13 @@ function Preview() {
 				))}
 			</ul>
 			<img className="object-contain h-[300px] w-full object-cover" src={file ? fileUrl : "https://res.cloudinary.com/dx432kzlt/image/upload/v1717559527/blog_posts/travel-dino-reichmuth_bcuon5.jpg"} alt="Selected Image" />
-			<p className="text-base font-bold mb-3 text-gray-700">
+			<p className="text-base font-bold text-gray-700">
 				Image from{" "}
 				<a className="text-[#d80a77]" href={imgSrcName} target="_blank" rel="noopener noreferrer">
 					{imgCreatorName}
 				</a>
 			</p>
-			<p className="max-w-[380px] mx-auto">{parse(content)}</p>
+			<p className="content mt-3">{parse(content)}</p>
 		</div>
 	);
 }

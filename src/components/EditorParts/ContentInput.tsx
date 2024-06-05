@@ -3,16 +3,16 @@ import { useContext } from "react";
 import { EditorContext } from "../Pages/WritePage";
 import { Editor } from "@tinymce/tinymce-react";
 import { Editor as TinyMCEEditor } from "tinymce";
+import Loading from "../Loading";
 
 function ContentInput() {
 	const { setContent } = useContext(EditorContext);
-   const [apiKey, setApiKey] = useState(null);
+	const [apiKey, setApiKey] = useState(null);
 	const editorRef = useRef<TinyMCEEditor | null>(null);
-	
 
-   // Fetch the TinyMCE's api key to get this thing working.
+	// Fetch the TinyMCE's api key to get this thing working.
 	useEffect(() => {
-		const token = localStorage.getItem("jwt_token"); 
+		const token = localStorage.getItem("jwt_token");
 		if (!token) {
 			throw new Error("JWT token not found");
 		}
@@ -43,7 +43,7 @@ function ContentInput() {
 
 	return (
 		<div className="h-[500px] md:w-[48vw]">
-			{apiKey && (
+			{apiKey ? (
 				<Editor
 					apiKey={apiKey}
 					onInit={(_evt, editor) => (editorRef.current = editor)}
@@ -56,6 +56,8 @@ function ContentInput() {
 					}}
 					initialValue="Add your content here!"
 				/>
+			) : (
+				<Loading />
 			)}
 		</div>
 	);
