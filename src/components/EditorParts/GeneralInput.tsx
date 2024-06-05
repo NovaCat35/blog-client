@@ -5,7 +5,7 @@ function GeneralInput() {
 	// const [tags, setTags] = useState<string[]>([]);
 
 	const [currentTag, setCurrentTag] = useState("");
-	const { tags, setTags } = useContext(EditorContext);
+	const { title, readTime, tags, setTitle, setReadTime, setTags, } = useContext(EditorContext);
 
 	const addTag = () => {
 		const tagInList = tags.find((tag) => tag == currentTag); // don't add if already in tags list
@@ -13,6 +13,14 @@ function GeneralInput() {
 			setTags([...tags, currentTag.trim()]);
 			setCurrentTag("");
 		}
+	};
+
+	const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setTitle(e.target.value);
+	};
+
+	const handleReadTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setReadTime(e.target.value);
 	};
 
 	const handleTagChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,11 +38,11 @@ function GeneralInput() {
 			<div className="main-inputs-section px-4 py-2 flex flex-col gap-2">
 				<div className="input-container mt-4">
 					<label htmlFor="title">Blog Title</label>
-					<input id="title" type="text" placeholder="Around the World" maxLength={85} />
+					<input onChange={handleTitleChange} id="title" type="text" placeholder="Around the World" maxLength={85} value={title}/>
 				</div>
 				<div className="input-container">
 					<label htmlFor="read-time">Estimated read time (minutes)</label>
-					<input id="read-time" type="number" placeholder="5" min={0} />
+					<input onChange={handleReadTimeChange} id="read-time" type="number" placeholder="5" min={0} value={readTime}/>
 				</div>
 				<div className="input-container">
 					<label htmlFor="tags">Add tags to describe your project (up to 5 max)</label>
