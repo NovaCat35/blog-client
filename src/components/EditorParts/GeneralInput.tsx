@@ -2,10 +2,8 @@ import { useState, useContext } from "react";
 import { EditorContext } from "../Pages/WritePage";
 
 function GeneralInput() {
-	// const [tags, setTags] = useState<string[]>([]);
-
 	const [currentTag, setCurrentTag] = useState("");
-	const { title, readTime, tags, setTitle, setReadTime, setTags, } = useContext(EditorContext);
+	const { title, readTime, tags, setTitle, setReadTime, setTags } = useContext(EditorContext);
 
 	const addTag = () => {
 		const tagInList = tags.find((tag) => tag == currentTag); // don't add if already in tags list

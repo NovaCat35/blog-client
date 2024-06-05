@@ -1,14 +1,14 @@
 import { useRef, useEffect, useState } from "react";
+import { useContext } from "react";
+import { EditorContext } from "../Pages/WritePage";
 import { Editor } from "@tinymce/tinymce-react";
 import { Editor as TinyMCEEditor } from "tinymce";
 
-interface tinyMCEProps {
-   handleEditorChange: (content: string) => void;
-}
-
-function ContentInput({handleEditorChange} : tinyMCEProps) {
+function ContentInput() {
+	const { setContent } = useContext(EditorContext);
    const [apiKey, setApiKey] = useState(null);
 	const editorRef = useRef<TinyMCEEditor | null>(null);
+	
 
    // Fetch the TinyMCE's api key to get this thing working.
 	useEffect(() => {
@@ -37,13 +37,17 @@ function ContentInput({handleEditorChange} : tinyMCEProps) {
 		fetchAPIKey();
 	}, []);
 
+	const handleTinyMceEditorChange = (content: string) => {
+		setContent(content);
+	};
+
 	return (
 		<div className="h-[500px] md:w-[48vw]">
 			{apiKey && (
 				<Editor
 					apiKey={apiKey}
 					onInit={(_evt, editor) => (editorRef.current = editor)}
-					onEditorChange={handleEditorChange}
+					onEditorChange={handleTinyMceEditorChange}
 					init={{
 						height: 500,
 						plugins: ["advlist", "autolink", "lists", "link", "image", "charmap", "preview", "anchor", "searchreplace", "visualblocks", "code", "fullscreen", "insertdatetime", "media", "table", "code", "help", "wordcount"],
