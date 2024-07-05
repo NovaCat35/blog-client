@@ -76,7 +76,7 @@ function Navbar() {
 
 	/**
 	 * WaveSVG controller:
-	 * Changes the size of the wave svg to be bigger for mobile screens 
+	 * Changes the size of the wave svg to be bigger for mobile screens
 	 * (since original svg resizes to small as you shrink page)
 	 */
 	useEffect(() => {
@@ -121,7 +121,7 @@ function Navbar() {
 					</Link>
 					{tokenActive ? (
 						<div ref={modalNavRef} onClick={toggleModal} className="pfp-modal-container cursor-pointer w-[60px] h-[60px] overflow-hidden rounded-full border-4">
-							<img className="w-full h-full object-cover " src={user.profile_img !== 'default' ? user.profile_img : defaultPfp} alt="pfp" />
+							<img className="w-full h-full object-cover " src={user.profile_img !== "default" ? user.profile_img : defaultPfp} alt="pfp" />
 							{showModal && <Modal />}
 						</div>
 					) : (

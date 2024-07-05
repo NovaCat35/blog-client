@@ -59,7 +59,7 @@ function WritePage() {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<Navbar />
-			<EditorContext.Provider value={{ title, readTime ,tags, file, imgCreatorName, imgSrcName, content, setTitle, setReadTime, setTags, setFile, setImgCreatorName, setImgSrcName, setContent }}>
+			<EditorContext.Provider value={{ title, readTime, tags, file, imgCreatorName, imgSrcName, content, setTitle, setReadTime, setTags, setFile, setImgCreatorName, setImgSrcName, setContent }}>
 				<main className="flex-grow flex flex-col md:flex-row gap-5 p-5">
 					<div className="info-section">
 						<div className="tabs flex gap-2 ml-4 md:ml-8 -mb-[2.5px] font-semibold">

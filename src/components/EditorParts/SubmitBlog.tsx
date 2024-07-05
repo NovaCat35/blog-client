@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import { EditorContext } from "../Pages/WritePage";
 import "../../styles/Others.scss";
@@ -6,19 +7,59 @@ import "../../styles/Others.scss";
 function SubmitBlog() {
 	const [isPublish, setIsPublish] = useState(true);
 	const { user, tokenActive } = useContext(AuthContext);
-  const { title, readTime, tags, file, imgCreatorName, imgSrcName, content } = useContext(EditorContext);
-
+	const { title, readTime, tags, file, imgCreatorName, imgSrcName, content } = useContext(EditorContext);
+	const navigate = useNavigate();
 
 	const handleSwitchToggle = () => {
 		setIsPublish(!isPublish);
 	};
 
-	const handleSubmit = () => {
-    // check userRole: (verify users and admin can post)
-    if(user.admin_access && tokenActive) {
-      console.log(title, readTime, tags, file, imgCreatorName, imgSrcName, content)
-    } 
-  };
+	const handleSubmit = async () => {
+		// check userRole: (Only verified users and admin can post blogs)
+		if (user.admin_access && tokenActive) {
+			console.log(title, readTime, tags, file, imgCreatorName, imgSrcName, content); // to be deleted
+			const token = localStorage.getItem("jwt_token");
+			if (!token) {
+				throw new Error("JWT token not found");
+			}
+
+			try {
+				const response = await fetch("https://wayfarers-frontier-api.fly.dev/posts/", {
+					mode: "cors",
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${token}`,
+					},
+					body: JSON.stringify({
+						title: title,
+						read_time: readTime,
+						tags: tags,
+						content: content,
+						blog_img: {
+							img_file: file,
+							src: {
+								name: imgCreatorName,
+								link: imgSrcName,
+							},
+						},
+						published: isPublish,
+					}),
+				});
+
+				if (!response.ok) {
+					throw new Error("Failed to fetch data");
+				} else {
+					const result = await response.json();
+					console.log(result.message);
+					navigate("/"); // return back to homepage
+					window.location.reload(); // Refresh the page
+				}
+			} catch (error) {
+				console.error(error);
+			}
+		}
+	};
 
 	return (
 		<div className="h-[500px] md:w-[48vw]">
@@ -50,7 +91,9 @@ function SubmitBlog() {
 				</div>
 			</div>
 
-			<button className={`${!user.admin_access ? 'cursor-not-allowed' : ''} ml-8 mt-8 border-2 px-8 py-2 rounded-full bg-white hover:bg-[#db117d] hover:text-white`} onClick={handleSubmit}>SUBMIT</button>
+			<button className={`${!user.admin_access ? "cursor-not-allowed" : ""} ml-8 mt-8 border-2 px-8 py-2 rounded-full bg-white hover:bg-[#db117d] hover:text-white`} onClick={handleSubmit}>
+				SUBMIT
+			</button>
 		</div>
 	);
 }
