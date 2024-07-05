@@ -50,7 +50,7 @@ function SubmitBlog() {
 				</div>
 			</div>
 
-			<button className="ml-8 mt-8 border-2 px-8 py-2 rounded-full bg-white hover:bg-[#db117d] hover:text-white" onClick={handleSubmit}>SUBMIT</button>
+			<button className={`${!user.admin_access ? 'cursor-not-allowed' : ''} ml-8 mt-8 border-2 px-8 py-2 rounded-full bg-white hover:bg-[#db117d] hover:text-white`} onClick={handleSubmit}>SUBMIT</button>
 		</div>
 	);
 }

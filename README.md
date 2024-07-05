@@ -50,6 +50,8 @@ An important turning point for me was trying to figure out how to authenticate u
    npm install -D tailwindcss postcss autoprefixer
    npx tailwindcss init -p
    npm install -D sass
+   npm install --save react-lazy-load-image-component
+   npm install --save @types/react-lazy-load-image-component
    npm install react-paginate
    npm install react-markdown  (note: blog format is changed after using tinyMCE for production vs the dev-sample json blogs. This pkg is not needed anymore)
    npm install html-react-parser --save

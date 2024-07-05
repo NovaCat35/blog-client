@@ -14,6 +14,7 @@ import defaultImg from "../../assets/default.jpeg";
 import arrowSvg from "../../assets/right-arrow.svg";
 import starSvg from "../../assets/star.svg";
 import starFallSvg from "../../assets/star-fall.svg";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function Home() {
 	const { blogs } = useContext(BlogContext);
@@ -40,7 +41,6 @@ function Home() {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<Navbar />
-
 			<main className="flex-grow px-[30px] md:px-[7rem] mt-10">
 				<div className="title-card-container">
 					<h1 className="title leading-tight md:leading-snug font-bold">Tales from a wayfarer.</h1>
@@ -54,10 +54,11 @@ function Home() {
 						<h2 className="text-4xl text-[#223742] ">Favorite Blogs</h2>
 					</div>
 					<div className="posts-cards-container">
-						{blogs ? (
+						{blogs.length > 0 ? (
 							favoriteBlogs.map((blog, index) => (
 								<Link to={`/blogs/${blog._id}`} key={blog._id} className={`card  w-full flex flex-col items-center ${index == 2 ? "large" : ""}`}>
-									<img className={`${index == 2 ? "large" : ""} w-full object-cover rounded`} src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} alt="blog image" />
+									{/* <img loading="lazy" className={`${index == 2 ? "large" : ""} w-full object-cover rounded`} src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} alt="blog image" /> */}
+									<LazyLoadImage className={`${index == 2 ? "large" : ""} w-full object-cover rounded`} alt="blog image" src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} />
 									<div className={`${index == 2 ? "bg-[#c88761]" : "bg-[#718fba]"} px-4 py-0.5 rounded border-4 border-white text-white -mt-3`}>{blog.tags[0]}</div>
 									<div className="text-container px-2 mt-2 text-center">
 										<h1 className="text-xl font-bold mt-2">{blog.title}</h1>
@@ -87,7 +88,8 @@ function Home() {
 							<div className="blog-container flex items-center justify-center md:justify-between w-full border-b border-gray-300 py-4" key={uuidv4()}>
 								<Link to={`/blogs/${blog._id}`} className="flex flex-col md:flex-row items-center gap-4">
 									<div className="img-container">
-										<img className="max-h-[300px] object-cover rounded" src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} alt="blog image" />
+										{/* <img loading="lazy" className="max-h-[300px] object-cover rounded" src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} alt="blog image" /> */}
+										<LazyLoadImage className="max-h-[300px] object-cover rounded" alt="blog image" src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} />
 									</div>
 									<div className="texts-container ml-4">
 										<h1 className="text-xl font-bold">{blog.title}</h1>
