@@ -23,6 +23,25 @@ function SubmitBlog() {
 				throw new Error("JWT token not found");
 			}
 
+			/**
+			 * Because we need the image file to be passed in as form data
+			 * We must use FormData instead of the usual JSON as the body's value
+			 */
+			const formData = new FormData();
+			formData.append("title", title);
+			formData.append("read_time", readTime);
+			formData.append("tags", JSON.stringify(tags));
+			formData.append("content", content);
+			formData.append("blog_img.src.name", imgCreatorName);
+			formData.append("blog_img.src.link", imgSrcName);
+			formData.append("published", JSON.stringify(isPublish));
+
+			if (file) {
+				formData.append("uploaded_file", file);
+			} else {
+				throw new Error("No file selected");
+			}
+			
 			try {
 				const response = await fetch("https://wayfarers-frontier-api.fly.dev/posts/", {
 					mode: "cors",
@@ -31,20 +50,7 @@ function SubmitBlog() {
 						"Content-Type": "application/json",
 						Authorization: `Bearer ${token}`,
 					},
-					body: JSON.stringify({
-						title: title,
-						read_time: readTime,
-						tags: tags,
-						content: content,
-						blog_img: {
-							img_file: file,
-							src: {
-								name: imgCreatorName,
-								link: imgSrcName,
-							},
-						},
-						published: isPublish,
-					}),
+					body: formData,
 				});
 
 				if (!response.ok) {
