@@ -25,7 +25,7 @@ function ImageInput() {
 	return (
 		<div className="h-[500px] md:w-[48vw] px-2">
 			<div className="file-container flex justify-center">
-				<input className="ml-4 mt-[20px] mb-[10px] cursor-pointer" type="file" name="uploaded_file" id="uploaded_file" accept="image/*" onChange={handleFileChange} />
+				<input className="ml-4 mt-[20px] mb-[10px] cursor-pointer" type="file" name="img_file" id="img_file" accept="image/*" onChange={handleFileChange} />
 			</div>
 			<div className="input-container mb-2">
 				<label htmlFor="read-time">Who's the image creator?</label>

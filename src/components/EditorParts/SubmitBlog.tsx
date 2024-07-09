@@ -37,7 +37,7 @@ function SubmitBlog() {
 			formData.append("published", JSON.stringify(isPublish));
 
 			if (file) {
-				formData.append("uploaded_file", file);
+				formData.append("img_file", file);
 			} else {
 				throw new Error("No file selected");
 			}
@@ -47,7 +47,7 @@ function SubmitBlog() {
 					mode: "cors",
 					method: "POST",
 					headers: {
-						"Content-Type": "application/json",
+						'Content-Type': 'multipart/form-data',
 						Authorization: `Bearer ${token}`,
 					},
 					body: formData,
