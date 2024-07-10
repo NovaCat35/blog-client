@@ -35,7 +35,7 @@ function Preview() {
 					</li>
 				))}
 			</ul>
-			<img className="object-contain h-[300px] w-full object-cover" src={file ? fileUrl : "https://res.cloudinary.com/dx432kzlt/image/upload/v1717559527/blog_posts/travel-dino-reichmuth_bcuon5.jpg"} alt="Selected Image" />
+			<img className="object-contain h-[300px] w-full object-cover" src={file ? fileUrl : "https://res.cloudinary.com/dx432kzlt/image/upload/v1717559527/blog_posts/main_blog_images/travel-dino-reichmuth_bcuon5.jpg"} alt="Selected Image" />
 			<p className="text-base font-bold text-gray-700">
 				Image from{" "}
 				<a className="text-[#d80a77]" href={imgSrcName} target="_blank" rel="noopener noreferrer">

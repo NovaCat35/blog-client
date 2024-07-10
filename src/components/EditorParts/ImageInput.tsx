@@ -23,9 +23,24 @@ function ImageInput() {
 	};
 
 	return (
-		<div className="h-[500px] md:w-[48vw] px-2">
+		<div className="h-[500px] md:w-[48vw] px-4">
 			<div className="file-container flex justify-center">
-				<input className="ml-4 mt-[20px] mb-[10px] cursor-pointer" type="file" name="img_file" id="img_file" accept="image/*" onChange={handleFileChange} />
+				<input
+					className="
+						ml-4 mt-5 mb-3 file:cursor-pointer
+						file:mr-4 file:py-2 file:px-4
+						file:rounded-full file:border-0
+						file:text-sm file:font-semibold
+						file:bg-[#db117d] file:text-white
+						file:transition-all file:duration-300
+						hover:file:bg-[#f0c033]
+					"
+					type="file"
+					name="img_file"
+					id="img_file"
+					accept="image/*"
+					onChange={handleFileChange}
+				/>
 			</div>
 			<div className="input-container mb-2">
 				<label htmlFor="read-time">Who's the image creator?</label>

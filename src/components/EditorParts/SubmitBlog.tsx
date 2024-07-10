@@ -39,6 +39,7 @@ function SubmitBlog() {
 			if (file) {
 				formData.append("img_file", file);
 			} else {
+
 				throw new Error("No file selected");
 			}
 			
@@ -95,8 +96,8 @@ function SubmitBlog() {
 					</label>
 					<p className="text-[#00adb3] font-medium">{isPublish ? "Publish!" : "Blog will be hidden."}</p>
 				</div>
+				{!file && <p className="mt-4 text-[#d81178] font-semibold">ⓘ Please add an image file.</p>}
 			</div>
-
 			<button className={`${!user.admin_access ? "cursor-not-allowed" : ""} ml-8 mt-8 border-2 px-8 py-2 rounded-full bg-white hover:bg-[#db117d] hover:text-white`} onClick={handleSubmit}>
 				SUBMIT
 			</button>
