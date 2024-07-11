@@ -30,7 +30,7 @@ function SubmitBlog() {
 			const formData = new FormData();
 			formData.append("title", title);
 			formData.append("read_time", readTime);
-			formData.append("tags", JSON.stringify(tags));
+			tags.forEach(tag => formData.append("tags", tag));
 			formData.append("content", content);
 			formData.append("blog_img.src.name", imgCreatorName);
 			formData.append("blog_img.src.link", imgSrcName);
@@ -39,7 +39,6 @@ function SubmitBlog() {
 			if (file) {
 				formData.append("img_file", file);
 			} else {
-
 				throw new Error("No file selected");
 			}
 			
@@ -48,7 +47,6 @@ function SubmitBlog() {
 					mode: "cors",
 					method: "POST",
 					headers: {
-						'Content-Type': 'multipart/form-data',
 						Authorization: `Bearer ${token}`,
 					},
 					body: formData,
