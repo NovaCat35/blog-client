@@ -27,12 +27,13 @@ function ProfilePage() {
 								<div className="mb-2 flex gap-2 font-semibold">
 									<span>Role:</span> <p className="text-[#d80a77]">{user.admin_access ? "Admin" : "Member"}</p>
 								</div>
+								{user.admin_access && <button className="bg-[#4e92ba] text-[#e2f1f4] border-2 border-[#04afe6] mt-2 px-4 py-1 rounded-md hover:bg-[#566a84] hover:text-white hover:border-[#dbe4e9]" type="button">Manage Blogs</button>}
 							</div>
 						</div>
 					</div>
 				) : (
 					<div className="alert-container flex flex-col justify-center items-center">
-						<p className="text-lg mb-4">Please login or sign up first.</p>
+						<p className="text-lg mb-4 font-semibold">Please login or sign up first.</p>
 						<img src={catBagImg} alt="cat laying down" className="max-w-xs object-cover rounded-md" />
 					</div>
 				)}
