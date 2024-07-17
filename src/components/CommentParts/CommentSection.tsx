@@ -194,11 +194,15 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 							<div key={comment._id} className="comment-container flex flex-col border-y-2 border-gray-200 w-[80vw] md:w-[65vw] px-2 py-3">
 								<div className="user-info mb-3 flex gap-4 items-center">
 									<div className="img-container w-[60px] h-[60px] rounded-full overflow-hidden">
-										<img className="w-full h-full object-fit" src={comment.user.profile_img !== 'default' ? comment.user.profile_img : defaultImg} alt="comment pfp" />
+										<Link to={`/users/${comment.user._id}`}>
+											<img className="w-full h-full object-fit" src={comment.user.profile_img !== "default" ? comment.user.profile_img : defaultImg} alt="comment pfp" />
+										</Link>
 									</div>
 									<div className="texts-container">
 										<div className="flex items-center gap-3">
-											<Link to={`/users/${comment.user._id}`} className="font-semibold">{comment.user.username}</Link>
+											<Link to={`/users/${comment.user._id}`} className="font-semibold">
+												{comment.user.username}
+											</Link>
 											<div className="user-tags flex items-center gap-2">
 												{user._id === comment.user._id && <p className="bg-[#e3801d] rounded-md px-3 text-white text-sm">YOU</p>}
 												{comment.user._id === blog?.author._id && <p className="bg-[#89a02c] rounded-md px-3 text-white text-sm">OP</p>}
@@ -231,10 +235,20 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 								{comment.replies.map((reply) => (
 									<div key={reply._id} className="reply-container ml-12 md:ml-20 mt-3 pb-2 border-b-2">
 										<div className="user-info mb-3 flex gap-4 items-center">
+											<div className="img-container w-[60px] h-[60px] rounded-full overflow-hidden">
+												<Link to={`/users/${reply.user._id}`}>
+													<img className="w-full h-full object-fit" src={reply.user.profile_img !== "default" ? reply.user.profile_img : defaultImg} alt="comment pfp" />
+												</Link>
+											</div>
 											<div className="texts-container">
 												<div className="flex items-center gap-3">
-													<p className="font-semibold">{comment.user.username}</p>
-													<div className="user-tags flex items-center gap-2">{reply.user._id === blog?.author._id && <p className="bg-[#89a02c] rounded-md px-3 text-white text-sm">OP</p>}</div>
+													<Link to={`/users/${reply.user._id}`} className="font-semibold">
+														{reply.user.username}
+													</Link>
+													<div className="user-tags flex items-center gap-2">
+														{user._id === reply.user._id && <p className="bg-[#e3801d] rounded-md px-3 text-white text-sm">YOU</p>}
+														{reply.user._id === blog?.author._id && <p className="bg-[#89a02c] rounded-md px-3 text-white text-sm">OP</p>}
+													</div>
 												</div>
 												<p className="text-gray-500">
 													{formatDate(reply.date_posted)} {reply.edited && "(edited)"}
