@@ -45,7 +45,7 @@ function Home() {
 				<div className="title-card-container">
 					<h1 className="title leading-tight md:leading-snug font-bold">Tales from a wayfarer.</h1>
 					<p className="intro-text mt-2">
-						Hi, I'm Robert and welcome to my platform, <b>Wayfarer's Frontier</b>! Be it the 42nd travel blog you're reading or fascinating tips about the mundane, you'll find it posted here. Hopefully I can make you think a little deeper and brighten your day.
+						Hello and welcome to <b>Wayfarer's Frontier</b>! Be it the 42nd travel blog you're reading or fascinating tips about the mundane, you'll find it posted here. Come take a look!
 					</p>
 				</div>
 				<div className="popular-featured-blogs mt-16">
@@ -58,8 +58,10 @@ function Home() {
 							favoriteBlogs.map((blog, index) => (
 								<Link to={`/blogs/${blog._id}`} key={blog._id} className={`card  w-full flex flex-col items-center ${index == 2 ? "large" : ""}`}>
 									{/* <img loading="lazy" className={`${index == 2 ? "large" : ""} w-full object-cover rounded`} src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} alt="blog image" /> */}
-									<LazyLoadImage className={`${index == 2 ? "large" : ""} w-full object-cover rounded`} alt="blog image" src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} />
-									<div className={`${index == 2 ? "bg-[#c88761]" : "bg-[#718fba]"} px-4 py-0.5 rounded border-4 border-white text-white -mt-3`}>{blog.tags[0]}</div>
+									<div className='overflow-hidden rounded'>
+										<LazyLoadImage className={`${index == 2 ? "large" : ""} w-full object-cover rounded transition-transform duration-300 ease-in-out transform hover:scale-125`} alt="blog image" src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} />
+									</div>
+									<div className={`${index == 2 ? "bg-[#c88761]" : "bg-[#718fba]"} z-10 px-4 py-0.5 rounded border-4 border-white text-white -mt-3`}>{blog.tags[0]}</div>
 									<div className="text-container px-2 mt-2 text-center">
 										<h1 className="text-xl font-bold mt-2">{blog.title}</h1>
 										<p className="text-gray-500">{formatDate(blog.date_posted)}</p>

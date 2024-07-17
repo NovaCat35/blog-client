@@ -35,9 +35,9 @@ function BlogPage() {
                         <div className="content-info">
                             <h1 className="title leading-tight text-5xl md:text-6xl lg:text-7xl mb-5 font-bold">{blog.title}</h1>
                             <div className="info-container flex gap-5">
-                                <div className="left-container w-[70px] h-[70px] rounded-full overflow-hidden">
+                                <Link to={`/users/${blog.author._id}`} className="left-container w-[70px] h-[70px] rounded-full overflow-hidden">
                                     <img className="w-full h-full object-cover" src={blog.author.profile_img !== 'default' ? blog.author.profile_img : defaultImg} alt="pfp" />
-                                </div>
+                                </Link>
                                 <div className="right-container flex flex-col justify-center">
                                     <Link to={`/users/${blog.author._id}`} className="text-lg font-semibold">{blog.author.username}</Link>
                                     <div className=" flex">
