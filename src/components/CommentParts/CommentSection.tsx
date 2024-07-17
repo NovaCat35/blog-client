@@ -198,7 +198,7 @@ function CommentSection({ blog, blogId }: CommentSectionProps) {
 									</div>
 									<div className="texts-container">
 										<div className="flex items-center gap-3">
-											<p className="font-semibold">{comment.user.username}</p>
+											<Link to={`/users/${comment.user._id}`} className="font-semibold">{comment.user.username}</Link>
 											<div className="user-tags flex items-center gap-2">
 												{user._id === comment.user._id && <p className="bg-[#e3801d] rounded-md px-3 text-white text-sm">YOU</p>}
 												{comment.user._id === blog?.author._id && <p className="bg-[#89a02c] rounded-md px-3 text-white text-sm">OP</p>}

@@ -11,6 +11,7 @@ import WritePage from "../components/Pages/WritePage";
 import ErrorPage from "../components/Pages/ErrorPage";
 import GuidelinePage from "../components/Pages/GuidelinePage";
 import RouteWrapper from "./RouterWrapper";
+import UserIdPage from "../components/Pages/UserIdPage";
 
 const Router = () => {
 	const router = createBrowserRouter([
@@ -85,6 +86,15 @@ const Router = () => {
 				<RouteWrapper>
 					<ScrollRestoration />
 					<ProfilePage />
+				</RouteWrapper>
+			),
+		},
+		{
+			path: "/users/:id",
+			element: (
+				<RouteWrapper>
+					<ScrollRestoration />
+					<UserIdPage />
 				</RouteWrapper>
 			),
 		},

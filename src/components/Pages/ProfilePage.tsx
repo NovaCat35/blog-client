@@ -5,6 +5,9 @@ import Footer from "../Footer";
 import formatDate from "../../functions/DateFormatter";
 import catBagImg from "../../assets/cat-bag.jpg";
 
+/**
+ * Your personal profile page. Showcases personal info and CMS links if user's role is verified.
+ */
 function ProfilePage() {
 	const { user, tokenActive } = useContext(AuthContext);
 

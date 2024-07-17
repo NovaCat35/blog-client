@@ -81,6 +81,7 @@ const MockedFetch = async (): Promise<Comment[]> => {
 			text: "Fascinating read!",
 			likes: ["user1", "user2"],
 			date_posted: "2024-05-10",
+			blog_post: { _id: "234234adfawf23rq2", title: "test" },
 			replies: [
 				{
 					_id: "reply1",
@@ -95,7 +96,8 @@ const MockedFetch = async (): Promise<Comment[]> => {
 					},
 					text: "Agreed!",
 					likes: ["user1", "user2"],
-					date_posted:"2024-05-11",
+					date_posted: "2024-05-11",
+					blog_post: { _id: "234234adfawf23rq2", title: "test" },
 					replies: [],
 					edited: false,
 				},
@@ -116,6 +118,7 @@ const MockedFetch = async (): Promise<Comment[]> => {
 			text: "Interesting perspective!",
 			likes: ["user1"],
 			date_posted: "2024-05-12",
+			blog_post: { _id: "234234adfawf23rq2", title: "test" },
 			replies: [],
 			edited: false,
 		},

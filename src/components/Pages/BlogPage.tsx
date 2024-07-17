@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { BlogContext, Blog } from "../../contexts/BlogContext";
+import { Link } from "react-router-dom";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import Loading from "../Loading";
@@ -38,7 +39,7 @@ function BlogPage() {
                                     <img className="w-full h-full object-cover" src={blog.author.profile_img !== 'default' ? blog.author.profile_img : defaultImg} alt="pfp" />
                                 </div>
                                 <div className="right-container flex flex-col justify-center">
-                                    <p className="text-lg font-semibold">{blog.author.username}</p>
+                                    <Link to={`/users/${blog.author._id}`} className="text-lg font-semibold">{blog.author.username}</Link>
                                     <div className=" flex">
                                         <p>{blog.read_time} min read</p>
                                         <span className="mx-3 font-black">&#8226;</span>

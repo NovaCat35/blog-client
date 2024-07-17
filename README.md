@@ -12,15 +12,15 @@ Live link: https://wayfarers-frontier.pages.dev/ 🧳
 ## Project Links 🔗
 - [Site Link](https://wayfarers-frontier.pages.dev/)
 - Frontend Client _(You are here)_
-- [Backend API ](https://github.com/NovaCat35/blog-api)
-- CMS: work in progress
+- [Backend API](https://github.com/NovaCat35/blog-api)
+- [CMS](https://github.com/NovaCat35/blog-cms)
 
 ## Features 🎯
 
-- Blog pages and Projects
+- Blog pages and editor
 - Sign-up/Login authentication
 - Session continuity and authorization with JWT
-- Comments
+- Comment section
 
 ## Hosting Platforms 🌐
 

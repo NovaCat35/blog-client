@@ -16,6 +16,10 @@ export type Comment = {
 	text: string;
 	likes: string[];
 	date_posted: string; // Date turn to string with .json()
+	blog_post: {
+		_id: string;
+		title: string;
+	};
 	replies: Comment[]; // Array of Object IDs of reply comments
 	edited: boolean;
 };
