@@ -135,7 +135,7 @@ function Navbar() {
 				<defs>
 					<linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
 						<stop offset="0%" style={{ stopColor: "#1ca1ba", stopOpacity: 1 }} />
-						<stop offset="10%" style={{ stopColor: "#1ca1ba", stopOpacity: 1 }} />
+						<stop offset="5%" style={{ stopColor: "#1ca1ba", stopOpacity: 1 }} />
 						<stop offset="100%" style={{ stopColor: "#90d5d5", stopOpacity: 1 }} />
 					</linearGradient>
 				</defs>

@@ -14,6 +14,7 @@ import defaultImg from "../../assets/default.jpeg";
 import arrowSvg from "../../assets/right-arrow.svg";
 import starSvg from "../../assets/star.svg";
 import starFallSvg from "../../assets/star-fall.svg";
+import airplaneLine from "../../assets/airplane-line.svg";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function Home() {
@@ -44,11 +45,14 @@ function Home() {
 			<main className="flex-grow px-[30px] md:px-[7rem] mt-10">
 				<div className="title-card-container">
 					<h1 className="title mt-2 leading-tight md:leading-snug font-bold">Tales from a wayfarer.</h1>
-					<p className="intro-text mt-2">
-						Welcome to <b>Wayfarer's Frontier</b>. Be it the 42nd travel blog you're reading or fascinating tips about the mundane, you'll find it posted here. Come take a look!
-					</p>
+					<div className="intro-container flex flex-col md:flex-row gap-8 md:gap-2 justify-center items-center">
+						<p className="intro-text mt-2">
+							Welcome to <b>Wayfarer's Frontier</b>. Be it the 42nd travel blog you're reading or fascinating tips about the mundane, you'll find it posted here. Come take a look!
+						</p>
+						<img className="w-full h-[100px] object-contain" src={airplaneLine} alt="airplane line" />
+					</div>
 				</div>
-				<div className="popular-featured-blogs mt-16">
+				<div className="popular-featured-blogs mt-12 md:mt-16">
 					<div className="header flex gap-3.5 items-center mb-5">
 						<img className="w-[60px] transform -rotate-12" src={starFallSvg} alt="star fall svg" />
 						<h2 className="text-4xl text-[#223742] ">Favorite Blogs</h2>

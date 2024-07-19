@@ -9,7 +9,7 @@
 .activeLink {
 	font-family: "Roboto Slab", monospace;
 	text-align: center;
-	color: #1d8dcf;
+	color: #006db1;
 	position: relative;
 	text-shadow: 0px 0px 5px white, 0px 0px 5px white, 0px 0px 10px white, 0px 0px 10px white;
 
@@ -20,7 +20,7 @@
 	}
 
 	&::before {
-		background-color: rgb(39, 123, 197);
+		background-color: #006db1;
 		border-radius: 0 0px 150px 150px;
 		width: 30px;
 		height: 10px;
@@ -30,7 +30,7 @@
 	}
 	&::after {
 		border-width: 0 0 15px 20px; /* Triangle for sails */
-		border-color: transparent transparent #ee185b transparent;
+		border-color: transparent transparent #ec6e46 transparent;
 		top: -28px;
 		left: 50%;
 		transform: translate(-70%);

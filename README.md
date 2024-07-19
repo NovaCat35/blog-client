@@ -83,6 +83,8 @@ SVGs: https://www.svgrepo.com/vectors
 
 Rubber Duck: https://unsplash.com/photos/yellow-and-red-plastic-toy-VTvnoNBowZs
 
+Airplane line: https://stock.adobe.com/images/airplane-line-path-vector-travel-line-icon/200894032
+
 Navigation: https://unsplash.com/photos/person-holding-compass-facing-towards-green-pine-trees-_94HLr_QXo8
 
 Sabbatical:
