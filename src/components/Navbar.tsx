@@ -132,7 +132,14 @@ function Navbar() {
 				</div>
 			</nav>
 			<svg className="page-wave absolute -z-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 130 1440 200">
-				<path fill="#90d5d5" fillOpacity="1" d="M0,256L80,240C160,224,320,192,480,197.3C640,203,800,245,960,250.7C1120,256,1280,224,1360,208L1440,192L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
+				<defs>
+					<linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+						<stop offset="0%" style={{ stopColor: "#1ca1ba", stopOpacity: 1 }} />
+						<stop offset="10%" style={{ stopColor: "#1ca1ba", stopOpacity: 1 }} />
+						<stop offset="100%" style={{ stopColor: "#90d5d5", stopOpacity: 1 }} />
+					</linearGradient>
+				</defs>
+				<path fill="url(#waveGradient)" fillOpacity="1" d="M0,256L80,240C160,224,320,192,480,197.3C640,203,800,245,960,250.7C1120,256,1280,224,1360,208L1440,192L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
 			</svg>
 		</>
 	);

@@ -43,9 +43,9 @@ function Home() {
 			<Navbar />
 			<main className="flex-grow px-[30px] md:px-[7rem] mt-10">
 				<div className="title-card-container">
-					<h1 className="title leading-tight md:leading-snug font-bold">Tales from a wayfarer.</h1>
+					<h1 className="title mt-2 leading-tight md:leading-snug font-bold">Tales from a wayfarer.</h1>
 					<p className="intro-text mt-2">
-						Hello and welcome to <b>Wayfarer's Frontier</b>! Be it the 42nd travel blog you're reading or fascinating tips about the mundane, you'll find it posted here. Come take a look!
+						Welcome to <b>Wayfarer's Frontier</b>. Be it the 42nd travel blog you're reading or fascinating tips about the mundane, you'll find it posted here. Come take a look!
 					</p>
 				</div>
 				<div className="popular-featured-blogs mt-16">
