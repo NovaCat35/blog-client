@@ -57,12 +57,12 @@ function Home() {
 						<img className="w-[60px] transform -rotate-12" src={starFallSvg} alt="star fall svg" />
 						<h2 className="text-4xl text-[#223742] ">Favorite Blogs</h2>
 					</div>
-					<div className="posts-cards-container">
-						{blogs.length > 0 ? (
-							favoriteBlogs.map((blog, index) => (
+					{blogs.length > 0 ? (
+						<div className="posts-cards-container">
+							{favoriteBlogs.map((blog, index) => (
 								<Link to={`/blogs/${blog._id}`} key={blog._id} className={`card  w-full flex flex-col items-center ${index == 2 ? "large" : ""}`}>
 									{/* <img loading="lazy" className={`${index == 2 ? "large" : ""} w-full object-cover rounded`} src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} alt="blog image" /> */}
-									<div className='overflow-hidden rounded'>
+									<div className="overflow-hidden rounded">
 										<LazyLoadImage className={`${index == 2 ? "large" : ""} w-full object-cover rounded transition-transform duration-300 ease-in-out transform hover:scale-125`} alt="blog image" src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} />
 									</div>
 									<div className={`${index == 2 ? "bg-[#c88761]" : "bg-[#718fba]"} z-10 px-4 py-0.5 rounded border-4 border-white text-white -mt-3`}>{blog.tags[0]}</div>
@@ -77,11 +77,11 @@ function Home() {
 										</div>
 									</div>
 								</Link>
-							))
-						) : (
-							<Loading />
-						)}
-					</div>
+							))}
+						</div>
+					) : (
+						<Loading />
+					)}
 				</div>
 
 				<div className="latest-posts-showcase mt-16">

@@ -38,6 +38,9 @@ function BlogPage() {
 												<Markdown disallowedElements={["a", "h3", "img"]} className="description text-ellipsis line-clamp-3 text-[#233742]">
 													{blog.content}
 												</Markdown>
+												{/* <p>{parse(blog.content)}</p> */}
+												{/* <p>{blog.content}</p> */}
+												{/* <p>{parse('<p>Add your content here!</p>')}</p> */}
 											</div>{" "}
 											<ul className="tags-container flex flex-wrap justify-center md:justify-start gap-x-5 gap-y-4 mt-4">
 												{blog.tags.map((tag) => (

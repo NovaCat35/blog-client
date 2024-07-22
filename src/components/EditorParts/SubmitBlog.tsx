@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import TurndownService from "turndown";
 import { AuthContext } from "../../contexts/AuthContext";
 import { EditorContext } from "../Pages/WritePage";
 import "../../styles/Others.scss";
@@ -23,6 +24,10 @@ function SubmitBlog() {
 				throw new Error("JWT token not found");
 			}
 
+			// Convert HTML content to Markdown
+			const turndownService = new TurndownService();
+			const markdownContent = turndownService.turndown(content);
+
 			/**
 			 * Because we need the image file to be passed in as form data
 			 * We must use FormData instead of the usual JSON as the body's value
@@ -30,8 +35,8 @@ function SubmitBlog() {
 			const formData = new FormData();
 			formData.append("title", title);
 			formData.append("read_time", readTime);
-			tags.forEach(tag => formData.append("tags", tag));
-			formData.append("content", content);
+			tags.forEach((tag) => formData.append("tags", tag));
+			formData.append("content", markdownContent);
 			formData.append("blog_img.src.name", imgCreatorName);
 			formData.append("blog_img.src.link", imgSrcName);
 			formData.append("published", JSON.stringify(isPublish));
@@ -41,7 +46,7 @@ function SubmitBlog() {
 			} else {
 				throw new Error("No file selected");
 			}
-			
+
 			try {
 				const response = await fetch("https://wayfarers-frontier-api.fly.dev/posts/", {
 					mode: "cors",

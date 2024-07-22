@@ -1,6 +1,6 @@
 # Wayfarer's Frontier
 
-Life is a beautiful mix of ups and downs. For all its worth, I like to sort out my thoughts, post some projects I'm working on, and collect insights from all walks of life while I try to make sense of my own. 
+Life is a beautiful mix of ups and downs. For all its worth, I like to sort out my thoughts, post some projects I'm working on, and collect insights from all walks of life while I try to make sense of my own.
 
 > Dear readers: some of the features from the site are still in the development stage and many more cool features are to come. That said, the current project's progress is fully functional and for showcasing. Disclaimer: most of the blogs have been rough drafted and plugged into ChatGPT to be stylized as I'm more focused on flushing out the site's development. If you have any feedback, please feel free to reach out. Thank you!
 
@@ -8,8 +8,8 @@ Live link: https://wayfarers-frontier.pages.dev/ 🧳
 
 <img width="903" alt="Screenshot 2024-06-03 at 2 23 30 AM" src="https://github.com/NovaCat35/blog-client/assets/54908064/e27498aa-c8f7-46fe-b1d8-128499e28c6d">
 
-
 ## Project Links 🔗
+
 - [Site Link](https://wayfarers-frontier.pages.dev/)
 - Frontend Client _(You are here)_
 - [Backend API](https://github.com/NovaCat35/blog-api)
@@ -53,8 +53,9 @@ An important turning point for me was trying to figure out how to authenticate u
    npm install --save react-lazy-load-image-component
    npm install --save @types/react-lazy-load-image-component
    npm install react-paginate
-   npm install react-markdown  (note: blog format is changed after using tinyMCE for production vs the dev-sample json blogs. This pkg is not needed anymore)
+   npm install react-markdown  (note: Markdown is use for blogs, parser for editor preview, and turndown for converting TinyMCE html output to markdowns for api storage)
    npm install html-react-parser --save
+   npm install turndown (For TS: npm i --save-dev @types/turndown)
    npm install --save @tinymce/tinymce-react
 ```
 
