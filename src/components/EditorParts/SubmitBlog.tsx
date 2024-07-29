@@ -48,6 +48,7 @@ function SubmitBlog() {
 			}
 
 			try {
+				// Note: the headers doesn't have "'Content-Type': 'application/json'" b/c we're sending a file (a.k.a FormData)
 				const response = await fetch("https://wayfarers-frontier-api.fly.dev/posts/", {
 					mode: "cors",
 					method: "POST",

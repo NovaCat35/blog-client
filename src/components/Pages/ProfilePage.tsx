@@ -58,7 +58,7 @@ function ProfilePage() {
 							</div>
 						</div>
 
-						<div className="mt-20">
+						<div className="mt-20 w-full">
 							{comments.length > 0 && <h2 className="text-2xl font-bold mb-2 text-[#7bcbcc] px-2 py-2 bg-[#105581]">Comments</h2>}
 							{comments.map((comment) => (
 								<div key={comment._id} className="w-full">
