@@ -6,7 +6,7 @@ Life is a beautiful mix of ups and downs. For all its worth, I like to sort out 
 
 Live link: https://wayfarers-frontier.pages.dev/ 🧳
 
-<img width="903" alt="Screenshot 2024-06-03 at 2 23 30 AM" src="https://github.com/NovaCat35/blog-client/assets/54908064/e27498aa-c8f7-46fe-b1d8-128499e28c6d">
+<img width="900" alt="Screenshot 2024-07-30 at 4 55 00 PM" src="https://github.com/user-attachments/assets/57861b42-c558-4d4f-b7c7-e1f79666cb4f">
 
 ## Project Links 🔗
 
