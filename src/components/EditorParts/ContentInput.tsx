@@ -53,7 +53,7 @@ function ContentInput() {
 						toolbar: "undo redo | blocks fontfamily | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
 						content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
 					}}
-					initialValue={content || "Add your content here!"}
+					value={content || "Add your content here!"}
 				/>
 			) : (
 				<Loading />
