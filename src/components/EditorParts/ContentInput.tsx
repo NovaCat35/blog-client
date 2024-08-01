@@ -5,7 +5,7 @@ import { Editor as TinyMCEEditor } from "tinymce";
 import Loading from "../Loading";
 
 function ContentInput() {
-	const { setContent } = useContext(EditorContext);
+	const { setContent, content } = useContext(EditorContext);
 	const [apiKey, setApiKey] = useState(null);
 	const editorRef = useRef<TinyMCEEditor | null>(null);
 
@@ -53,7 +53,7 @@ function ContentInput() {
 						toolbar: "undo redo | blocks fontfamily | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
 						content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
 					}}
-					initialValue="Add your content here!"
+					initialValue={content || "Add your content here!"}
 				/>
 			) : (
 				<Loading />
