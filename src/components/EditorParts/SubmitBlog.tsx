@@ -35,7 +35,13 @@ function SubmitBlog() {
 			const formData = new FormData();
 			formData.append("title", title);
 			formData.append("read_time", readTime);
-			tags.forEach((tag) => formData.append("tags", tag));
+
+			// Ensure there's at least one tag
+			if (tags.length === 0) {
+				throw new Error("At least one tag is required");
+			}
+			tags.forEach((tag) => formData.append("tags[]", tag));
+
 			formData.append("content", markdownContent);
 			formData.append("blog_img.src.name", imgCreatorName);
 			formData.append("blog_img.src.link", imgSrcName);
@@ -101,6 +107,7 @@ function SubmitBlog() {
 					<p className="text-[#00adb3] font-medium">{isPublish ? "Publish!" : "Blog will be hidden."}</p>
 				</div>
 				{!file && <p className="mt-4 text-[#d81178] font-semibold">ⓘ Please add an image file.</p>}
+				{tags.length < 1 && <p className="mt-4 text-[#d81178] font-semibold">ⓘ At least one tag is required.</p>}
 			</div>
 			<button className={`${!user.admin_access ? "cursor-not-allowed" : ""} ml-8 mt-8 border-2 px-8 py-2 rounded-full bg-white hover:bg-[#db117d] hover:text-white`} onClick={handleSubmit}>
 				SUBMIT
