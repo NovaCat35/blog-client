@@ -8,7 +8,7 @@ import "../../styles/Others.scss";
 function SubmitBlog() {
 	const [isPublish, setIsPublish] = useState(true);
 	const { user, tokenActive } = useContext(AuthContext);
-	const { title, readTime, tags, file, imgCreatorName, imgSrcName, content } = useContext(EditorContext);
+	const { title, readTime, tags, file, imgCreatorName, imgSrcLink, content } = useContext(EditorContext);
 	const navigate = useNavigate();
 
 	const handleSwitchToggle = () => {
@@ -18,7 +18,6 @@ function SubmitBlog() {
 	const handleSubmit = async () => {
 		// check userRole: (Only verified users and admin can post blogs)
 		if (user.admin_access && tokenActive) {
-			console.log(title, readTime, tags, file, imgCreatorName, imgSrcName, content); // to be deleted
 			const token = localStorage.getItem("jwt_token");
 			if (!token) {
 				throw new Error("JWT token not found");
@@ -34,7 +33,7 @@ function SubmitBlog() {
 			 */
 			const formData = new FormData();
 			formData.append("title", title);
-			formData.append("read_time", readTime);
+			formData.append("read_time", readTime.toString());
 
 			// Ensure there's at least one tag
 			if (tags.length === 0) {
@@ -44,7 +43,7 @@ function SubmitBlog() {
 
 			formData.append("content", markdownContent);
 			formData.append("blog_img.src.name", imgCreatorName);
-			formData.append("blog_img.src.link", imgSrcName);
+			formData.append("blog_img.src.link", imgSrcLink);
 			formData.append("published", JSON.stringify(isPublish));
 
 			if (file) {

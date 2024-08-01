@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { EditorContext } from "../Pages/WritePage";
 
 function ImageInput() {
-	const { imgCreatorName, imgSrcName, setFile, setImgCreatorName, setImgSrcName } = useContext(EditorContext);
+	const { imgCreatorName, imgSrcLink, setFile, setImgCreatorName, setImgSrcLink } = useContext(EditorContext);
 	const [imageUrl, setImageUrl] = useState("https://res.cloudinary.com/dx432kzlt/image/upload/v1717559527/blog_posts/main_blog_images/travel-dino-reichmuth_bcuon5.jpg");
 
 	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +19,7 @@ function ImageInput() {
 	};
 
 	const handleImgSrcChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setImgSrcName(e.target.value);
+		setImgSrcLink(e.target.value);
 	};
 
 	return (
@@ -48,7 +48,7 @@ function ImageInput() {
 			</div>
 			<div className="input-container mb-2">
 				<label htmlFor="read-time">Where's the image source?</label>
-				<input onChange={handleImgSrcChange} id="read-time" type="text" placeholder="Unsplash" min={0} value={imgSrcName} />
+				<input onChange={handleImgSrcChange} id="read-time" type="text" placeholder="Unsplash" min={0} value={imgSrcLink} />
 			</div>
 			{imageUrl && (
 				<div className="flex justify-center">

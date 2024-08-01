@@ -18,7 +18,7 @@ function GeneralInput() {
 	};
 
 	const handleReadTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setReadTime(e.target.value);
+		setReadTime(Number(e.target.value));
 	};
 
 	const handleTagChange = (e: React.ChangeEvent<HTMLInputElement>) => {

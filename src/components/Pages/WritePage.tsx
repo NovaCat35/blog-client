@@ -10,35 +10,35 @@ import "../../styles/Editor.scss";
 
 interface IEditorContext {
 	title: string;
-	readTime: string;
+	readTime: number;
 	tags: string[];
 	file: File | null;
 	imgCreatorName: string;
-	imgSrcName: string;
+	imgSrcLink: string;
 	content: string;
 	setTitle: React.Dispatch<React.SetStateAction<string>>;
-	setReadTime: React.Dispatch<React.SetStateAction<string>>;
+	setReadTime: React.Dispatch<React.SetStateAction<number>>;
 	setTags: React.Dispatch<React.SetStateAction<string[]>>;
 	setFile: React.Dispatch<React.SetStateAction<File | null>>;
 	setImgCreatorName: React.Dispatch<React.SetStateAction<string>>;
-	setImgSrcName: React.Dispatch<React.SetStateAction<string>>;
+	setImgSrcLink: React.Dispatch<React.SetStateAction<string>>;
 	setContent: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const EditorContext = createContext<IEditorContext>({
 	title: '',
-	readTime: '',
+	readTime: 0,
 	tags: [],
 	file: null,
 	imgCreatorName: '',
-	imgSrcName: '',
+	imgSrcLink: '',
 	content: '',
 	setTitle: () => {},
 	setReadTime: () => {},
 	setTags: () => {},
 	setFile: () => {},
 	setImgCreatorName: () => {},
-	setImgSrcName: () => {},
+	setImgSrcLink: () => {},
 	setContent: () => {},
 });
 
@@ -46,11 +46,11 @@ function WritePage() {
 	const [activeTab, setActiveTab] = useState("general");
 	const [content, setContent] = useState("Add your content here!"); // This is to display on "preview" the main content of blog
 	const [title, setTitle] = useState("Around the World");
-	const [readTime, setReadTime] = useState("5");
+	const [readTime, setReadTime] = useState(5);
 	const [tags, setTags] = useState<string[]>(['Travel', 'World Tour']);
 	const [file, setFile] = useState<File | null>(null);
 	const [imgCreatorName, setImgCreatorName] = useState("Dino Reichmuth");
-	const [imgSrcName, setImgSrcName] = useState("https://unsplash.com/photos/yellow-volkswagen-van-on-road-A5rCN8626Ck");
+	const [imgSrcLink, setImgSrcLink] = useState("https://unsplash.com/photos/yellow-volkswagen-van-on-road-A5rCN8626Ck");
 
 	const handleTabChange = (newTab: string) => {
 		setActiveTab(newTab);
@@ -59,7 +59,7 @@ function WritePage() {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<Navbar />
-			<EditorContext.Provider value={{ title, readTime, tags, file, imgCreatorName, imgSrcName, content, setTitle, setReadTime, setTags, setFile, setImgCreatorName, setImgSrcName, setContent }}>
+			<EditorContext.Provider value={{ title, readTime, tags, file, imgCreatorName, imgSrcLink, content, setTitle, setReadTime, setTags, setFile, setImgCreatorName, setImgSrcLink, setContent }}>
 				<main className="flex-grow flex flex-col md:flex-row gap-5 p-5">
 					<div className="info-section">
 						<div className="tabs flex gap-2 ml-4 md:ml-8 -mb-[2.5px] font-semibold">
