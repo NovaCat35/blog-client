@@ -9,7 +9,7 @@ import parse from "html-react-parser";
 function Preview() {
 	const { title, readTime, tags, imgCreatorName, imgSrcLink, file, content } = useContext(EditorContext);
 	const { user } = useContext(AuthContext);
-	const fileUrl = file ? URL.createObjectURL(file) : "";
+	const fileUrl = file ? URL.createObjectURL(file) : "https://res.cloudinary.com/dx432kzlt/image/upload/v1717559527/blog_posts/main_blog_images/travel-dino-reichmuth_bcuon5.jpg";
 	const todayDate = new Date();
 
 	return (
@@ -35,7 +35,7 @@ function Preview() {
 					</li>
 				))}
 			</ul>
-			<img className="object-contain h-[300px] w-full object-cover" src={file ? fileUrl : "https://res.cloudinary.com/dx432kzlt/image/upload/v1717559527/blog_posts/main_blog_images/travel-dino-reichmuth_bcuon5.jpg"} alt="Selected Image" />
+			<img className="object-contain h-[300px] w-full object-cover" src={fileUrl} alt="Selected Image" />
 			<p className="text-base font-bold text-gray-700">
 				Image from{" "}
 				<a className="text-[#d80a77]" href={imgSrcLink} target="_blank" rel="noopener noreferrer">
