@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { BlogContext, Blog } from "../../contexts/BlogContext";
+import { AuthContext } from "../../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
@@ -13,11 +14,13 @@ import "../../styles/Blog.scss";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import CommentSection from "../CommentParts/CommentSection";
+import EditBtn from "../EditBtn";
 
 function BlogPage() {
 	const { id } = useParams();
 	const { blogs } = useContext(BlogContext);
 	const [blog, setBlog] = useState<Blog | undefined>(undefined);
+	const { user } = useContext(AuthContext); // we have a verified user (e.g. token is active), show mangement page instead of login/signup
 
 	useEffect(() => {
 		const foundBlog = blogs.find((blog) => blog._id === id);
@@ -39,10 +42,13 @@ function BlogPage() {
 									<img className="w-full h-full object-cover" src={blog.author.profile_img !== "default" ? blog.author.profile_img : defaultImg} alt="pfp" />
 								</Link>
 								<div className="right-container flex flex-col justify-center">
-									<Link to={`/users/${blog.author._id}`} className="text-lg font-semibold">
-										{blog.author.username}
-									</Link>
-									<div className=" flex">
+									<div className="flex gap-x-4">
+										<Link to={`/users/${blog.author._id}`} className="text-lg font-semibold">
+											{blog.author.username}
+										</Link>
+										{user && user.admin_access && <EditBtn blogId={blog._id} />}
+									</div>
+									<div className="flex">
 										<p>{blog.read_time} min read</p>
 										<span className="mx-3 font-black">&#8226;</span>
 										<p>{formatDate(blog.date_posted)}</p>

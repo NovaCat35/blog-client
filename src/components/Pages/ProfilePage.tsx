@@ -51,9 +51,9 @@ function ProfilePage() {
 									<span>Role:</span> <p className="text-[#d80a77]">{user.admin_access ? "Admin" : "Member"}</p>
 								</div>
 								{user.admin_access && (
-									<button className="bg-[#4e92ba] text-[#e2f1f4] border-2 border-[#04afe6] mt-2 px-4 py-1 rounded-md hover:bg-[#566a84] hover:text-white hover:border-[#dbe4e9]" type="button">
+									<a href="https://wayfarers-frontier-cms.pages.dev/" className="bg-[#4e92ba] text-[#e2f1f4] border-2 border-[#04afe6] mt-2 px-4 py-1 rounded-md hover:bg-[#566a84] hover:text-white hover:border-[#dbe4e9]" type="button">
 										Manage Blogs
-									</button>
+									</a>
 								)}
 							</div>
 						</div>
