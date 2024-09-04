@@ -15,7 +15,8 @@ import arrowSvg from "../../assets/right-arrow.svg";
 import starSvg from "../../assets/star.svg";
 import starFallSvg from "../../assets/star-fall.svg";
 import airplaneLine from "../../assets/airplane-line.svg";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 function Home() {
 	const { blogs } = useContext(BlogContext);
@@ -63,7 +64,7 @@ function Home() {
 								<Link to={`/blogs/${blog._id}`} key={blog._id} className={`card  w-full flex flex-col items-center ${index == 2 ? "large" : ""}`}>
 									{/* <img loading="lazy" className={`${index == 2 ? "large" : ""} w-full object-cover rounded`} src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} alt="blog image" /> */}
 									<div className="overflow-hidden rounded">
-										<LazyLoadImage className={`${index == 2 ? "large" : ""} w-full object-cover rounded transition-transform duration-300 ease-in-out transform hover:scale-125`} alt="blog image" src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} />
+										<LazyLoadImage effect="blur" wrapperProps={{style: {transitionDelay: ".5s"},}} className={`${index == 2 ? "large" : ""} w-full object-cover rounded transition-transform duration-300 ease-in-out transform hover:scale-125`} alt="blog image" src={blog.blog_img.img_url == "default" ? defaultImg : blog.blog_img.img_url} />
 									</div>
 									<div className={`${index == 2 ? "bg-[#c88761]" : "bg-[#718fba]"} z-10 px-4 py-0.5 rounded border-4 border-white text-white -mt-3`}>{blog.tags[0]}</div>
 									<div className="text-container px-2 mt-2 text-center">

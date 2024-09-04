@@ -101,6 +101,7 @@ function Navbar() {
 
 	return (
 		<>
+			{/* <div className='page_stripe'></div> */}
 			<nav className={`flex px-10 pt-7 pb-3 ${isScrolled ? "bg-white bg-opacity-90" : ""} sticky top-0 z-10 transition-transform duration-300 transform ${showNav ? "translate-y-0" : "-translate-y-full"}`}>
 				<div className="logo-container w-[70px] h-[70px] flex items-center justify-center overflow-hidden rounded-full">
 					<Link to="/">
