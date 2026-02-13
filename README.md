@@ -2,7 +2,7 @@
 
 Life is a beautiful mix of ups and downs. For all its worth, I like to sort out my thoughts, post some projects I'm working on, and collect insights from all walks of life while I try to make sense of my own.
 
-> Dear readers: some of the features from the site are still in the development stage and many more cool features are to come. That said, the current project's progress is fully functional and for showcasing. Disclaimer: most of the blogs have been rough drafted and plugged into ChatGPT to be stylized as I'm more focused on flushing out the site's development. If you have any feedback, please feel free to reach out. Thank you!
+> Dear readers: some of the features from the site are still in the development stage, and many more cool features are to come. That said, the current project's progress is fully functional and is for showcasing. Disclaimer: Most of the blogs have been rough-drafted and plugged into ChatGPT(2024) for a quick write-up as I'm more focused on flushing out the site's development (though I'm well aware it is better to write in my own words than rely on AI). If you have any feedback, please feel free to reach out. Thank you!
 
 Live link: https://wayfarers-frontier.pages.dev/ 🧳
 
